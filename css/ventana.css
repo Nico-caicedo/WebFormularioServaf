@@ -1,0 +1,98 @@
+/* vista  admin -------------------------------------------------------*/
+
+/*ventana emergente*/
+.ventana {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    place-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+
+.cerrarbutton {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    
+    gap: 20px;
+}
+
+.cerrar {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    color: red;
+    font-size: 30px;
+    gap: 0.5em;
+    z-index: 5;
+    border: none;
+    background-color: transparent;
+    transition: all 1s ease;
+    transform: scale(13px);
+}
+
+.cerrar:hover {
+    color: #03066a;
+}
+
+
+.product {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: .5em;
+    background-color: #fff;
+    color: #000;
+    font-size: 1.5em;
+    position: relative;
+    padding: 1em;
+    gap: .5em;
+}
+
+@media screen and (max-width: 800px) {
+
+    .ventana {
+        height: 100vh;
+        width: 100vw;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: none;
+        place-items: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 999;
+    }
+
+    .product {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: .5em;
+        background-color: #fff;
+        color: #000;
+        margin: 1em;
+        font-size: 15px;
+        position: relative;
+        padding: .1em;
+        gap: .1em;
+    }
+
+    .cerrarbutton {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        padding-left: 10px;
+        gap: 10px;
+    }
+
+}
