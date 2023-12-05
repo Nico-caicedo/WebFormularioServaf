@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         foreach ($idEvaluadores as $idUsuario) {
             // Actualizar la tabla de Evaluados con el IdUser y IdEvaluador seleccionados
-            $query = "INSERT INTO Evaluados (IdUser, IdEvaluador) VALUES ('$idUsuario', '$idJefe')";
+            $query = "INSERT INTO evaluados (IdUser, IdEvaluador) VALUES ('$idUsuario', '$idJefe')";
             mysqli_query($conexion, $query);
 
             $queryUpdate = "UPDATE users SET Asignado = 1 WHERE IdUser = '$idUsuario'";

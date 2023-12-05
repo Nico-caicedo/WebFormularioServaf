@@ -298,7 +298,7 @@ if (!isset($_SESSION['rol'])) {
       // }
       ?>
       <?php
-      if ($rol == 1) {
+      if ($rol == 0) {
         echo "
       <button class='botones' id='44' onclick='mostrarContenedor(\"crearAmbiente\", this)'>
         <i class='fas fa-plus-circle'></i>
@@ -312,19 +312,20 @@ if (!isset($_SESSION['rol'])) {
         <i class='fas fa-plus-circle'></i>
         <p>Crear Usuario</p>
       </button>
+      <button class='botones' id='6' onclick='mostrarContenedor('Solicitudes',this)'>
+      <?php require_once 'php/num_solicutudes_nueva.php'; ?>
+      <i class='fas fa-clipboard-list'></i>
+      <p>Solicitudes</p>
+    </button>
       ";
       }
       ?>
 
 
       <?php
-      if ($rol == 1 || $rol == 2) {
+      if ($rol == 1) {
         ?>
-        <button class='botones' id='6' onclick='mostrarContenedor("Solicitudes",this)'>
-          <?php require_once 'php/num_solicutudes_nueva.php'; ?>
-          <i class='fas fa-clipboard-list'></i>
-          <p>Solicitudes</p>
-        </button>
+
 
         <button class='botones' id='7' onclick='mostrarContenedor("Usuarios",this)'>
           <i class='fas fa-users'></i>
@@ -559,7 +560,7 @@ if (!isset($_SESSION['rol'])) {
 
                 <div class="fechasDA">
                   <p>Periodo Evaluado</p>
-                  <p class="fechaF">Del 6 de mayo AL 30 septiembre</p>
+                  <p class="fechaF"></p>
                 </div>
               </div>
 
@@ -586,7 +587,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
                 <div>
                   <p>Docmuento</p>
-                  <input type="number" id="dni" name="documento" value="">
+                  <input type="text" ID="dni" name="documento" value="">
                 </div>
               </div>
 
@@ -655,6 +656,7 @@ if (!isset($_SESSION['rol'])) {
               <p>L</p>
             </div>
             <?php
+            include './php/Conexion.php';
             $dato_factor = mysqli_query($conexion, "SELECT * FROM factor where IdFactor = $factor1");
 
             if (mysqli_num_rows($dato_factor) > 0) {
@@ -812,7 +814,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val1">
+                  <input type="number" name="Val1" id="val1">
                 </div>
               </div>
 
@@ -846,7 +848,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" id="input2" name="Val2">
+                  <input type="number" id="val2" name="Val2">
                 </div>
               </div>
 
@@ -910,7 +912,7 @@ if (!isset($_SESSION['rol'])) {
                 <p>
                   Observaciones
                 </p>
-                <textarea class="cuadro" name="" id=""></textarea>
+                <textarea class="cuadro"  name="Observacion1" id=""></textarea>
               </div>
             </div>
           </div>
@@ -1183,7 +1185,7 @@ if (!isset($_SESSION['rol'])) {
                 <p>
                   Observaciones
                 </p>
-                <textarea class="cuadro" name="" id=""></textarea>
+                <textarea class="cuadro"  name="Observacion2" id=""></textarea>
               </div>
             </div>
           </div>
@@ -1455,7 +1457,7 @@ if (!isset($_SESSION['rol'])) {
                 <p>
                   Observaciones
                 </p>
-                <textarea class="cuadro" name="" id=""></textarea>
+                <textarea class="cuadro"  name="Observacion3" id=""></textarea>
               </div>
             </div>
           </div>
@@ -1722,7 +1724,7 @@ if (!isset($_SESSION['rol'])) {
                 <p>
                   Observaciones
                 </p>
-                <textarea class="cuadro" name="" id=""></textarea>
+                <textarea class="cuadro"  name="Observacion4" id=""></textarea>
               </div>
             </div>
 
@@ -1761,15 +1763,15 @@ if (!isset($_SESSION['rol'])) {
 
               <div class="tablaMejora">
                 <p>Acuerdos en el trabajo Cotidiano:</p>
-                <textarea name="" id="" cols="90" rows="7">
+                <textarea name="Acuerdo" id="" cols="90" rows="7">
 
                 </textarea>
               </div>
 
               <div class="tablaMejora">
                 <p>Capacitacion:</p>
-                <textarea name="" id="" cols="90" rows="7">
-
+                <textarea name="Capacitacion" id="" cols="90" rows="7">
+                
                 </textarea>
               </div>
 

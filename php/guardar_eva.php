@@ -1,7 +1,7 @@
 <?php
 session_start();
 $IdEvaluador = $_SESSION['id_evaluador'];
-include('conexion.php');
+include('Conexion.php');
 
 
 
@@ -38,6 +38,48 @@ $NombreEva = "Eva_" . $fechaHoraFormateada;
     $id = $_POST['id_evaluado'];
     $Codigo = $NombreEva;
     $FechaActual = date("Y-m-d");
+
+
+    $componentes1 = explode("-", $Date1);
+
+    $anio1 = $componentes1[0];
+    $mes1 = $componentes1[1];
+    $dia1 = $componentes1[2];
+
+
+    $componentes2 = explode("-", $Date2);
+
+    $anio2 = $componentes2[0];
+    $mes2 = $componentes2[1];
+    $dia2 = $componentes2[2];
+
+
+
+
+    $nombresMeses = [
+        1 => 'Enero',
+        2 => 'Febrero',
+        3 => 'Marzo',
+        4 => 'Abril',
+        5 => 'Mayo',
+        6 => 'Junio',
+        7 => 'Julio',
+        8 => 'Agosto',
+        9 => 'Septiembre',
+        10 => 'Octubre',
+        11 => 'Noviembre',
+        12 => 'Diciembre'
+    ];
+
+
+    $NameMes1 = $nombresMeses[$mes1];
+    $NameMes2 = $nombresMeses[$mes2];
+ 
+
+    $periodoEvaluacion = "Del ".  $dia1 . " de " . $NameMes1 . " Al " . $dia2 . " De " . $NameMes2;
+ 
+
+
 
 
 
@@ -82,7 +124,8 @@ $NombreEva = "Eva_" . $fechaHoraFormateada;
         'id_cargo' => $idCargo,
         'idDependencia' => $idDependencia,
         'number999' => $idUser,
-        'IdEvaluacion' => $_SESSION['id_evaluacion'] 
+        'IdEvaluacion' => $_SESSION['id_evaluacion'] ,
+        'PeriodoEvaluacion' =>  $periodoEvaluacion
     ));
 
     // Hacer algo con $date1 y $date2, como almacenarlos en una base de datos o realizar algún procesamiento.

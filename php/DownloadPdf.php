@@ -1,6 +1,9 @@
 <?php
 
 
+
+
+
 session_start();
 include_once '../PDF/TCPDF-main/tcpdf.php';
 
@@ -12,26 +15,7 @@ date_default_timezone_set('America/Bogota');
 
 
 
-// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//     // Asigna valores a las variables con un enfoque más limpio
-//     $IdEva = isset($_POST['IdEva']) ? $_POST['IdEva'] : null;
-//     $IdEvaluador = isset($_SESSION['id_evaluador']) ? $_SESSION['id_evaluador'] : null;
-//     $Evaluado = isset($_POST['infoUser']) ? $_POST['infoUser'] : null;
 
-//     // Verifica si todas las variables necesarias están presentes
-//     if ($IdEva !== null && $IdEvaluador !== null && $Evaluado !== null) {
-//         // Tu lógica de procesamiento aquí
-
-//         // Puedes imprimir o devolver alguna respuesta si es necesario
-//         echo 'Procesamiento exitoso';
-//     } else {
-//         // Manejo de error si alguna variable necesaria falta
-//         echo 'Error: Faltan parámetros';
-//     }
-// } else {
-//     // Manejo de error si la solicitud no es de tipo POST
-//     echo 'Error: Se esperaba una solicitud POST';
-// }
 $IdEvas = isset($_GET['IdEva']) ? $_GET['IdEva'] : '';
 $infoUser = isset($_GET['infoUser']) ? $_GET['infoUser'] : '';
 
@@ -39,17 +23,15 @@ $IdEva = $IdEvas;
 $IdEvaluadors = $_SESSION['id_evaluador'];
 $IdEvaluado = $infoUser;
 
+$NombrePDF = "";
 
+$Observacion1 = "";
+$Observacion2 = "";
+$Observacion3 = "";
+$Observacion4 = "";
+$Acuerdo = "";
+$Capacitacion = "";
 
-
-$encryptedBase64 = isset($_GET['data']) ? $_GET['data'] : '';
-
-// Clave y vector de inicialización para AES (debe coincidir con los valores utilizados en JavaScript)
-$key = '2b7e151628aed2a6abf7158809cf4f3c';
-$iv = '3ad77bb40d7a3660a89ecaf32466ef97';
-
-// Desencriptar los datos con AES
-$decryptedData = openssl_decrypt(base64_decode($encryptedBase64), 'aes-256-cbc', hex2bin($key), 0, hex2bin($iv));
 
 
 
@@ -107,6 +89,13 @@ class MYPDF extends TCPDF
 		global $IdEva;
 		global $IdEvaluadors;
 		global $IdEvaluado;
+		global $NombrePDF;
+		global $Observacion1;
+		global $Observacion2;
+		global $Observacion3;
+		global $Observacion4;
+		global $Acuerdo;
+		global $Capacitacion;
 		// info de evaluador 
 
 		$evaluador = $IdEvaluadors;
@@ -232,11 +221,19 @@ class MYPDF extends TCPDF
 		$FechaCreacion = $RowEva['Fecha_Evaluacion'];
 		$FechaDel = $RowEva['Perido_Del'];
 		$FechaAl = $RowEva['Periodo_Al'];
+		$Nombrepdf = $RowEva['Nombre'];
+		$NombrePDF = $Nombrepdf;
+		$Observacion1 = $RowEva['Observacion1'];
+		$Observacion2 = $RowEva['Observacion2'];
+		$Observacion3 = $RowEva['Observacion3'];
+		$Observacion4 = $RowEva['Observacion4'];
+		$Acuerdo = $RowEva['Acuerdos'];
+		$Capacitacion = $RowEva['Capacitacion'];
 
 
 
 		// fecha de creacion 
-		$componentes = explode("-", $FechaCreacion );
+		$componentes = explode("-", $FechaCreacion);
 
 		$anio = $componentes[0];
 		$mes = $componentes[1];
@@ -245,7 +242,7 @@ class MYPDF extends TCPDF
 
 		// fecha del 
 
-		$componentes2 = explode("-",$FechaDel);
+		$componentes2 = explode("-", $FechaDel);
 
 		$anio2 = $componentes2[0];
 		$mes2 = $componentes2[1];
@@ -302,9 +299,9 @@ class MYPDF extends TCPDF
 		$this->SetY($this->GetY() - 6);
 		$this->SetX(110);
 		$this->Cell(8, 5, 'Del', 1, 0, 'C');
-		$this->Cell(40, 5, $PeriodoDel , 1, 0, 'C');
+		$this->Cell(40, 5, $PeriodoDel, 1, 0, 'C');
 		$this->Cell(8, 5, 'Al', 1, 0, 'C');
-		$this->Cell(40, 5, $PeriodoAl , 1, 0, 'C');
+		$this->Cell(40, 5, $PeriodoAl, 1, 0, 'C');
 
 
 
@@ -650,6 +647,7 @@ class MYPDF extends TCPDF
 		include './Conexion.php';
 		global $suma1;
 		global $IdEva;
+		global $Observacion1;
 		$idevaluacion = $IdEva; // Cambia esto por el valor que necesites
 
 		// Inicializar un array para almacenar las calificaciones
@@ -924,33 +922,39 @@ class MYPDF extends TCPDF
 
 		$this->Cell(185, 5, 'Subtotal Factor Calidad', 1, 1, 'C');
 		$this->Cell(185, 5, 'Observaciones', 1, 1, 'C');
-		$this->Cell(185, 40, '', 1, 1, 'C');
+		$this->Cell(185, 40, $Observacion1 , 1, 1, 'L');
 	}
 
 	public function EvaluacionDesempenoSection3()
 	{
 
+		global $Observacion2;
+		global $Observacion3;
+		global $Observacion4;
+		global $Acuerdo;
+		global $Capacitacion;
+
 		$this->Ln(10); // Salto de Línea
 
 		$this->Cell(185, 5, 'Subtotal Factor Calidad', 1, 1, 'C');
 		$this->Cell(185, 5, 'Observaciones', 1, 1, 'C');
-		$this->Cell(185, 35, '', 1, 1, 'C');
+		$this->Cell(185, 35, $Observacion2 , 1, 1, 'L');
 
 		$this->Ln(8); // Salto de Línea
 
 		$this->Cell(185, 5, 'Subtotal Factor Calidad', 1, 1, 'C');
 		$this->Cell(185, 5, 'Observaciones', 1, 1, 'C');
-		$this->Cell(185, 35, '', 1, 1, 'C');
+		$this->Cell(185, 35, $Observacion3 , 1, 1, 'L');
 		$this->Ln(5); // Salto de Línea
 
 		$this->Cell(185, 5, 'PLAN DE MEJORAMIENTO', 0, 1, 'C');
 		$this->Ln(5); // Salto de Línea
 		$this->Cell(185, 5, 'Acuerdos en el trabajo cotidiano:', 1, 1, 'L');
-		$this->Cell(185, 25, '', 1, 1, 'L');
+		$this->Cell(185, 25, $Acuerdo , 1, 1, 'L');
 
 		$this->Ln(10); // Salto de Línea
 		$this->Cell(185, 5, 'Capacitación:', 1, 1, 'L');
-		$this->Cell(185, 25, '', 1, 1, 'L');
+		$this->Cell(185, 25, $Capacitacion , 1, 1, 'L');
 
 		$this->Ln(10); // Salto de Línea
 
@@ -1017,4 +1021,4 @@ $pdf->EvaluacionDesempenoSection3();
 
 $tipoVista = 'D';
 
-$pdf->Output('pdf' . date('Y-m-d') . '.pdf', $tipoVista);
+$pdf->Output($NombrePDF . '.pdf', $tipoVista);

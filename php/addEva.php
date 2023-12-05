@@ -55,13 +55,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     );
 
 
-     $insert = mysqli_prepare($conexion, "INSERT INTO calificacion (IdEvaluado, IdPregunta, IdEvaluacion, Calificacion, Estado) VALUES (?, ?, ?, ?, ?)");
+
+
+    $insert = mysqli_prepare($conexion, "INSERT INTO calificacion (IdEvaluado, IdPregunta, IdEvaluacion, Calificacion, Estado) VALUES (?, ?, ?, ?, ?)");
 
     // Declarar las variables antes de usarlas en mysqli_stmt_bind_param
     $IdPregunta = 0;
     $Calificacion = 0;
 
-    mysqli_stmt_bind_param($insert, "iiiii", $IdEvaluado  , $IdPregunta, $id_evaluacion, $Calificacion, $Estado);
+    mysqli_stmt_bind_param($insert, "iiiii", $IdEvaluado, $IdPregunta, $id_evaluacion, $Calificacion, $Estado);
 
     for ($i = 0; $i < count($Id); $i++) {
         $IdPregunta = $Id[$i];
@@ -77,6 +79,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     mysqli_stmt_close($insert);
     // Cerrar la conexión a la base de datos
 
+    $sql_update = "UPDATE evaluaciones
+    SET Observacion1=?, Observacion2=?, Observacion3=?, Observacion4=?, Acuerdos=?, Capacitacion=? 
+    WHERE IdEvaluacion = ?";
+
+
+$Observacion1 = $_POST['Observacion1'];
+$Observacion2 = $_POST['Observacion2'];
+$Observacion3 = $_POST['Observacion3'];
+$Observacion4 = $_POST['Observacion4'];
+$Acuerdos = $_POST['Acuerdo'];
+$Capacitacion = $_POST['Capacitacion'];
+
+    // Preparar la sentencia SQL
+    $stmt = $conexion->prepare($sql_update);
+
+    // Vincular los parámetros
+    $stmt->bind_param("ssssssi", $Observacion1, $Observacion2, $Observacion3, $Observacion4, $Acuerdos, $Capacitacion, $id_evaluacion);
+
+    // Asignar valores a las variables
+
+ 
+    // Ejecutar la consulta
+    $stmt->execute();
+
+    // Cerrar la declaración
+    $stmt->close();
 
     // Asegúrate de que la conexión esté definida
     if (isset($conexion)) {
