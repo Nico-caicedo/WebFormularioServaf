@@ -90,7 +90,23 @@ para desepeño laboral*/
   width: 35%;
 }
 
-#ContainerCardInfo {
+#ContainerCardInfo { 
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.185);
+  z-index: 3;
+}
+
+#Containershow { 
   display: none;
   justify-content: center;
   align-items: center;
@@ -119,7 +135,20 @@ para desepeño laboral*/
   gap: 5px;
 }
 
-.UserInfo {
+#ShowInfo {
+  position: fixed;
+  top: 25%;
+  left: 20%;
+  width: 70%;
+  height: 50%;
+  background-color: white;
+  border-radius: 5px;
+  display: none;
+  z-index: 4;
+  gap: 5px;
+}
+
+  .UserInfo {
   width: 35%;
   height: 100%;
   display: flex;

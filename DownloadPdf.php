@@ -236,7 +236,7 @@ class MYPDF extends TCPDF
 		$componentes = explode("-", $FechaCreacion);
 
 		$anio = $componentes[0];
-		$mes = ltrim($componentes[1], '0');
+		$mes = $componentes[1];
 		$dia = $componentes[2];
 
 
@@ -245,7 +245,7 @@ class MYPDF extends TCPDF
 		$componentes2 = explode("-", $FechaDel);
 
 		$anio2 = $componentes2[0];
-		$mes2 =ltrim($componentes2[1], '0');
+		$mes2 = $componentes2[1];
 		$dia2 = $componentes2[2];
 
 
@@ -254,7 +254,7 @@ class MYPDF extends TCPDF
 		$componentes3 = explode("-", $FechaAl);
 
 		$anio3 = $componentes3[0];
-		$mes3 = ltrim($componentes3[1], '0');
+		$mes3 = $componentes3[1];
 		$dia3 = $componentes3[2];
 
 
@@ -1019,6 +1019,6 @@ $pdf->AddPage();
 
 $pdf->EvaluacionDesempenoSection3();
 
-$tipoVista = 'I';
+$tipoVista = 'D';
 
 $pdf->Output($NombrePDF . '.pdf', $tipoVista);

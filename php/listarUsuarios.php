@@ -14,23 +14,28 @@ if ($consulta->num_rows > 0) {
     $imagen = $persona['FotoPerfil'];
     if ($imagen === "") {
       $imagen = "sin_foto.png";
-      }
+    }
 
-    $estado = $persona['Estado'] ;
+    $estado = $persona['Estado'];
 
-    if($estado == 1){
-        $estados = "activo";
-        $state = "Activo";
-    }else if($estado == 2){
+    if ($estado == 1) {
+      $estados = "activo";
+      $state = "Activo";
+    } else if ($estado == 2) {
       $estados = "inactivo";
       $state = "Inactivo";
-    } 
-      
+    }
+
 
     // Modificar la ruta de la imagen si es necesario
-   $modificarRuta = "./imgusuario/$imagen";
+    $modificarRuta = "./imgusuario/$imagen";
 
+    $Iduser = $persona['IdUser'];
 
+    $consult = mysqli_query($conexion, "SELECT * FROM evaluados where IdUser = $Iduser");
+    $row = mysqli_fetch_assoc($consult);
+
+    $IdEvaluados = $row['IdEvaluado'];
 
     echo '
         <div class="itemProfileview">
@@ -54,16 +59,19 @@ if ($consulta->num_rows > 0) {
               <p>' . $persona['telefono'] . '</p>
             </div>
 
-
-                <div class="estados '. $estados .'">
-                    <input type="hidden" id="" class="Estado" name="" value="'. $persona['IdUser'] .'" >
+            <div class="show" onclick="AbrirVentanaS(this)"  data-eva="' . $IdEvaluados .'"  data-infoUser="' . $Iduser .'">
+              sss
+             </div>
+                <div class="estados ' . $estados . '">
+                    <input type="hidden" id="" class="Estado" name="" value="' . $persona['IdUser'] . '" >
                   
-                    <p class="NameState">'.$state.'</p>
+                    <p class="NameState">' . $state . '</p>
                 </div>
                 <div class="edit">
                     <input type="hidden" id="inactivo-' . $persona['IdUser'] . '" name="estadoCliente[' . $persona['Estado'] . ']" value="2" ' . ($persona['Estado'] == '0' ? 'checked' : '') . '>
                     <p>Editar</p>
                 </div>
+                
         
             
           </div>';

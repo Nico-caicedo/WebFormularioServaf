@@ -466,7 +466,8 @@ if (!isset($_SESSION['rol'])) {
           ?>
 
 
-          <div id='ContainerCardInfo' onclick="CerrarV()">
+          <div id='ContainerCardIno' onclick="CerrarV()">
+          
           </div>
 
 
@@ -614,7 +615,7 @@ if (!isset($_SESSION['rol'])) {
                   <select name="IdCargo" id="cargo">
 
                     <?php
-                    $cargos = mysqli_query($conexion, "SELECT * FROM cargos WHERE Asignado = 0");
+                    $cargos = mysqli_query($conexion, "SELECT * FROM cargos ");
                     if (mysqli_num_rows($cargos) > 0) {
                       while ($row = mysqli_fetch_array($cargos)) {
                         echo "<option value='{$row['IdCargo']}'>
@@ -814,7 +815,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val1" id="val1">
+                  <input type="number" name="Val1" id="val1" step="0.01">
                 </div>
               </div>
 
@@ -848,7 +849,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" id="val2" name="Val2">
+                  <input type="number" id="val2" name="Val2" step="0.01">
                 </div>
               </div>
 
@@ -883,7 +884,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val3">
+                  <input type="number" name="Val3" step="0.01">
                 </div>
               </div>
               <?php
@@ -1087,14 +1088,14 @@ if (!isset($_SESSION['rol'])) {
 
                 </div>
 
-                <div class="enblanco2">
-                  <input type="number" name="Val4">
+                <div class="enblanco2"> 
+                  <input type="number" name="Val4"  step="0.01" >
                 </div>
               </div>
 
               <div class="first_question">
                 <div class="pregunta">
-                  <input type="hidden" value="5" name="P5">
+                  <input type="hidden" value="5" name="P5" >
                   <p>
                     <?php echo $descripcion2 ?>
                   </p>
@@ -1122,7 +1123,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val5">
+                  <input type="number" name="Val5" step="0.01">
                 </div>
               </div>
 
@@ -1156,7 +1157,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val6">
+                  <input type="number" name="Val6" step="0.01">
                 </div>
               </div>
               <?php
@@ -1360,7 +1361,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Vall7">
+                  <input type="number" name="Val7" step="0.01">
                 </div>
               </div>
 
@@ -1394,7 +1395,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val8">
+                  <input type="number" name="Val8" step="0.01">
                 </div>
               </div>
 
@@ -1428,7 +1429,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val9">
+                  <input type="number" name="Val9" step="0.01">
                 </div>
               </div>
               <?php
@@ -1627,7 +1628,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val10" id="input1" onblur="validarInputs()">
+                  <input type="number" name="Val10" id="input1" step="0.01" onblur="validarInputs()">
                 </div>
               </div>
 
@@ -1661,7 +1662,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val11" id="input2" onblur="validarInputs()">
+                  <input type="number" name="Val11" id="input2"  step="0.01" onblur="validarInputs()">
                 </div>
               </div>
 
@@ -1695,7 +1696,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val12" id="input3" onblur="validarInputs()">
+                  <input type="number" name="Val12" id="input3" step="0.01" onblur="validarInputs()">
                 </div>
               </div>
               <?php
@@ -1840,6 +1841,47 @@ if (!isset($_SESSION['rol'])) {
       include './php/listarUsuarios.php'
       
       ?>
+
+
+
+          <div id='Containershow' onclick="CerrarS()">
+          
+          </div>
+
+
+          <div id='ShowInfo'>
+            <div class="UserInfo">
+
+
+            </div>
+            <div class="Evaluaciones_user">
+
+              <h3>Evaluaciones</h3>
+              <div class="Evas_container">
+
+
+              </div>
+            </div>
+          </div>
+
+          <!-- <div id='ContainerCardInfo' onclick="CerrarV()">
+          </div>
+
+
+          <div id='CardInfo'>
+            <div class="UserInfo">
+
+
+            </div>
+            <div class="Evaluaciones_user">
+
+              <h3>Evaluaciones</h3>
+              <div class="Evas_container">
+
+
+              </div>
+            </div>
+          </div> -->
     </section>
 
     <form method="post" enctype="multipart/form-data" class="pages" id="carruselNoticias">

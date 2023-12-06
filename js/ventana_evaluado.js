@@ -375,8 +375,12 @@ document
       .then((data) => {
         // Manejar los datos obtenidos del servidor
         console.log(data);
-        formulario.reset();
-        volver();
+        if(data){
+          document.getElementById("form_eva").reset();
+          volver();
+          notaTotal.textContent =  " ";
+        }
+     
       })
       .catch((error) => {
         // Manejar errores en la solicitud
@@ -393,7 +397,7 @@ document
 
       function actualizarNotas(event) {
           // Verificar que el evento provenga de un input de tipo número y que no sea el input con el ID "dni"
-          if (event.target.type === 'number' && event.target.id !== 'dni') {
+       
               // Obtener todos los inputs numéricos dentro del formulario
               var inputsNumericos = formulario.querySelectorAll('input[type="number"]');
 
@@ -402,8 +406,8 @@ document
               inputsNumericos.forEach(function(input) {
                   sumaTotal += parseFloat(input.value) || 0;
               });
-
+              var ValorReal = sumaTotal.toFixed(2)
               // Asignar el resultado al contenido del elemento <p>
-              notaTotal.textContent =  sumaTotal;
-          }
+              notaTotal.textContent =  ValorReal;
+          
       }

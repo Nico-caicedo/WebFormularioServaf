@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_POST['Val4'],
         $_POST['Val5'],
         $_POST['Val6'],
-        $_POST['Vall7'],
+        $_POST['Val7'],
         $_POST['Val8'],
         $_POST['Val9'],
         $_POST['Val10'],
@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $IdPregunta = 0;
     $Calificacion = 0;
 
-    mysqli_stmt_bind_param($insert, "iiiii", $IdEvaluado, $IdPregunta, $id_evaluacion, $Calificacion, $Estado);
+    mysqli_stmt_bind_param($insert, "iiisi", $IdEvaluado, $IdPregunta, $id_evaluacion, $Calificacion, $Estado);
 
     for ($i = 0; $i < count($Id); $i++) {
         $IdPregunta = $Id[$i];

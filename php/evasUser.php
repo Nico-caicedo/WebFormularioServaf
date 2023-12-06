@@ -34,7 +34,7 @@ if ($resultado->num_rows > 0) {
                 </p>
 
                 <div  class='iconos'>
-                    <div  onclick='OpenPdf({$fila["IdEvaluacion"]})'  data-IdEva='{$fila["IdEvaluacion"]}' href='./php/ReportePdf.php' target='_blank'><img src='./img/see.png' class='iconss' alt=''></div>
+                    <div  onclick='OpenPdf({$fila["IdEvaluacion"]})'  data-IdEva='{$fila["IdEvaluacion"]}'><img src='./img/see.png' class='iconss' alt=''></div>
 
                     <div onclick='DownloadPdf({$fila["IdEvaluacion"]})'><img src='./img/pdf.png' class='iconss' alt=''></div>
                 </div>
