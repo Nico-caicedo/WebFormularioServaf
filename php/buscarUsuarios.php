@@ -85,6 +85,9 @@ if ($consulta->num_rows > 0) {
       }
     
 } else {
-   echo '<p>Sin resultados</p>';
+   echo '<div class="SinInfo">
+   <img  src="./img/search.png">
+   <p>Lo siento, no hay usuarios que coincidan con esa información.</p>
+   </div>';
 }
 ?>

@@ -116,7 +116,7 @@ if (isset($_POST['sesion'])) {
         $id = $_POST['id'];
         $clave = $_POST['password'];
 
-        $consulta = "SELECT * FROM users WHERE Document = '$id' and Pasword = '$clave' ";
+        $consulta = "SELECT * FROM users WHERE Document = '$id' and Pasword = '$clave' and Estado = 1 and Jefe = 1 ";
         $result = mysqli_query($conexion, $consulta, );
 
         if (mysqli_num_rows($result) > 0) {

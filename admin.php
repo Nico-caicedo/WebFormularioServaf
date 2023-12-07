@@ -185,7 +185,7 @@ if (!isset($_SESSION['rol'])) {
         <i class="fa-solid fa-pen-to-square"></i>
       </article>
       <?php
-      if ($rol == 1) {
+      if ($rol == 0) {
         echo "<article class='BtnCargueAsignacion' onclick='mostrarCargueAsignacion()' title='Cargar asignaciones'>
         <i class='fa-solid fa-upload'></i>
       </article>
@@ -462,6 +462,11 @@ if (!isset($_SESSION['rol'])) {
             </div>";
               }
             }
+          }else{
+            echo '<div class="UserEva">
+            <img  src="./img/users.png">
+            <p>Actualmente, no tienes usuarios asignados para evaluar.</p>
+            </div>';
           }
           ?>
 

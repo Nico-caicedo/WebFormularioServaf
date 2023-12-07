@@ -886,8 +886,52 @@ para desepeño laboral*/
   cursor: pointer;
 }
 
+#Users{
+  overflow: auto;
+  height: 85%;
+}
+
+.SinInfo{
+  width: 100%;
+  height: 85%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.SinInfo img{
+  width: 60%;
+}
 
 
+
+
+.SinInfo p{
+  font-size: 1.5em;
+}
+
+
+.UserEva{
+  width: 100%;
+  height: 85%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.UserEva img{
+  width: 50%;
+
+
+
+}
+
+
+.UserEva p{
+  font-size: 1.5em;
+}
 
 #addUser{
   display: none;
