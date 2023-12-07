@@ -59,8 +59,8 @@ if ($consulta->num_rows > 0) {
               <p>' . $persona['telefono'] . '</p>
             </div>
 
-            <div class="show" onclick="AbrirVentanaS(this)"  data-eva="' . $IdEvaluados .'"  data-infoUser="' . $Iduser .'">
-              sss
+            <div class="show" onclick="AbrirVentanaS(this)"  data-eva="'. $IdEvaluados .'"  data-infoUser="' . $Iduser .'">
+              <img class="iconss" src="./img/see.png">
              </div>
                 <div class="estados ' . $estados . '">
                     <input type="hidden" id="" class="Estado" name="" value="' . $persona['IdUser'] . '" >

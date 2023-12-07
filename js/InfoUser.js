@@ -87,7 +87,8 @@ window.location.href = url;
 // funciones para abrir la ventana de evaluacion en la sección de
 
 
-
+var catalyst = document.getElementById('add')
+var addUser = document.getElementById('addUser')
 
 Containershow = document.getElementById("Containershow");
 Active = document.getElementsByClassName("show");
@@ -98,10 +99,10 @@ showInfo = document.getElementById("ShowInfo");
 function CerrarS() {
   Containershow.style.display = "none";
   showInfo.style.display = "none";
+  addUser.style.display = 'none';
 }
 
-var IdEva;
-var infoUser;
+// 
 function AbrirVentanaS(element) {
   var ContainerEvas = document.getElementsByClassName("Evas_container")[1];
   var info = document.getElementsByClassName("UserInfo")[1];
@@ -134,4 +135,44 @@ function AbrirVentanaS(element) {
       console.error("Error en la solicitud:", error);
     });
 }
+
+
+
+// configrucacion para agregar usuario
+
+
+
+
+
+catalyst.addEventListener('click', () => {
+  Containershow.style.display = "flex";
+  addUser.style.display = 'flex';
+
+
+})
+
+
+
+
+   $(document).ready(function () {
+      // Manejar el evento de entrada en el campo de búsqueda
+      $('#searchInput').on('input', function () {
+         // Obtener el valor del campo de búsqueda
+         var searchTerm = $(this).val();
+
+         // Realizar la solicitud AJAX al servidor
+         $.ajax({
+            url: './php/buscarUsuarios.php',
+            method: 'POST',
+            data: { searchTerm: searchTerm },
+            success: function (data) {
+               // Limpiar el contenedor antes de agregar nuevos resultados
+               $('#Users').empty();
+
+               // Mostrar los resultados en el contenedor
+               $('#Users').html(data);
+            }
+         });
+      });
+   });
 

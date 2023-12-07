@@ -466,7 +466,7 @@ if (!isset($_SESSION['rol'])) {
           ?>
 
 
-          <div id='ContainerCardIno' onclick="CerrarV()">
+          <div id='ContainerCardInfo' onclick="CerrarV()">
           
           </div>
 
@@ -1836,11 +1836,57 @@ if (!isset($_SESSION['rol'])) {
 
 
     <section class="pages" id="Usuarios">
+      <div class="opciones_user">
+        <input type="text" id="searchInput" placeholder="Nombre" >
+
+        <div>
+        <img id="add" src="./img/add.png" alt="">
+
+        </div>
+      </div>
+      <div id="addUser">
+        <form action="">
+            <div>
+              <p>Primer nombre</p>
+              <input type="text" name="Name1">
+            </div>
+
+            <div>
+              <p>Segundo nombre</p>
+              <input type="text" name="Name2">
+            </div>
+
+            <div>
+              <p>Primer Apellido</p>
+              <input type="text" name="Apellido1">
+            </div>
+            <div>
+              <p>Segundo Apellido</p>
+              <input type="text" name="Apellido2">
+            </div>
+
+            <div>
+              <p>TIpo de Documento</p>
+              <select name="tipoDocuento" id="">
+                <option value="">Documento identidad</option>
+                <option value="">Tarjeta de identidad</option>
+              </select>
+
+              <input type="number" name="numeroDni">
+            </div>
+
+
+          <input type="submit" name="" value="Enviar" id="">
+        </form>
+      </div>
+      <div id="Users">
       <?php 
       
       include './php/listarUsuarios.php'
       
       ?>
+      </div>
+  
 
 
 
@@ -1864,24 +1910,8 @@ if (!isset($_SESSION['rol'])) {
             </div>
           </div>
 
-          <!-- <div id='ContainerCardInfo' onclick="CerrarV()">
-          </div>
-
-
-          <div id='CardInfo'>
-            <div class="UserInfo">
-
-
-            </div>
-            <div class="Evaluaciones_user">
-
-              <h3>Evaluaciones</h3>
-              <div class="Evas_container">
-
-
-              </div>
-            </div>
-          </div> -->
+       
+          
     </section>
 
     <form method="post" enctype="multipart/form-data" class="pages" id="carruselNoticias">
