@@ -437,7 +437,7 @@ class MYPDF extends TCPDF
 
 		$this->Ln(8); // Salto de Línea
 		$this->SetFont('helvetica', '', 10);
-		$this->MultiCell(40, 8, 'Conocmiento teórico y tecnico', 1, 0, );
+		$this->MultiCell(40, 8, 'Conocmiento teórico y tecnico', 1, 0 );
 		$this->SetY($this->GetY() - 9);
 		$this->SetX(55);
 
@@ -460,7 +460,7 @@ class MYPDF extends TCPDF
 		$this->Cell(20, 9, $calificaciones[0], 1, 0, 'C');
 		$this->Ln(9); // Salto de Línea
 
-		$this->MultiCell(40, 8, 'Capacidad de ánalisis y aplicación', 1, 0, );
+		$this->MultiCell(40, 8, 'Capacidad de ánalisis y aplicación', 1, 0 );
 		$this->SetY($this->GetY() - 9);
 		$this->SetX(55);
 
@@ -483,7 +483,7 @@ class MYPDF extends TCPDF
 
 
 
-		$this->MultiCell(40, 8, 'Forma de cumplir la función', 1, 0, );
+		$this->MultiCell(40, 8, 'Forma de cumplir la función', 1, 0 );
 		$this->SetY($this->GetY() - 9);
 		$this->SetX(55);
 
@@ -560,7 +560,7 @@ class MYPDF extends TCPDF
 
 		$this->Ln(8); // Salto de Línea
 		$this->SetFont('helvetica', '', 10);
-		$this->MultiCell(40, 9, 'Cantidad o volumen', 1, 0, );
+		$this->MultiCell(40, 9, 'Cantidad o volumen', 1, 0 );
 		$this->SetY($this->GetY() - 9);
 		$this->SetX(55);
 
@@ -583,7 +583,7 @@ class MYPDF extends TCPDF
 		$this->Cell(20, 9, $calificaciones[3], 1, 0, 'C');
 		$this->Ln(9); // Salto de Línea
 
-		$this->MultiCell(40, 9, 'Iniciativa y recursividad', 1, 0, );
+		$this->MultiCell(40, 9, 'Iniciativa y recursividad', 1, 0 );
 		$this->SetY($this->GetY() - 9);
 		$this->SetX(55);
 
@@ -715,7 +715,7 @@ class MYPDF extends TCPDF
 
 		$this->Ln(8); // Salto de Línea
 		$this->SetFont('helvetica', '', 10);
-		$this->MultiCell(40, 9, 'Nivel de compromiso', 1, 0, );
+		$this->MultiCell(40, 9, 'Nivel de compromiso', 1, 0 );
 		$this->SetY($this->GetY() - 9);
 		$this->SetX(55);
 
@@ -738,7 +738,7 @@ class MYPDF extends TCPDF
 		$this->Cell(20, 9, $calificaciones[6], 1, 0, 'C');
 		$this->Ln(9); // Salto de Línea
 
-		$this->MultiCell(40, 9, 'Disposición laboral', 1, 0, );
+		$this->MultiCell(40, 9, 'Disposición laboral', 1, 0 );
 		$this->SetY($this->GetY() - 9);
 		$this->SetX(55);
 
@@ -831,7 +831,7 @@ class MYPDF extends TCPDF
 
 		$this->Ln(8); // Salto de Línea
 		$this->SetFont('helvetica', '', 10);
-		$this->MultiCell(40, 9, 'Establecer Prioridades', 1, 0, );
+		$this->MultiCell(40, 9, 'Establecer Prioridades', 1, 0 );
 		$this->SetY($this->GetY() - 9);
 		$this->SetX(55);
 
@@ -854,7 +854,7 @@ class MYPDF extends TCPDF
 		$this->Cell(20, 9, $calificaciones[9], 1, 0, 'C');
 		$this->Ln(9); // Salto de Línea
 
-		$this->MultiCell(40, 9, 'Trabajo en equipo y habilidades sociales', 1, 0, );
+		$this->MultiCell(40, 9, 'Trabajo en equipo y habilidades sociales', 1, 0 );
 		$this->SetY($this->GetY() - 9);
 		$this->SetX(55);
 
@@ -922,7 +922,7 @@ class MYPDF extends TCPDF
 
 		$this->Cell(185, 5, 'Subtotal Factor Calidad', 1, 1, 'C');
 		$this->Cell(185, 5, 'Observaciones', 1, 1, 'C');
-		$this->Cell(185, 40, $Observacion1 , 1, 1, 'L');
+		$this->MultiCell(185, 15, $Observacion1 , 1, 0);
 	}
 
 	public function EvaluacionDesempenoSection3()
@@ -938,23 +938,31 @@ class MYPDF extends TCPDF
 
 		$this->Cell(185, 5, 'Subtotal Factor Calidad', 1, 1, 'C');
 		$this->Cell(185, 5, 'Observaciones', 1, 1, 'C');
-		$this->Cell(185, 35, $Observacion2 , 1, 1, 'L');
+		$this->MultiCell(185, 15, $Observacion2, 1, 0);
 
 		$this->Ln(8); // Salto de Línea
 
 		$this->Cell(185, 5, 'Subtotal Factor Calidad', 1, 1, 'C');
 		$this->Cell(185, 5, 'Observaciones', 1, 1, 'C');
-		$this->Cell(185, 35, $Observacion3 , 1, 1, 'L');
-		$this->Ln(5); // Salto de Línea
+		// $this->Cell(185, 35, $Observacion3 , 1, 1, 'L');
+		// $this->Ln(5); // Salto de Línea
+
+		$this->MultiCell(185, 15, $Observacion3, 1, 0);
+
+
+		$this->Ln(8); 
+
+
 
 		$this->Cell(185, 5, 'PLAN DE MEJORAMIENTO', 0, 1, 'C');
 		$this->Ln(5); // Salto de Línea
 		$this->Cell(185, 5, 'Acuerdos en el trabajo cotidiano:', 1, 1, 'L');
-		$this->Cell(185, 25, $Acuerdo , 1, 1, 'L');
+		$this->MultiCell(185, 15, $Acuerdo, 1, 0);
 
-		$this->Ln(10); // Salto de Línea
+
+		$this->Ln(10); 
 		$this->Cell(185, 5, 'Capacitación:', 1, 1, 'L');
-		$this->Cell(185, 25, $Capacitacion , 1, 1, 'L');
+		$this->MultiCell(185, 15, $Capacitacion , 1, 0);
 
 		$this->Ln(10); // Salto de Línea
 

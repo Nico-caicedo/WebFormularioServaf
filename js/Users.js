@@ -59,3 +59,49 @@ function CambiarEstado(event) {
 elementos.forEach(elemento => {
     elemento.addEventListener("click", CambiarEstado);
 });
+
+
+
+var fileInput = document.getElementById('fileInput');
+
+// Agrega un evento de cambio al elemento de entrada de tipo archivo
+fileInput.addEventListener('change', function () {
+    // Obtén la primera (y única) archivo seleccionado
+    var file = fileInput.files[0];
+
+    if (file) {
+        // Crea un objeto URL para la imagen seleccionada
+        var imageURL = URL.createObjectURL(file);
+
+        // Obtén referencia al elemento de imagen
+        var previewImage = document.getElementById('previewImage');
+
+        // Establece la fuente de la imagen con la URL creada
+        previewImage.src = imageURL;
+    }
+});
+
+
+var addUserForm = document.getElementById('addUser');
+
+    addUserForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        // Crear un objeto FormData con los datos del formulario
+        var formData = new FormData(addUserForm);
+
+        // Enviar los datos del formulario al servidor utilizando fetch
+        fetch('URL_DEL_SERVIDOR', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Manejar la respuesta del servidor
+            console.log('Respuesta del servidor:', data);
+        })
+        .catch(error => {
+            // Manejar errores de la solicitud
+            console.error('Error al enviar la solicitud:', error);
+        });
+    });

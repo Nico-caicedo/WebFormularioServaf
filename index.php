@@ -56,7 +56,7 @@ if($_SESSION['rol']) {
 				<input type="password" name="password" placeholder="Contraseña" />
 				<!-- <a href="#">Olvidaste tu contraseña?</a> -->
 				<input class="sesion" type="submit" name="sesion" value="Iniciar Sesion">
-				<a href="recuperar.php">Olvide mi contraseña</a>
+				<!-- <a href="recuperar.php">Olvide mi contraseña</a> -->
 			</form>
 
 		</div>

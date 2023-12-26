@@ -236,7 +236,7 @@ class MYPDF extends TCPDF
 		$componentes = explode("-", $FechaCreacion);
 
 		$anio = $componentes[0];
-		$mes = $componentes[1];
+		$mes = ltrim($componentes[1], '0');
 		$dia = $componentes[2];
 
 
@@ -245,7 +245,7 @@ class MYPDF extends TCPDF
 		$componentes2 = explode("-", $FechaDel);
 
 		$anio2 = $componentes2[0];
-		$mes2 = $componentes2[1];
+		$mes2 =ltrim($componentes2[1], '0');
 		$dia2 = $componentes2[2];
 
 
@@ -254,7 +254,7 @@ class MYPDF extends TCPDF
 		$componentes3 = explode("-", $FechaAl);
 
 		$anio3 = $componentes3[0];
-		$mes3 = $componentes3[1];
+		$mes3 = ltrim($componentes3[1], '0');
 		$dia3 = $componentes3[2];
 
 
@@ -437,7 +437,7 @@ class MYPDF extends TCPDF
 
 		$this->Ln(8); // Salto de Línea
 		$this->SetFont('helvetica', '', 10);
-		$this->MultiCell(40, 8, 'Conocmiento teórico y tecnico', 1, 0, );
+		$this->MultiCell(40, 8, 'Conocmiento teórico y tecnico', 1);
 		$this->SetY($this->GetY() - 9);
 		$this->SetX(55);
 
@@ -460,7 +460,7 @@ class MYPDF extends TCPDF
 		$this->Cell(20, 9, $calificaciones[0], 1, 0, 'C');
 		$this->Ln(9); // Salto de Línea
 
-		$this->MultiCell(40, 8, 'Capacidad de ánalisis y aplicación', 1, 0, );
+		$this->MultiCell(40, 8, 'Capacidad de ánalisis y aplicación', 1, 0 );
 		$this->SetY($this->GetY() - 9);
 		$this->SetX(55);
 
@@ -483,7 +483,7 @@ class MYPDF extends TCPDF
 
 
 
-		$this->MultiCell(40, 8, 'Forma de cumplir la función', 1, 0, );
+		$this->MultiCell(40, 8, 'Forma de cumplir la función', 1, 0 );
 		$this->SetY($this->GetY() - 9);
 		$this->SetX(55);
 
@@ -560,7 +560,7 @@ class MYPDF extends TCPDF
 
 		$this->Ln(8); // Salto de Línea
 		$this->SetFont('helvetica', '', 10);
-		$this->MultiCell(40, 9, 'Cantidad o volumen', 1, 0, );
+		$this->MultiCell(40, 9, 'Cantidad o volumen', 1, 0 );
 		$this->SetY($this->GetY() - 9);
 		$this->SetX(55);
 
@@ -583,7 +583,7 @@ class MYPDF extends TCPDF
 		$this->Cell(20, 9, $calificaciones[3], 1, 0, 'C');
 		$this->Ln(9); // Salto de Línea
 
-		$this->MultiCell(40, 9, 'Iniciativa y recursividad', 1, 0, );
+		$this->MultiCell(40, 9, 'Iniciativa y recursividad', 1, 0 );
 		$this->SetY($this->GetY() - 9);
 		$this->SetX(55);
 
@@ -715,7 +715,7 @@ class MYPDF extends TCPDF
 
 		$this->Ln(8); // Salto de Línea
 		$this->SetFont('helvetica', '', 10);
-		$this->MultiCell(40, 9, 'Nivel de compromiso', 1, 0, );
+		$this->MultiCell(40, 9, 'Nivel de compromiso', 1, 0 );
 		$this->SetY($this->GetY() - 9);
 		$this->SetX(55);
 
@@ -738,7 +738,7 @@ class MYPDF extends TCPDF
 		$this->Cell(20, 9, $calificaciones[6], 1, 0, 'C');
 		$this->Ln(9); // Salto de Línea
 
-		$this->MultiCell(40, 9, 'Disposición laboral', 1, 0, );
+		$this->MultiCell(40, 9, 'Disposición laboral', 1, 0 );
 		$this->SetY($this->GetY() - 9);
 		$this->SetX(55);
 
@@ -831,7 +831,7 @@ class MYPDF extends TCPDF
 
 		$this->Ln(8); // Salto de Línea
 		$this->SetFont('helvetica', '', 10);
-		$this->MultiCell(40, 9, 'Establecer Prioridades', 1, 0, );
+		$this->MultiCell(40, 9, 'Establecer Prioridades', 1, 0 );
 		$this->SetY($this->GetY() - 9);
 		$this->SetX(55);
 
@@ -854,7 +854,7 @@ class MYPDF extends TCPDF
 		$this->Cell(20, 9, $calificaciones[9], 1, 0, 'C');
 		$this->Ln(9); // Salto de Línea
 
-		$this->MultiCell(40, 9, 'Trabajo en equipo y habilidades sociales', 1, 0, );
+		$this->MultiCell(40, 9, 'Trabajo en equipo y habilidades sociales', 1, 0 );
 		$this->SetY($this->GetY() - 9);
 		$this->SetX(55);
 
