@@ -6,6 +6,8 @@ var evaluacion = document.getElementsByClassName("evaluacion_ventana")[0];
 VentanaAlerta = document.getElementById("VentanaAlerta");
 
 
+
+
 Form_eva = document.getElementById("form_eva");
 
 // Comprueba si la información está en el localStorage
@@ -125,7 +127,7 @@ function continuar() {
 
 
 
-// editar evaluacion _____---------------------
+// editar evalacion _____---------------------
 var estado = document.getElementById('modo');
 
 

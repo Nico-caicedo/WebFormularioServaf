@@ -3,6 +3,13 @@ session_start();
 $IdEvaluador = $_SESSION['id_evaluador'];
 include('Conexion.php');
 
+
+
+
+
+
+
+
 $Estado = 1;
 
 if (isset($_POST['date1']) && isset($_POST['date2'])) {

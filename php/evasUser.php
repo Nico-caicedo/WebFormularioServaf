@@ -37,7 +37,7 @@ if ($resultado->num_rows > 0) {
         <div onclick='DownloadPdf({$fila["IdEvaluacion"]})'><img src='./img/pdf.png' class='iconss' alt=''></div>
 
         <!-- Comentario: ¿Esto debería estar habilitado? -->
-        <div onclick='editEva({$fila["IdEvaluacion"] })'><img src='./img/editar.png' class='iconss' alt=''></div>
+        <div onclick='editEva({$fila["IdEvaluacion"]})'><img src='./img/editar.png' class='iconss' alt=''></div>
 
 
 <div onclick='abrirVentanaEliminar({$fila["IdEvaluacion"]})'><img src='./img/eliminar.png' class='iconss' alt=''></div>

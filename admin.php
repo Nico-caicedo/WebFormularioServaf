@@ -206,12 +206,13 @@ if (!isset($_SESSION['rol'])) {
                   Si decides eliminar la evaluación, la información que hayas registrado se perderá.</p>
             <div class="botos">
               
-    <form id='formeliminareva' method='post' onsubmit="sendForm(event,'formeliminareva','./php/eliminarevaluaciones.php')">
-        <!-- Campo oculto para el IdEvaluacion -->
-        <input type='hidden' name='IdEvaluacion' id='IdEvaluacionHidden' value=''>
-        <!-- Botón para enviar el formulario -->
-        <button type='submit' name='eliminar' class="continue">Si</button>
-    </form>
+<form id='formeliminareva' method='post' onsubmit="sendForm(event,'formeliminareva','./php/eliminarevaluaciones.php')">
+    <!-- Campo oculto para el IdEvaluacion -->
+    <input type='hidden' name='IdEvaluacion' id='IdEvaluacionHidden' value=''>
+    <!-- Botón para enviar el formulario -->
+    <button type='submit' name='eliminar' class="continue">Si</button>
+</form>
+
              <p class="cancel" onclick="NO()">No</p>
             </div>
           </div>
@@ -558,7 +559,6 @@ if (!isset($_SESSION['rol'])) {
         
         <form class="modulos_eva" method="post" id="form_eva" action="./php/setEvaluacion.php">
           <!-- modulo 1 -->
-
           <input type="hidden" name="modo" id="modo" value="agregar">
           <div class="modulo" data-id="<?php echo $factor0 ?>">
             <div class="number_mod">0</div>
