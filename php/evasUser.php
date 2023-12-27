@@ -82,6 +82,7 @@ if ($datos->num_rows > 0) {
             <p>{$row['Nombre1']} {$row['Nombre2']} {$row['Apellido1']} {$row['Apellido2']}</p>
             <p>{$row['TypeDocument']} {$row['Document']}</p>
             <p>$NombreCargo</p>
+            <p onclick='desplegar(); ocultar({$IdUser})' id='solito' class='boton_Eva'>Evaluar</p>
             </div>
     ";
 

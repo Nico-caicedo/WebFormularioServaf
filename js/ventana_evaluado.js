@@ -1,22 +1,14 @@
 // Obtén los elementos "dark" y "ventana_evalu"
 var dark = document.getElementById("dark");
 var ventana = document.getElementById("ventana_evalu");
+var ventanaa = document.getElementById("ventana_evalua");
 var inicio = document.getElementsByClassName("evaluacion_laboral")[0];
 var evaluacion = document.getElementsByClassName("evaluacion_ventana")[0];
-VentanaAlerta = document.getElementById("VentanaAlerta");
+var VentanaAlerta = document.getElementById("VentanaAlerta");
+var oculta = document.getElementsByClassName('mauso')[0]
+var datosUser = document.getElementById('DatosDes');
+var Form_eva = document.getElementById("form_eva");
 
-
-Form_eva = document.getElementById("form_eva");
-
-// Comprueba si la información está en el localStorage
-
-var isDisplayFlex = localStorage.getItem("displayFlex");
-
-// Si la información indica que debe mostrarse con display: flex, hazlo
-if (isDisplayFlex === "true") {
-  dark.style.display = "flex";
-  ventana.style.display = "flex";
-}
 
 // funcione para abrir y cerrar las funciones
 
@@ -27,8 +19,45 @@ function desplegar() {
     ventana.style.display = "flex";
 
     // Al hacer clic en "desplegar", guarda la información en el localStorage
-    localStorage.setItem("displayFlex", "true");
+
   }
+}
+
+
+
+function ocultar(id){
+
+ 
+  datosUser.style.display="flex"
+  oculta.style.display="none"
+
+  var data = new URLSearchParams();
+  data.append("id_evaluado", id);
+
+  // Realizar una solicitud POST a un script PHP
+  fetch("./php/devolverD.php", {
+    method: "POST",
+    body: data,
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+  })
+    .then((response) => response.json()) // Parsear la respuesta como JSON
+    .then((data) => {
+      // Manejar la respuesta del servidor
+      console.log(data);
+
+      // Insertar la respuesta en el campo con id "nombre1"
+      document.getElementById("DatosDes").innerHTML = data.datos;
+
+    ;
+})
+
+}
+
+function Mostrar(){
+  oculta.style.display="flex"
+  datosUser.style.display="none"
 }
 
 function closes() {
@@ -185,7 +214,13 @@ $(document).ready(function () {
 });
 
 function ValidarEnvio() {
-  var idEva = document.getElementById("MedicoFinal").value;
+  var idEva = "";
+
+  if(document.getElementById("MedicoFinal").value){
+    idEva = document.getElementById("MedicoFinal").value;
+  }else if (document.getElementById("empleadoEva").value){
+    idEva = document.getElementById("empleadoEva").value
+  }
   var dates1 = document.getElementById("date1").value;
   var dates2 = document.getElementById("date2").value;
 
