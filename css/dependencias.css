@@ -1,0 +1,90 @@
+#depencargos {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#linea {
+    height: 100%;
+    width: 1px;
+    /* background-color: black; */
+    border: 1px solid black;
+}
+
+.containerdc {
+    display: flex;
+    justify-content: start;
+    flex: 1;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.linea2 {
+    display: flex;
+    background-color: #5585b5;
+    height: 1px;
+    border: 1px solid #5585b5;
+}
+
+/* section dependencias */
+.sectionheader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em 1em 1em 1em;
+    text-transform: capitalize;
+    font-size: 20px;
+}
+
+.button {
+    display: flex;
+    background-color: #5585b5;
+    color: #fff;
+    padding: 1em;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.button:hover {
+    color: #5585b5;
+    background-color: #fff;
+    border: 1px solid #5585b5;
+}
+
+.containerD {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+.titleD {
+    font-size: 15px;
+    font-weight: 300;
+    text-transform: capitalize;
+}
+
+/* section cargos */
+
+.contentD {
+    display: flex;
+    flex-direction: column;
+   
+    overflow: auto;
+    height: 90vh;
+}
+
+.formD{
+    flex: 1;
+}
+
+.btndepdenycar{
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+}

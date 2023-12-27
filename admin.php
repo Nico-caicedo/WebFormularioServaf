@@ -23,6 +23,7 @@ if (!isset($_SESSION['rol'])) {
   <link rel="stylesheet" href="./css/slider.css" />
   <link rel="stylesheet" href="./css/ventana.css" />
   <link rel="stylesheet" href="./css/evadesempeno.css" />
+  <link rel="stylesheet" href="./css/dependencias.css">
   <script src="https://kit.fontawesome.com/0015840e45.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
@@ -31,8 +32,7 @@ if (!isset($_SESSION['rol'])) {
   <!-- alertas toast -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-  <link rel="shortcut icon" href="https://www.servaf.com/wp-content/uploads/2021/03/gota_favicon.png"
-    type="image/x-icon">
+  <link rel="shortcut icon" href="https://www.servaf.com/wp-content/uploads/2021/03/gota_favicon.png" type="image/x-icon">
   <?php
 
 
@@ -147,8 +147,7 @@ if (!isset($_SESSION['rol'])) {
         </div>
         <div class="imgaa">
           <label for="imagen">Imagen Actual:</label>
-          <img src="imgusuario/<?php echo $imagen; ?>" alt="Imagen Actual" class="imga"
-            ondblclick="mostrarImagenAmpliada(this)" onclick="cerrarImagen(this)">
+          <img src="imgusuario/<?php echo $imagen; ?>" alt="Imagen Actual" class="imga" ondblclick="mostrarImagenAmpliada(this)" onclick="cerrarImagen(this)">
         </div>
         <div class="imgaa">
           <label for="new-imagen" class="btn-img">Subir nueva imagen</label>
@@ -199,25 +198,24 @@ if (!isset($_SESSION['rol'])) {
       ?>
     </section>
 
-        <div id="ventanaeliminar">
-          <div id="VentanaConfirm">
-            <h2>¿Está seguro?</h2>
-            <p class="text_delete">
-                  Si decides eliminar la evaluación, la información que hayas registrado se perderá.</p>
-            <div class="botos">
-              
-<form id='formeliminareva' method='post' onsubmit="sendForm(event,'formeliminareva','./php/eliminarevaluaciones.php')">
-    <!-- Campo oculto para el IdEvaluacion -->
-    <input type='hidden' name='IdEvaluacion' id='IdEvaluacionHidden' value=''>
-    <!-- Botón para enviar el formulario -->
-    <button type='submit' name='eliminar' class="continue">Si</button>
-</form>
+    <div id="ventanaeliminar">
+      <div id="VentanaConfirm">
+        <h2>¿Está seguro?</h2>
+        <p class="text_delete">
+          Si decides eliminar la evaluación, la información que hayas registrado se perderá.</p>
+        <div class="botos">
 
-             <p class="cancel" onclick="NO()">No</p>
-            </div>
-          </div>
+          <form id='formeliminareva' method='post' onsubmit="sendForm(event,'formeliminareva','./php/eliminarevaluaciones.php')">
+            <!-- Campo oculto para el IdEvaluacion -->
+            <input type='hidden' name='IdEvaluacion' id='IdEvaluacionHidden' value=''>
+            <!-- Botón para enviar el formulario -->
+            <button type='submit' name='eliminar' class="continue">Si</button>
+          </form>
+          <p class="cancel" onclick="NO()">No</p>
         </div>
       </div>
+    </div>
+    </div>
 
 
     <section id="modalCargueAsignaciones" class="ventana">
@@ -225,8 +223,7 @@ if (!isset($_SESSION['rol'])) {
         <div class="cerrarbutton">
 
 
-          <a href="descargarPlantillaAsignacion.pdf" download="descargarPlantillaAsignacion.pdf"><button
-              class="btnexcel">Descargar Guia</button>
+          <a href="descargarPlantillaAsignacion.pdf" download="descargarPlantillaAsignacion.pdf"><button class="btnexcel">Descargar Guia</button>
           </a>
           <h6 class="titleExcel">Cargar Asignaciones con excel</h6>
           <span class="cerrar" onclick="cerrarCargueAsignacion()">&times;</span>
@@ -293,7 +290,7 @@ if (!isset($_SESSION['rol'])) {
       <?php
       if ($rol == 0) {
         // ME PUSIERON ESTO A ULTIMA HORA MALDITOS DESGRACIADOS (CON TODO RESPETO)
-        ?>
+      ?>
 
         <button class="botones" id="22" onclick="mostrarContenedor('descubre_asig',this)">
           <i class="fa-solid fa-play"></i>
@@ -303,7 +300,7 @@ if (!isset($_SESSION['rol'])) {
           <i class='fas fa-clipboard-list'></i>
           <p>proximamente</p>
         </button>
-        <?php
+      <?php
       }
       ?>
 
@@ -317,25 +314,40 @@ if (!isset($_SESSION['rol'])) {
       // }
       ?>
       <?php
-      if ($rol == 0) {
+      if ($rol == 000) {
         echo "
       <button class='botones' id='44' onclick='mostrarContenedor(\"crearAmbiente\", this)'>
         <i class='fas fa-plus-circle'></i>
-        <p>Crear Ambiente</p>
+        <p>Dependencias</p>
 
       </button>
       
    
      
-      <button class='botones' id='5' onclick='mostrarContenedor(\"crearUsuario\", this)'>
+    //   <button class='botones' id='5' onclick='mostrarContenedor(\"crearUsuario\", this)'>
+    //     <i class='fas fa-plus-circle'></i>
+    //     <p>Crear Usuario</p>
+    //   </button>
+    //   <button class='botones' id='6' onclick='mostrarContenedor('Solicitudes',this)'>
+    //   <?php require_once 'php/num_solicutudes_nueva.php'; ?>
+    //   <i class='fas fa-clipboard-list'></i>
+    //   <p>Solicitudes</p>
+    // </button>
+      ";
+      }
+      ?>
+      <?php
+      if ($rol == 1) {
+        echo "
+      <button class='botones' id='44' onclick='mostrarContenedor(\"crearAmbiente\", this)'>
         <i class='fas fa-plus-circle'></i>
-        <p>Crear Usuario</p>
+        <p>Dependencias</p>
+
       </button>
-      <button class='botones' id='6' onclick='mostrarContenedor('Solicitudes',this)'>
-      <?php require_once 'php/num_solicutudes_nueva.php'; ?>
-      <i class='fas fa-clipboard-list'></i>
-      <p>Solicitudes</p>
-    </button>
+      
+   
+     
+    
       ";
       }
       ?>
@@ -343,15 +355,13 @@ if (!isset($_SESSION['rol'])) {
 
       <?php
       if ($rol == 1) {
-        ?>
-
-
+      ?>
         <button class='botones' id='7' onclick='mostrarContenedor("Usuarios",this)'>
           <i class='fas fa-users'></i>
 
           <p>Usuarios</p>
         </button>
-        <?php
+      <?php
       }
       ?>
 
@@ -363,7 +373,7 @@ if (!isset($_SESSION['rol'])) {
   </aside>
 
   <main id="main">
-    <section class="pages" id="Inicio" style="display= flex;">
+    <section class="pages" id="Inicio" style="display:flex;">
       <div class="inicio_modif">
         <img src="./img/ServafPerfil.jpg" alt="">
       </div>
@@ -443,7 +453,7 @@ if (!isset($_SESSION['rol'])) {
 
 
           // id del usuario como evaluador
-          
+
           $id_evaluador = $_SESSION['id_evaluador'];
 
 
@@ -521,11 +531,11 @@ if (!isset($_SESSION['rol'])) {
 
 
         // $dato_factor = mysqli_query($conexion, "SELECT * FROM factores where IdFactor = $factor1");
-        
+
         // if(mysqli_num_rows($dato_factor) > 0){
         //   echo "hola mundo";
         // }
-        
+
         $factor0 = 0;
         $factor1 = 1;
         $factor2 = 2;
@@ -556,9 +566,10 @@ if (!isset($_SESSION['rol'])) {
 
         <h2 class="title_ventana">Evaluacion Desempeño Laboral </h2>
         <!-- corregir que no se tenga que duplicar el formulario para poder usarlo para editar -->
-        
+
         <form class="modulos_eva" method="post" id="form_eva" action="./php/setEvaluacion.php">
           <!-- modulo 1 -->
+
           <input type="hidden" name="modo" id="modo" value="agregar">
           <div class="modulo" data-id="<?php echo $factor0 ?>">
             <div class="number_mod">0</div>
@@ -593,7 +604,7 @@ if (!isset($_SESSION['rol'])) {
               <!-- nombre y identificacion -->
               <div class="datosP">
                 <div>
-                  <input type="hidden" id="IdEvaluacion" value="$">
+                  <input type="hidden" id="IdEvaluacion" value="">
                   <input type="hidden" id="number999" name="number999" value="">
                   <input type="hidden" id="IdEvaluado" name="IdEvaluado" value="">
                   <p>Nombres</p>
@@ -614,7 +625,7 @@ if (!isset($_SESSION['rol'])) {
                 <div>
                   <p>Documento</p>
                   <input type="text" ID="dni" name="documento" value="">
-                </div>4
+                </div>
               </div>
 
 
@@ -692,7 +703,7 @@ if (!isset($_SESSION['rol'])) {
 
             $factor_pregunta = mysqli_query($conexion, "SELECT * FROM pregunta where IdFactor = $factor1");
             $descripciones1 = array(); // Inicializa el array
-            
+
             if (mysqli_num_rows($factor_pregunta) > 0) {
               while ($row = mysqli_fetch_assoc($factor_pregunta)) {
                 $descripciones1[] = $row["Descripcion"];
@@ -730,7 +741,7 @@ if (!isset($_SESSION['rol'])) {
 
 
             $resultados = array(); // Inicializamos un array para almacenar los resultados
-            
+
             while ($row = mysqli_fetch_assoc($inner)) {
 
               $minimo = $row["Minimo"];
@@ -752,7 +763,7 @@ if (!isset($_SESSION['rol'])) {
                 <?php
 
                 echo $nombre_factor1
-                  ?>
+                ?>
               </p>
 
               <p class="title_name califi">
@@ -915,14 +926,14 @@ if (!isset($_SESSION['rol'])) {
               <?php
               //  echo $min;
               //  echo $max;
-              
+
 
 
 
               //  while ($row = $inner->fetch_assoc() ) {
               //      echo "<p>" . $row['Minimo'] . "</p>";
               //      echo "<p>" . $row['Maximo'] . "</p>";
-              
+
               //  }
               ?>
 
@@ -950,8 +961,7 @@ if (!isset($_SESSION['rol'])) {
               FACTOR DE EFICIENCIA Y RENDIMIENTO
             </div>
             <div class="check2 radio">
-              <img
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA/ZJREFUaEO9WMlqFVEQPdVrhezdC35FIOQZMH6A4LAPuvBPXCiSpQPkM1yFQBCyzGeIGYhx80r69nSnulW332t79Xhd06k6VbduExZ+CADP8mHTbKXCx+nJyv4bm4vJ/CRfoak4TAFkspW4U/ybQVbgkIooAtjE9iaA/UAtMQgU6s1YLPiim6S+6KtMaUB6XwFgVp8qSkk+MvF4FRDezhshS+DJDJsu9//t2aTQJd0KAAQCl6YsZD5WuFFaMKZWlU/lmNCjNPeVrV4Bhcy2LWeFDkWVsMSzXA+YR6qcjcoppCYk4Tcz7xDRb4umJBPb0I+DUGJ2BZj5DYBPAFZEzfmclY2ZXwA4ZmDVEP1sm9ENiYqMzALQB/+lL8ktwLtEzUWFX/TBn0w2cEBEZ1N+00zngJUPskxEzPwEwGWX8VH9moH9Lov6w7x+BdD3SPIXgEdEdC9aKJ/EuuNBgpmPAHyONK4A7BGRV4mUEl3m+QQgv/p3gKvAqWXy+H6FMarP4CwIxhUoBjH1fkSboYhj8PYUTpKzemBQXzMfkatEQCevElMi2uAZOCHHu1F+fvC9aROAUlmDSkw4Ajolme8ycA/Giho6DfM5tarl1BcBWJXb2yev/Z4YUTgQAB4DGKbNEOs9A4cN0Q8rbba0zMnumPltfy74QjcAHkZafwE8o2zwlhbe0kGWg8LM7wF8KGS1HZGHbfCWUCVqiVPIWs5ULmhWCURAG5+i+bXJ69KhLbZ1DpSACmdE17R99ucnqtU0UUgpsPDaNTMlB1wfr2tuhUJyq0o7kmmMxpzL7STM/A7AxzC7fAPQA3/nAPAHwPOkieuaYnRTDUBoXmG14D2A2t3pG4DG0zXQyYZIAGCnkGUvYuaXAohVu/84YJZ4E5l219rgsQQ/mBdARKuE5T5gamIdFfP6CKBwI+2XuYboIvd9OA+C7wBym6jsVS5PUIFMhaaLlvdSzDxjjxp/nQ5Dak2sEzq56XQHxkFpL5LAVVPIXWgYlxH5rgHsk/lCw68BfI2mk36hyaAoA5DmfXcf9q6U2A0vMrl8hcYmOnED0G1/oTkzN3TvwgMgHyLJhb3bQL1LPZ0nIRumSg+i/TDwNFc9g4mNp1D4WcVfcPQ54CSY1ztEjfppZgKjTSEL7FJHad9EevvFgVFRzrQHJAfGjC4jZhyjlp1nmQAjqxUscN82tKpXVDTaCWzWi1JKX1WfA1KVLKH6MtLv/Bg1USjt7urKLM3BDA5TBSzZnWJfcAqYAOiEtPVxHeqszTz9tXNA2DfKdLJEuy2ZdEEc/6lrLFshancbs1WPqYqOJXO2C5U5OPPcLtzI9LB1iRGWRdTbLgufgRJo/wAJ+MRCxPfMPAAAAABJRU5ErkJggg==" />
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA/ZJREFUaEO9WMlqFVEQPdVrhezdC35FIOQZMH6A4LAPuvBPXCiSpQPkM1yFQBCyzGeIGYhx80r69nSnulW332t79Xhd06k6VbduExZ+CADP8mHTbKXCx+nJyv4bm4vJ/CRfoak4TAFkspW4U/ybQVbgkIooAtjE9iaA/UAtMQgU6s1YLPiim6S+6KtMaUB6XwFgVp8qSkk+MvF4FRDezhshS+DJDJsu9//t2aTQJd0KAAQCl6YsZD5WuFFaMKZWlU/lmNCjNPeVrV4Bhcy2LWeFDkWVsMSzXA+YR6qcjcoppCYk4Tcz7xDRb4umJBPb0I+DUGJ2BZj5DYBPAFZEzfmclY2ZXwA4ZmDVEP1sm9ENiYqMzALQB/+lL8ktwLtEzUWFX/TBn0w2cEBEZ1N+00zngJUPskxEzPwEwGWX8VH9moH9Lov6w7x+BdD3SPIXgEdEdC9aKJ/EuuNBgpmPAHyONK4A7BGRV4mUEl3m+QQgv/p3gKvAqWXy+H6FMarP4CwIxhUoBjH1fkSboYhj8PYUTpKzemBQXzMfkatEQCevElMi2uAZOCHHu1F+fvC9aROAUlmDSkw4Ajolme8ycA/Giho6DfM5tarl1BcBWJXb2yev/Z4YUTgQAB4DGKbNEOs9A4cN0Q8rbba0zMnumPltfy74QjcAHkZafwE8o2zwlhbe0kGWg8LM7wF8KGS1HZGHbfCWUCVqiVPIWs5ULmhWCURAG5+i+bXJ69KhLbZ1DpSACmdE17R99ucnqtU0UUgpsPDaNTMlB1wfr2tuhUJyq0o7kmmMxpzL7STM/A7AxzC7fAPQA3/nAPAHwPOkieuaYnRTDUBoXmG14D2A2t3pG4DG0zXQyYZIAGCnkGUvYuaXAohVu/84YJZ4E5l219rgsQQ/mBdARKuE5T5gamIdFfP6CKBwI+2XuYboIvd9OA+C7wBym6jsVS5PUIFMhaaLlvdSzDxjjxp/nQ5Dak2sEzq56XQHxkFpL5LAVVPIXWgYlxH5rgHsk/lCw68BfI2mk36hyaAoA5DmfXcf9q6U2A0vMrl8hcYmOnED0G1/oTkzN3TvwgMgHyLJhb3bQL1LPZ0nIRumSg+i/TDwNFc9g4mNp1D4WcVfcPQ54CSY1ztEjfppZgKjTSEL7FJHad9EevvFgVFRzrQHJAfGjC4jZhyjlp1nmQAjqxUscN82tKpXVDTaCWzWi1JKX1WfA1KVLKH6MtLv/Bg1USjt7urKLM3BDA5TBSzZnWJfcAqYAOiEtPVxHeqszTz9tXNA2DfKdLJEuy2ZdEEc/6lrLFshancbs1WPqYqOJXO2C5U5OPPcLtzI9LB1iRGWRdTbLgufgRJo/wAJ+MRCxPfMPAAAAABJRU5ErkJggg==" />
             </div>
 
             <?php
@@ -964,7 +974,7 @@ if (!isset($_SESSION['rol'])) {
 
             $factor_pregunta = mysqli_query($conexion, "SELECT * FROM pregunta where IdFactor = $factor2");
             $descripciones2 = array(); // Inicializa el array
-            
+
             if (mysqli_num_rows($factor_pregunta) > 0) {
               while ($row = mysqli_fetch_assoc($factor_pregunta)) {
                 $descripciones2[] = $row["Descripcion"];
@@ -999,7 +1009,7 @@ if (!isset($_SESSION['rol'])) {
 
 
             $resultados = array(); // Inicializamos un array para almacenar los resultados
-            
+
             while ($row = mysqli_fetch_assoc($inner)) {
 
               $minimo = $row["Minimo"];
@@ -1026,7 +1036,7 @@ if (!isset($_SESSION['rol'])) {
                 <?php
 
                 echo $nombre_factor2
-                  ?>
+                ?>
               </p>
 
               <p class="title_name califi">
@@ -1188,14 +1198,14 @@ if (!isset($_SESSION['rol'])) {
               <?php
               //  echo $min;
               //  echo $max;
-              
+
 
 
 
               //  while ($row = $inner->fetch_assoc() ) {
               //      echo "<p>" . $row['Minimo'] . "</p>";
               //      echo "<p>" . $row['Maximo'] . "</p>";
-              
+
               //  }
               ?>
 
@@ -1236,7 +1246,7 @@ if (!isset($_SESSION['rol'])) {
 
             $factor_pregunta = mysqli_query($conexion, "SELECT * FROM pregunta where IdFactor = $factor3");
             $descripciones2 = array(); // Inicializa el array
-            
+
             if (mysqli_num_rows($factor_pregunta) > 0) {
               while ($row = mysqli_fetch_assoc($factor_pregunta)) {
                 $descripciones3[] = $row["Descripcion"];
@@ -1271,7 +1281,7 @@ if (!isset($_SESSION['rol'])) {
 
 
             $resultados = array(); // Inicializamos un array para almacenar los resultados
-            
+
             while ($row = mysqli_fetch_assoc($inner)) {
 
               $minimo = $row["Minimo"];
@@ -1298,7 +1308,7 @@ if (!isset($_SESSION['rol'])) {
                 <?php
 
                 echo $nombre_factor3
-                  ?>
+                ?>
               </p>
 
               <p class="title_name califi">
@@ -1460,14 +1470,14 @@ if (!isset($_SESSION['rol'])) {
               <?php
               //  echo $min;
               //  echo $max;
-              
+
 
 
 
               //  while ($row = $inner->fetch_assoc() ) {
               //      echo "<p>" . $row['Minimo'] . "</p>";
               //      echo "<p>" . $row['Maximo'] . "</p>";
-              
+
               //  }
               ?>
 
@@ -1506,7 +1516,7 @@ if (!isset($_SESSION['rol'])) {
 
             $factor_pregunta = mysqli_query($conexion, "SELECT * FROM pregunta where IdFactor = $factor4");
             $descripciones2 = array(); // Inicializa el array
-            
+
             if (mysqli_num_rows($factor_pregunta) > 0) {
               while ($row = mysqli_fetch_assoc($factor_pregunta)) {
                 $descripciones4[] = $row["Descripcion"];
@@ -1538,7 +1548,7 @@ if (!isset($_SESSION['rol'])) {
 
 
             $resultados = array(); // Inicializamos un array para almacenar los resultados
-            
+
             while ($row = mysqli_fetch_assoc($inner)) {
 
               $minimo = $row["Minimo"];
@@ -1565,7 +1575,7 @@ if (!isset($_SESSION['rol'])) {
                 <?php
 
                 echo $nombre_factor4
-                  ?>
+                ?>
               </p>
 
               <p class="title_name califi">
@@ -1727,14 +1737,14 @@ if (!isset($_SESSION['rol'])) {
               <?php
               //  echo $min;
               //  echo $max;
-              
+
 
 
 
               //  while ($row = $inner->fetch_assoc() ) {
               //      echo "<p>" . $row['Minimo'] . "</p>";
               //      echo "<p>" . $row['Maximo'] . "</p>";
-              
+
               //  }
               ?>
 
@@ -1823,7 +1833,7 @@ if (!isset($_SESSION['rol'])) {
 
 
 
-      
+
     </section>
     <section class="pages" id="descubre_asig">
       hh
@@ -1834,7 +1844,7 @@ if (!isset($_SESSION['rol'])) {
 
     if ($rol == 0) {
 
-      ?>
+    ?>
 
       <section class="pages" id="crearNovedad">
         sss
@@ -1844,7 +1854,7 @@ if (!isset($_SESSION['rol'])) {
       <section class="pages" id="verSolicitudes">
         sssss
       </section>
-      <?php
+    <?php
 
     }
 
@@ -1859,7 +1869,41 @@ if (!isset($_SESSION['rol'])) {
 
 
     <section class="pages" id="crearAmbiente">
-      lll
+      <section id="depencargos">
+        <article class="containerdc">
+          <div class='sectionheader'>
+            <span>
+              <hr class='linea2'>
+              <h1>dependencias</h1>
+            </span>
+
+            <button class='button'>añadir dependencia</button>
+          </div>
+          <div class="contentD">
+            <?php
+            include './php/consultardependencias.php';
+            ?>
+          </div>
+        </article>
+        <hr id="linea">
+        <article class="containerdc">
+
+          <div class='sectionheader'>
+            <span>
+
+              <hr class='linea2'>
+              <h1>cargos</h1>
+            </span>
+
+            <button class='button'>añadir cargo</button>
+          </div>
+          <div class='contentD'>
+            <?php
+            include './php/consultarCargos.php';
+            ?>
+          </div>
+        </article>
+      </section>
     </section>
 
     <section class="pages" id="crearUsuario">
@@ -1873,12 +1917,12 @@ if (!isset($_SESSION['rol'])) {
         <input type="text" id="searchInput" placeholder="Nombre">
 
         <div>
-           <img id="add" src="./img/add.png" alt=""> 
+          <img id="add" src="./img/add.png" alt="">
 
         </div>
       </div>
       <form id="addUser">
-<h1>Datos de Usuario</h1>
+        <h1>Datos de Usuario</h1>
         <div id="campos">
 
           <div>
@@ -1917,15 +1961,15 @@ if (!isset($_SESSION['rol'])) {
             <div>
               <img src="./imgusuario/sin_foto.png" id="previewImage" alt="">
             </div>
-            <input type="file" name="img" id="fileInput"  accept="image/*">
+            <input type="file" name="img" id="fileInput" accept="image/*">
           </div>
 
-        <div>
-          <p>Cargo</p>
-          <select name="" id="">
-            <option value="">prueba 1</option>
-          </select>
-        </div>
+          <div>
+            <p>Cargo</p>
+            <select name="" id="">
+              <option value="">prueba 1</option>
+            </select>
+          </div>
 
           <div>
             <p>Antiguedad</p>
@@ -1947,7 +1991,7 @@ if (!isset($_SESSION['rol'])) {
 
         include './php/listarUsuarios.php'
 
-          ?>
+        ?>
       </div>
 
 
@@ -2016,7 +2060,7 @@ if (!isset($_SESSION['rol'])) {
 
 
   </main>
-<script src="js/eliminareva.js"></script>
+  <script src="js/eliminareva.js"></script>
   <script src="js/info_ambie_pisos.js"></script>
   <script src="js/admin.js"></script>
   <script src="js/ampliarImagen.js"></script>
