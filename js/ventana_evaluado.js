@@ -238,6 +238,7 @@ function ValidarEnvio() {
     EnviarFechas(date1.value, date2.value, idEva);
     evaluar();
     limpiarInputs();
+    CerrarV();
   }
 }
 

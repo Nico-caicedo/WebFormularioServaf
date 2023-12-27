@@ -2054,8 +2054,9 @@ if (!isset($_SESSION['rol'])) {
   <!-- <script src="js/descargarPlantillaUsuarios.js"></script> -->
 
   <!-- function the evaluacion  -->
-  <script src="js/ventana_evaluado.js"></script>
   <script src="js/InfoUser.js"></script>
+  <script src="js/ventana_evaluado.js"></script>
+  
   <script src="js/Users.js"></script>
 
 
