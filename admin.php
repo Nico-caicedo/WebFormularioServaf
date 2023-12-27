@@ -56,7 +56,7 @@ if (!isset($_SESSION['rol'])) {
 </head>
 
 <body>
-  <!-- <article class="cont_cargando_inicio">
+  <!-- <article class="cont_cargandodes_inicio">
     <section class="cargando_inicio">
       <img src="img/Rlogo.png" alt="Logo de asignación de ambientes">
       <h1>Room assigner</h1>
@@ -391,7 +391,7 @@ if (!isset($_SESSION['rol'])) {
         </div>
         <div class="second_line">
           <!-- evaluacion -->
-          <div class="boton_Eva" onclick="desplegar()">
+          <div class="boton_Eva" onclick="desplegar();Mostrar()">
             <p>Evaluar</p>
           </div>
         </div>
@@ -411,7 +411,6 @@ if (!isset($_SESSION['rol'])) {
             <!-- identidad de evaluando -->
             <p class="title_eva">
               Empleado a evaluar
-
             </p>
             <div class="mauso">
 
@@ -422,7 +421,13 @@ if (!isset($_SESSION['rol'])) {
               </section>
             </div>
 
+            <div id="DatosDes">
+             
+            </div>
+
           </div>
+
+    
 
           <!-- Periodos a evaluar -->
           <div class="periodo_evaluar">
@@ -443,6 +448,8 @@ if (!isset($_SESSION['rol'])) {
             <input type="submit" id="Boton" name="iniciar" value="Iniciar evaluación">
           </div>
         </div>
+
+        
 
         <div class="third_line">
 
@@ -2091,8 +2098,9 @@ if (!isset($_SESSION['rol'])) {
   <!-- <script src="js/descargarPlantillaUsuarios.js"></script> -->
 
   <!-- function the evaluacion  -->
-  <script src="js/ventana_evaluado.js"></script>
   <script src="js/InfoUser.js"></script>
+  <script src="js/ventana_evaluado.js"></script>
+  
   <script src="js/Users.js"></script>
 
 
