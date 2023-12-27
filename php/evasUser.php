@@ -27,7 +27,6 @@ if ($resultado->num_rows > 0) {
 
         if ($eva->num_rows > 0) {
             $data = mysqli_fetch_assoc($eva);
-
             $containerContent .= "<div class='Evas'>
     <p class='name_eva'>
         {$data['Nombre']}
@@ -87,10 +86,6 @@ if ($datos->num_rows > 0) {
     ";
 
 }
-
-
-
-
   // Construir el array de respuesta
   $response = [
     'containerContent' => $containerContent,

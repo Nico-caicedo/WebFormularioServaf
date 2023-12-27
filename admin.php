@@ -600,7 +600,7 @@ if (!isset($_SESSION['rol'])) {
               <!-- nombre y identificacion -->
               <div class="datosP">
                 <div>
-                  <input type="hidden" id="IdEvaluacion" value="">
+                  <input type="hidden" id="IdEvaluacion" value="$">
                   <input type="hidden" id="number999" name="number999" value="">
                   <input type="hidden" id="IdEvaluado" name="IdEvaluado" value="">
                   <p>Nombres</p>

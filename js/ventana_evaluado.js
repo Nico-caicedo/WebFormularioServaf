@@ -10,6 +10,14 @@ var datosUser = document.getElementById('DatosDes');
 var Form_eva = document.getElementById("form_eva");
 
 
+
+
+
+// Comprueba si la información está en el localStorage
+
+// Si la información indica que debe mostrarse con display: flex, hazlo
+
+
 // funcione para abrir y cerrar las funciones
 
 function desplegar() {
