@@ -199,6 +199,24 @@ if (!isset($_SESSION['rol'])) {
       ?>
     </section>
 
+        <div id="ventanaeliminar">
+          <div id="VentanaConfirm">
+            <h2>¿Está seguro?</h2>
+            <p class="text_delete">
+                  Si decides eliminar la evaluación, la información que hayas registrado se perderá.</p>
+            <div class="botos">
+              
+    <form id='formeliminareva' method='post' onsubmit="sendForm(event,'formeliminareva','./php/eliminarevaluaciones.php')">
+        <!-- Campo oculto para el IdEvaluacion -->
+        <input type='hidden' name='IdEvaluacion' id='IdEvaluacionHidden' value=''>
+        <!-- Botón para enviar el formulario -->
+        <button type='submit' name='eliminar' class="continue">Si</button>
+    </form>
+             <p class="cancel" onclick="NO()">No</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
     <section id="modalCargueAsignaciones" class="ventana">
@@ -344,9 +362,9 @@ if (!isset($_SESSION['rol'])) {
   </aside>
 
   <main id="main">
-    <section class="pages" id="Inicio"  style="display= flex;">
-      <div  class="inicio_modif">
-      <img src="./img/ServafPerfil.jpg" alt="">
+    <section class="pages" id="Inicio" style="display= flex;">
+      <div class="inicio_modif">
+        <img src="./img/ServafPerfil.jpg" alt="">
       </div>
     </section>
 
@@ -462,7 +480,7 @@ if (!isset($_SESSION['rol'])) {
             </div>";
               }
             }
-          }else{
+          } else {
             echo '<div class="UserEva">
             <img  src="./img/users.png">
             <p>Actualmente, no tienes usuarios asignados para evaluar.</p>
@@ -472,7 +490,7 @@ if (!isset($_SESSION['rol'])) {
 
 
           <div id='ContainerCardInfo' onclick="CerrarV()">
-          
+
           </div>
 
 
@@ -536,10 +554,12 @@ if (!isset($_SESSION['rol'])) {
         </div>
 
         <h2 class="title_ventana">Evaluacion Desempeño Laboral </h2>
-
+        <!-- corregir que no se tenga que duplicar el formulario para poder usarlo para editar -->
+        
         <form class="modulos_eva" method="post" id="form_eva" action="./php/setEvaluacion.php">
           <!-- modulo 1 -->
 
+          <input type="hidden" name="modo" id="modo" value="agregar">
           <div class="modulo" data-id="<?php echo $factor0 ?>">
             <div class="number_mod">0</div>
             <div>
@@ -573,7 +593,7 @@ if (!isset($_SESSION['rol'])) {
               <!-- nombre y identificacion -->
               <div class="datosP">
                 <div>
-                  <input type="hidden" id="IdEvaluacion" value="">
+                  <input type="hidden" id="IdEvaluacion" value="$">
                   <input type="hidden" id="number999" name="number999" value="">
                   <input type="hidden" id="IdEvaluado" name="IdEvaluado" value="">
                   <p>Nombres</p>
@@ -592,9 +612,9 @@ if (!isset($_SESSION['rol'])) {
                   </div>
                 </div>
                 <div>
-                  <p>Docmuento</p>
+                  <p>Documento</p>
                   <input type="text" ID="dni" name="documento" value="">
-                </div>
+                </div>4
               </div>
 
 
@@ -918,7 +938,7 @@ if (!isset($_SESSION['rol'])) {
                 <p>
                   Observaciones
                 </p>
-                <textarea class="cuadro"  name="Observacion1" id=""></textarea>
+                <textarea class="cuadro" name="Observacion1" id=""></textarea>
               </div>
             </div>
           </div>
@@ -1093,14 +1113,14 @@ if (!isset($_SESSION['rol'])) {
 
                 </div>
 
-                <div class="enblanco2"> 
-                  <input type="number" name="Val4"  step="0.01" >
+                <div class="enblanco2">
+                  <input type="number" name="Val4" step="0.01">
                 </div>
               </div>
 
               <div class="first_question">
                 <div class="pregunta">
-                  <input type="hidden" value="5" name="P5" >
+                  <input type="hidden" value="5" name="P5">
                   <p>
                     <?php echo $descripcion2 ?>
                   </p>
@@ -1191,7 +1211,7 @@ if (!isset($_SESSION['rol'])) {
                 <p>
                   Observaciones
                 </p>
-                <textarea class="cuadro"  name="Observacion2" id=""></textarea>
+                <textarea class="cuadro" name="Observacion2" id=""></textarea>
               </div>
             </div>
           </div>
@@ -1463,7 +1483,7 @@ if (!isset($_SESSION['rol'])) {
                 <p>
                   Observaciones
                 </p>
-                <textarea class="cuadro"  name="Observacion3" id=""></textarea>
+                <textarea class="cuadro" name="Observacion3" id=""></textarea>
               </div>
             </div>
           </div>
@@ -1667,7 +1687,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val11" id="input2"  step="0.01" onblur="validarInputs()">
+                  <input type="number" name="Val11" id="input2" step="0.01" onblur="validarInputs()">
                 </div>
               </div>
 
@@ -1730,7 +1750,7 @@ if (!isset($_SESSION['rol'])) {
                 <p>
                   Observaciones
                 </p>
-                <textarea class="cuadro"  name="Observacion4" id=""></textarea>
+                <textarea class="cuadro" name="Observacion4" id=""></textarea>
               </div>
             </div>
 
@@ -1777,7 +1797,7 @@ if (!isset($_SESSION['rol'])) {
               <div class="tablaMejora">
                 <p>Capacitacion:</p>
                 <textarea name="Capacitacion" id="" cols="90" rows="7">
-                
+
                 </textarea>
               </div>
 
@@ -1795,7 +1815,15 @@ if (!isset($_SESSION['rol'])) {
 
 
         </form>
+
+
       </div>
+
+
+
+
+
+      
     </section>
     <section class="pages" id="descubre_asig">
       hh
@@ -1842,81 +1870,111 @@ if (!isset($_SESSION['rol'])) {
 
     <section class="pages" id="Usuarios">
       <div class="opciones_user">
-        <input type="text" id="searchInput" placeholder="Nombre" >
+        <input type="text" id="searchInput" placeholder="Nombre">
 
         <div>
-        <img id="add" src="./img/add.png" alt="">
+           <img id="add" src="./img/add.png" alt=""> 
 
         </div>
       </div>
-      <div id="addUser">
-        <form action="">
+      <form id="addUser">
+<h1>Datos de Usuario</h1>
+        <div id="campos">
+
+          <div>
+            <p>Primer nombre</p>
+            <input type="text" name="Name1">
+          </div>
+
+          <div>
+            <p>Segundo nombre</p>
+            <input type="text" name="Name2">
+          </div>
+
+          <div>
+            <p>Primer Apellido</p>
+            <input type="text" name="Apellido1">
+          </div>
+          <div>
+            <p>Segundo Apellido</p>
+            <input type="text" name="Apellido2">
+          </div>
+
+          <div>
+            <p>TIpo de Documento</p>
+            <select name="tipoDocuento" id="">
+              <option value="">Documento identidad</option>
+              <option value="">Tarjeta de identidad</option>
+            </select>
+
+            <input type="number" name="numeroDni">
+          </div>
+          <div>
+            <p>Correo</p>
+            <input type="text" name="telefono">
+          </div>
+          <div>
             <div>
-              <p>Primer nombre</p>
-              <input type="text" name="Name1">
+              <img src="./imgusuario/sin_foto.png" id="previewImage" alt="">
             </div>
+            <input type="file" name="img" id="fileInput"  accept="image/*">
+          </div>
 
-            <div>
-              <p>Segundo nombre</p>
-              <input type="text" name="Name2">
-            </div>
+        <div>
+          <p>Cargo</p>
+          <select name="" id="">
+            <option value="">prueba 1</option>
+          </select>
+        </div>
 
-            <div>
-              <p>Primer Apellido</p>
-              <input type="text" name="Apellido1">
-            </div>
-            <div>
-              <p>Segundo Apellido</p>
-              <input type="text" name="Apellido2">
-            </div>
+          <div>
+            <p>Antiguedad</p>
+            <input type="text" name="" id="">
+          </div>
 
-            <div>
-              <p>TIpo de Documento</p>
-              <select name="tipoDocuento" id="">
-                <option value="">Documento identidad</option>
-                <option value="">Tarjeta de identidad</option>
-              </select>
-
-              <input type="number" name="numeroDni">
-            </div>
+          <div>
+            <p>Tiempo Servicio</p>
+            <input type="text" name="" id="">
+          </div>
 
 
-          <input type="submit" name="" value="Enviar" id="">
-        </form>
-      </div>
+        </div>
+
+        <input type="submit" name="" value="Enviar" id="">
+      </form>
       <div id="Users">
-      <?php 
-      
-      include './php/listarUsuarios.php'
-      
-      ?>
+        <?php
+
+        include './php/listarUsuarios.php'
+
+          ?>
       </div>
-  
 
 
 
-          <div id='Containershow' onclick="CerrarS()">
-          
+
+      <div id='Containershow' onclick="CerrarS()">
+
+      </div>
+
+
+      <div id='ShowInfo'>
+        <div class="UserInfo">
+
+
+        </div>
+        <div class="Evaluaciones_user">
+
+          <h3>Evaluaciones</h3>
+          <div class="Evas_container">
+
+
           </div>
+        </div>
+      </div>
 
 
-          <div id='ShowInfo'>
-            <div class="UserInfo">
 
-
-            </div>
-            <div class="Evaluaciones_user">
-
-              <h3>Evaluaciones</h3>
-              <div class="Evas_container">
-
-
-              </div>
-            </div>
-          </div>
-
-       
-          
     </section>
 
     <form method="post" enctype="multipart/form-data" class="pages" id="carruselNoticias">
@@ -1958,7 +2016,7 @@ if (!isset($_SESSION['rol'])) {
 
 
   </main>
-
+<script src="js/eliminareva.js"></script>
   <script src="js/info_ambie_pisos.js"></script>
   <script src="js/admin.js"></script>
   <script src="js/ampliarImagen.js"></script>

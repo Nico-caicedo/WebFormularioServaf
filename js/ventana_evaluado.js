@@ -4,6 +4,8 @@ var ventana = document.getElementById("ventana_evalu");
 var inicio = document.getElementsByClassName("evaluacion_laboral")[0];
 var evaluacion = document.getElementsByClassName("evaluacion_ventana")[0];
 VentanaAlerta = document.getElementById("VentanaAlerta");
+
+
 Form_eva = document.getElementById("form_eva");
 
 // Comprueba si la información está en el localStorage
@@ -89,14 +91,59 @@ function BackAndDelete() {
   Form_eva.reset();
 }
 
+
+
+const ventanaeliminar = document.getElementById("ventanaeliminar");
+
+function abrirVentanaEliminar(IdEvaluacion) {
+    // Asignar el valor de IdEvaluacion al campo oculto en el formulario
+    document.getElementById('IdEvaluacionHidden').value = IdEvaluacion;
+
+    // Mostrar la ventana u realizar otras operaciones si es necesario
+    var ventanaeliminar = document.getElementById("ventanaeliminar");
+    if (ventanaeliminar) {
+        ventanaeliminar.style.display = "flex";
+    }
+}
+
+
+function NO(){
+  ventanaeliminar.style.display = "none";
+}
+
+
 document.getElementById("Cancelar").addEventListener("click", BackAndDelete);
 
-function abrirVentana() {
+function abrirVentana(){
   VentanaAlerta.style.display = "flex";
 }
 
 function continuar() {
   VentanaAlerta.style.display = "none";
+}
+
+
+
+
+// editar evaluacion _____---------------------
+var estado = document.getElementById('modo');
+
+
+
+function editEva(dni){
+  var dniis = dni;
+  if(estado.value === 'agregar'){
+    estado.value = 'editar'
+  }
+
+  inicio.style.display = "none";
+  evaluacion.style.display = "flex";
+
+}
+
+function obtenerParametroDeURL(parametro) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(parametro);
 }
 
 // Inicia codigo para cargar usuario

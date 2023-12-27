@@ -117,7 +117,7 @@ if (isset($_POST['sesion'])) {
         $clave = $_POST['password'];
 
         $consulta = "SELECT * FROM users WHERE Document = '$id' and Pasword = '$clave' and Estado = 1 and Jefe = 1 ";
-        $result = mysqli_query($conexion, $consulta, );
+        $result = mysqli_query($conexion, $consulta );
 
         if (mysqli_num_rows($result) > 0) {
             // Obtener la información del usuario de la base de datos
