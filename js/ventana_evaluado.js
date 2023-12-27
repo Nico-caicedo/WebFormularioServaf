@@ -268,26 +268,111 @@ function limpiarInputs() {
   }
 }
 
-function validarInputs() {
-  // Obtener los valores de los inputs
-  var input1 = document.getElementById("input1").value.trim();
-  var input2 = document.getElementById("input2").value.trim();
-  var input3 = document.getElementById("input3").value.trim();
 
-  // Obtener el contenedor
-  var miContenedor = document.getElementById("radio4");
+
+
+
+// Obtener referencias a los elementos del DOM y el contenedor
+
+var inputs1 = [document.getElementById("input1"), document.getElementById("input2"), document.getElementById("input3")];
+
+// Puedes cambiar el ID del contenedor según tus necesidades
+var contenedorId1 = "radio1";
+var contenedor1 = document.getElementById(contenedorId1);
+
+// Agregar un manejador de eventos a cada input
+inputs1.forEach(function(input) {
+  input.addEventListener("blur", function() {
+    validarInputs(inputs1, contenedor1);
+  });
+});
+
+
+var inputs2 = [document.getElementById("input4"), document.getElementById("input5"), document.getElementById("input6")];
+
+// Puedes cambiar el ID del contenedor según tus necesidades
+var contenedorId2 = "radio2";
+var contenedor2 = document.getElementById(contenedorId2);
+
+// Agregar un manejador de eventos a cada input
+inputs2.forEach(function(input) {
+  input.addEventListener("blur", function() {
+    validarInputs(inputs2, contenedor2);
+  });
+});
+
+
+var inputs3 = [document.getElementById("input7"), document.getElementById("input8"), document.getElementById("input9")];
+
+// Puedes cambiar el ID del contenedor según tus necesidades
+var contenedorId3 = "radio3";
+var contenedor3 = document.getElementById(contenedorId3);
+
+// Agregar un manejador de eventos a cada input
+inputs3.forEach(function(input) {
+  input.addEventListener("blur", function() {
+    validarInputs(inputs3, contenedor3);
+  });
+});
+
+
+var inputs4 = [document.getElementById("input10"), document.getElementById("input11"), document.getElementById("input12")];
+
+// Puedes cambiar el ID del contenedor según tus necesidades
+var contenedorId4 = "radio4";
+var contenedor4 = document.getElementById(contenedorId4);
+
+// Agregar un manejador de eventos a cada input
+inputs4.forEach(function(input) {
+  input.addEventListener("blur", function() {
+    validarInputs(inputs4, contenedor4);
+  });
+});
+
+
+
+var inputs0 = [document.getElementById("Antiguedad"), document.getElementById("TiempoServicio")];
+
+// Puedes cambiar el ID del contenedor según tus necesidades
+var contenedorId0 = "radio0";
+var contenedor0 = document.getElementById(contenedorId0);
+
+// Agregar un manejador de eventos a cada input
+inputs0.forEach(function(input) {
+  input.addEventListener("blur", function() {
+    validarInputs(inputs0, contenedor0);
+  });
+});
+
+
+
+
+function validarInputs(inputs, contenedor) {
+  // Obtener los valores de los inputs y recortar espacios en blanco
+  var valoresInputs = inputs.map(function(input) {
+    return input.value.trim();
+  });
 
   // Verificar si todos los campos están llenos
-  if (input1 !== "" && input2 !== "" && input3 !== "") {
-    // Cambiar la clase del contenedor
-    miContenedor.classList.remove("check2");
-    miContenedor.classList.add("check");
+  var todosLlenos = valoresInputs.every(function(valor) {
+    return valor !== "";
+  });
+
+  // Cambiar la clase del contenedor según el resultado de la validación
+  if (todosLlenos) {
+    contenedor.classList.remove("check2");
+    contenedor.classList.add("check");
   } else {
-    // Restablecer la clase del contenedor si no están todos los campos llenos
-    miContenedor.classList.remove("check");
-    miContenedor.classList.add("check2");
+    contenedor.classList.remove("check");
+    contenedor.classList.add("check2");
   }
 }
+
+
+
+
+
+
 
 function EnviarFechas(dates1, dates2, id) {
   // Crear un objeto con los datos a enviar
@@ -469,6 +554,7 @@ document
         if(data){
           document.getElementById("form_eva").reset();
           volver();
+          restablecerEstadoOriginal();
           notaTotal.textContent =  " ";
         }
      
@@ -501,4 +587,15 @@ document
               // Asignar el resultado al contenido del elemento <p>
               notaTotal.textContent =  ValorReal;
           
+      }
+
+
+      function restablecerEstadoOriginal() {
+        // Puedes definir un array que contenga todos los contenedores y recorrerlos para restablecer su estado original
+        var contenedores = [contenedor1, contenedor2, contenedor3, contenedor4, contenedor0];
+      
+        contenedores.forEach(function(contenedor) {
+          contenedor.classList.remove("check");
+          contenedor.classList.add("check2");
+        });
       }

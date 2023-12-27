@@ -583,7 +583,7 @@ if (!isset($_SESSION['rol'])) {
             <div>
               DATOS PERSONALES
             </div>
-            <div class="check2  radio">
+            <div id="radio0" class="check2  radio">
               <p>L</p>
             </div>
           </div>
@@ -696,7 +696,7 @@ if (!isset($_SESSION['rol'])) {
             <div>
               FACTOR DE CALIDAD
             </div>
-            <div id="list1" class="check2 radio">
+            <div id="radio1" class="check2 radio">
               <p>L</p>
             </div>
             <?php
@@ -830,7 +830,7 @@ if (!isset($_SESSION['rol'])) {
 
               <div class="first_question">
                 <div class="pregunta">
-                  <input type="hidden" value="1" name="P1">
+                  <input type="hidden"  value="1" name="P1">
                   <p>
                     <?php echo $descripcion1 ?>
                   </p>
@@ -858,7 +858,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val1" id="val1" step="0.01">
+                  <input type="number" name="Val1" id="input1" step="0.01">
                 </div>
               </div>
 
@@ -892,7 +892,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" id="val2" name="Val2" step="0.01">
+                  <input type="number" id="input2" name="Val2" step="0.01">
                 </div>
               </div>
 
@@ -927,7 +927,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val3" step="0.01">
+                  <input type="number" id="input3" name="Val3" step="0.01">
                 </div>
               </div>
               <?php
@@ -967,8 +967,8 @@ if (!isset($_SESSION['rol'])) {
             <div>
               FACTOR DE EFICIENCIA Y RENDIMIENTO
             </div>
-            <div class="check2 radio">
-              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA/ZJREFUaEO9WMlqFVEQPdVrhezdC35FIOQZMH6A4LAPuvBPXCiSpQPkM1yFQBCyzGeIGYhx80r69nSnulW332t79Xhd06k6VbduExZ+CADP8mHTbKXCx+nJyv4bm4vJ/CRfoak4TAFkspW4U/ybQVbgkIooAtjE9iaA/UAtMQgU6s1YLPiim6S+6KtMaUB6XwFgVp8qSkk+MvF4FRDezhshS+DJDJsu9//t2aTQJd0KAAQCl6YsZD5WuFFaMKZWlU/lmNCjNPeVrV4Bhcy2LWeFDkWVsMSzXA+YR6qcjcoppCYk4Tcz7xDRb4umJBPb0I+DUGJ2BZj5DYBPAFZEzfmclY2ZXwA4ZmDVEP1sm9ENiYqMzALQB/+lL8ktwLtEzUWFX/TBn0w2cEBEZ1N+00zngJUPskxEzPwEwGWX8VH9moH9Lov6w7x+BdD3SPIXgEdEdC9aKJ/EuuNBgpmPAHyONK4A7BGRV4mUEl3m+QQgv/p3gKvAqWXy+H6FMarP4CwIxhUoBjH1fkSboYhj8PYUTpKzemBQXzMfkatEQCevElMi2uAZOCHHu1F+fvC9aROAUlmDSkw4Ajolme8ycA/Giho6DfM5tarl1BcBWJXb2yev/Z4YUTgQAB4DGKbNEOs9A4cN0Q8rbba0zMnumPltfy74QjcAHkZafwE8o2zwlhbe0kGWg8LM7wF8KGS1HZGHbfCWUCVqiVPIWs5ULmhWCURAG5+i+bXJ69KhLbZ1DpSACmdE17R99ucnqtU0UUgpsPDaNTMlB1wfr2tuhUJyq0o7kmmMxpzL7STM/A7AxzC7fAPQA3/nAPAHwPOkieuaYnRTDUBoXmG14D2A2t3pG4DG0zXQyYZIAGCnkGUvYuaXAohVu/84YJZ4E5l219rgsQQ/mBdARKuE5T5gamIdFfP6CKBwI+2XuYboIvd9OA+C7wBym6jsVS5PUIFMhaaLlvdSzDxjjxp/nQ5Dak2sEzq56XQHxkFpL5LAVVPIXWgYlxH5rgHsk/lCw68BfI2mk36hyaAoA5DmfXcf9q6U2A0vMrl8hcYmOnED0G1/oTkzN3TvwgMgHyLJhb3bQL1LPZ0nIRumSg+i/TDwNFc9g4mNp1D4WcVfcPQ54CSY1ztEjfppZgKjTSEL7FJHad9EevvFgVFRzrQHJAfGjC4jZhyjlp1nmQAjqxUscN82tKpXVDTaCWzWi1JKX1WfA1KVLKH6MtLv/Bg1USjt7urKLM3BDA5TBSzZnWJfcAqYAOiEtPVxHeqszTz9tXNA2DfKdLJEuy2ZdEEc/6lrLFshancbs1WPqYqOJXO2C5U5OPPcLtzI9LB1iRGWRdTbLgufgRJo/wAJ+MRCxPfMPAAAAABJRU5ErkJggg==" />
+            <div id="radio2" class="check2 radio">
+                <p>L</p>
             </div>
 
             <?php
@@ -1131,7 +1131,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val4" step="0.01">
+                  <input type="number" id="input4" name="Val4" step="0.01">
                 </div>
               </div>
 
@@ -1165,7 +1165,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val5" step="0.01">
+                  <input type="number" id="input5" name="Val5" step="0.01">
                 </div>
               </div>
 
@@ -1199,7 +1199,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val6" step="0.01">
+                  <input type="number" id="input6" name="Val6" step="0.01">
                 </div>
               </div>
               <?php
@@ -1239,7 +1239,7 @@ if (!isset($_SESSION['rol'])) {
             <div>
               FACTOR DE RESPONSABILIDAD
             </div>
-            <div class="check2 radio">
+            <div id="radio3" class="check2 radio">
               <p>L</p>
             </div>
 
@@ -1403,7 +1403,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val7" step="0.01">
+                  <input id="input7" type="number" name="Val7" step="0.01">
                 </div>
               </div>
 
@@ -1437,7 +1437,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val8" step="0.01">
+                  <input type="number" id="input8" name="Val8" step="0.01">
                 </div>
               </div>
 
@@ -1471,7 +1471,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val9" step="0.01">
+                  <input type="number" id="input9" name="Val9" step="0.01">
                 </div>
               </div>
               <?php
@@ -1670,7 +1670,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val10" id="input1" step="0.01" onblur="validarInputs()">
+                  <input type="number" name="Val10" id="input10" step="0.01" >
                 </div>
               </div>
 
@@ -1704,7 +1704,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val11" id="input2" step="0.01" onblur="validarInputs()">
+                  <input type="number" name="Val11" id="input11" step="0.01" >
                 </div>
               </div>
 
@@ -1738,7 +1738,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val12" id="input3" step="0.01" onblur="validarInputs()">
+                  <input type="number" name="Val12" id="input12" step="0.01" >
                 </div>
               </div>
               <?php
@@ -1823,7 +1823,7 @@ if (!isset($_SESSION['rol'])) {
 
 
 
-            <input type="submit" class="enviar" name="cargar" value="enviar">
+            <input type="submit" class="enviar" name="cargar" value="Enviar">
           </div>
 
 
