@@ -53,7 +53,7 @@ if ($resultado->num_rows > 0) {
 
 } else {
     // Si no hay evaluaciones, establecer un mensaje de error
-    $containerContent = "No hay evaluaciones disponibles";
+    $containerContent = "<p>No hay evaluaciones disponibles</p>";
 }
 
 $datos = mysqli_query($conexion, "SELECT * FROM users where IdUser = $IdUser");
