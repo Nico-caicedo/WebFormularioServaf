@@ -530,7 +530,7 @@ if (!isset($_SESSION['rol'])) {
           <!-- modulo 1 -->
 
           <input type="hidden" name="modo" id="modo" value="agregar">
-          <div class="modulo" data-id="<?php echo $factor0 ?>">
+          <div id="focus" class="modulo" data-id="<?php echo $factor0 ?>">
             <div class="number_mod">0</div>
             <div>
               DATOS PERSONALES

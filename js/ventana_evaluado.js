@@ -183,7 +183,12 @@ function NO() {
 
 
 
-document.getElementById("Cancelar").addEventListener("click", BackAndDelete);
+document.getElementById("Cancelar").addEventListener("click", function() {
+  BackAndDelete();
+  removerClaseActive();
+  scrollToContainer()
+});
+ 
 
 function abrirVentana() {
   VentanaAlerta.style.display = "flex";
@@ -273,6 +278,7 @@ function ValidarEnvio() {
     evaluar();
     limpiarInputs();
     CerrarV();
+    scrollToContainer();
   }
 }
 
@@ -557,6 +563,32 @@ function toggleActiveClass(dataId, modulo) {
   }
 }
 
+function removerClaseActive() {
+  // Obtener todos los contenedores con clase 'table'
+  var contenedores = document.querySelectorAll('.table');
+
+  // Iterar sobre los contenedores y remover la clase 'active' si está presente
+  contenedores.forEach(function(contenedor) {
+    if (contenedor.classList.contains('active')) {
+      contenedor.classList.remove('active');
+    }
+  });
+}
+
+
+function scrollToContainer() {
+  var container = document.getElementById('focus');
+
+  if (container) {
+    container.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
+}
+
+
+
 document
   .getElementById("form_eva")
   .addEventListener("submit", function (event) {
@@ -589,7 +621,8 @@ document
           document.getElementById("form_eva").reset();
           volver();
           restablecerEstadoOriginal();
-          notaTotal.textContent = " ";
+          removerClaseActive();
+          notaTotal.textContent =  " ";
         }
 
       })
