@@ -168,7 +168,6 @@ if (!isset($_SESSION['rol'])) {
       <span class="name_rol">
 
         <?php
-
         $sconsult = mysqli_query($conexion, "SELECT * FROM rol_usuario WHERE idrol = $rol");
         $row = mysqli_fetch_assoc($sconsult);
         echo '<p>';
@@ -198,6 +197,9 @@ if (!isset($_SESSION['rol'])) {
       ?>
     </section>
 
+
+
+    <!-- ventana modal eliminar evaluaciones -->
     <div id="ventanaeliminar">
       <div id="VentanaConfirm">
         <h2>¿Está seguro?</h2>
@@ -209,75 +211,78 @@ if (!isset($_SESSION['rol'])) {
             <!-- Campo oculto para el IdEvaluacion -->
             <input type='hidden' name='IdEvaluacion' id='IdEvaluacionHidden' value=''>
             <!-- Botón para enviar el formulario -->
-            <button type='submit' name='eliminar' class="continue">Si</button>
+            <button type='submit' class="continue">Si</button>
           </form>
           <p class="cancel" onclick="NO()">No</p>
         </div>
       </div>
     </div>
-    </div>
 
+    <!-- section ventana formulario añadir -->
+    <div id="ventanaañadirD">
+      <div id="VentanaConfirm">
+        <h3>Nueva Dependencia</h3>
+        <p class="text_delete">
+          Completa el campo</p>
+        <div class="botos">
+          <form id='añadirD' method='post' onsubmit="sendForm(event,'añadirD','./php/añadirDependencia.php')">
+            <!-- Campo oculto para el IdEvaluacion -->
+            <div class="form-control">
+              <input type="text" name='nombreD' required="">
+              <label>
+                <span style="transition-delay:0ms">N</span><span style="transition-delay:50ms">o</span><span style="transition-delay:100ms">m</span><span style="transition-delay:150ms">b</span><span style="transition-delay:200ms">r</span><span style="transition-delay:250ms">e</span>
+                <span style="transition-delay:300ms">D</span><span style="transition-delay:350ms">e</span><span style="transition-delay:400ms">p</span><span style="transition-delay:450ms">e</span><span style="transition-delay:500ms">n</span><span style="transition-delay:550ms">d</span><span style="transition-delay:600ms">e</span><span style="transition-delay:650ms">n</span><span style="transition-delay:700ms">c</span><span style="transition-delay:750ms">i</span><span style="transition-delay:800ms">a</span>
+              </label>
+            </div>
+            <!-- Botón para enviar el formulario -->
+            <button type='submit'  class="btn-17">
+              <span class="text-container">
+                <span class="text">Guardar</span>
+              </span>
+            </button>
+          </form>
 
-    <section id="modalCargueAsignaciones" class="ventana">
-      <section class="product">
-        <div class="cerrarbutton">
-
-
-          <a href="descargarPlantillaAsignacion.pdf" download="descargarPlantillaAsignacion.pdf"><button class="btnexcel">Descargar Guia</button>
-          </a>
-          <h6 class="titleExcel">Cargar Asignaciones con excel</h6>
-          <span class="cerrar" onclick="cerrarCargueAsignacion()">&times;</span>
-        </div>
-
-        <div id="cargarDatos">
-          <div class="formsExcel">
-            <a href="php/descargarPlantillaAsignacion.php"><button name="asignacion" class="btnexcel">Descarga tu
-                plantilla</button>
-            </a>
-          </div>
-          <div class="formsExcel">
-            <form action="" method="post" enctype="multipart/form-data" class="formsExcel" id="cargarExcelAsignacion">
-              <input type="file" name="csvfile" id="datosAsignacion">
-              <button type="submit" name="guardarDatosAsignacion" class="btnexcelI">Importar datos</button>
-            </form>
-          </div>
-        </div>
-      </section>
-
-    </section>
-
-    <!-- Anuncios sena mi papa -->
-    <div id="anuncios">
-
-      <?php
-      if ($rol == 0) {
-        echo '
-  <button title="Gestionar noticias" id="EditarCarrusel" onclick="mostrarContenedor(\'carruselNoticias\', this)">
-    <p></p>
-    <i class="fa-solid fa-ellipsis"></i>
-  </button>
-  ';
-      }
-      ?>
-
-      <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
-        <div class="autoplay-progress">
-          <svg viewBox="0 0 48 48">
-            <circle cx="24" cy="24" r="20"></circle>
-          </svg>
-          <span></span>
         </div>
       </div>
-
-      <p id="textoAnuncio"></p>
-
     </div>
+
+    <!-- section ventana modal confirmacion de eliminacion dependencia -->
+    <div id="ventanaeliminarD">
+      <div id="VentanaConfirm">
+        <h2>¿Está seguro?</h2>
+        <p class="text_delete">
+          deseas eliminar esta Dependencia?</p>
+        <div class="botos">
+          <form id='eliminarD' method='post' onsubmit="sendForm(event,'eliminarD','./php/eliminarDependencias.php')">
+            <!-- Campo oculto para el IdEvaluacion -->
+            <input type='hidden' name='eliminarD' id='iddependencia' value=''>
+            <!-- Botón para enviar el formulario -->
+            <button type='submit' name="eliminarD" class="continue">Si</button>
+          </form>
+          <p class="cancel" onclick="NOD()">No</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- section ventana modal confirmacion de eliminacion dependencia -->
+    <div id="ventanaeliminarC">
+      <div id="VentanaConfirm">
+        <h2>¿Está seguro?</h2>
+        <p class="text_delete">
+          deseas eliminar este cargo?</p>
+        <div class="botos">
+          <form id='eliminarC' method='post' onsubmit="sendForm(event,'eliminarC','./php/eliminarCargos.php')">
+            <!-- Campo oculto para el IdEvaluacion -->
+            <input type='hidden' name='eliminarC' id='idcargo' value=''>
+            <!-- Botón para enviar el formulario -->
+            <button type='submit' name="eliminarC" class="continue">Si</button>
+          </form>
+          <p class="cancel" onclick="NOC()">No</p>
+        </div>
+      </div>
+    </div>
+
+
 
 
     <nav id="contenedor-botones">
@@ -286,67 +291,14 @@ if (!isset($_SESSION['rol'])) {
         <p class="pri">Desempeño Laboral</p>
       </button>
 
-      <!-- DE AQUI HACIA ABAJO MEJIA -->
-      <?php
-      if ($rol == 0) {
-        // ME PUSIERON ESTO A ULTIMA HORA MALDITOS DESGRACIADOS (CON TODO RESPETO)
-      ?>
-
-        <button class="botones" id="22" onclick="mostrarContenedor('descubre_asig',this)">
-          <i class="fa-solid fa-play"></i>
-          <p class="pri">Descubre la Página</p>
-        </button>
-        <button class='botones' id='3' onclick="mostrarContenedor('verSolicitudes',this)">
-          <i class='fas fa-clipboard-list'></i>
-          <p>proximamente</p>
-        </button>
-      <?php
-      }
-      ?>
-
-      <!-- DE AQUI HACIA ARRIBA MEJIA  -->
-      <?php
-      // if ($rol == 3) {
-      //   echo '<button class="botones pri btn-open" onclick="mostrarFormularioN()">
-      //   <i class="fas fa-building pri"></i>
-      //   <p class="pri  ">Generar Novedad</p>
-      // </button>';
-      // }
-      ?>
-      <?php
-      if ($rol == 000) {
-        echo "
-      <button class='botones' id='44' onclick='mostrarContenedor(\"crearAmbiente\", this)'>
-        <i class='fas fa-plus-circle'></i>
-        <p>Dependencias</p>
-
-      </button>
-      
-   
-     
-    //   <button class='botones' id='5' onclick='mostrarContenedor(\"crearUsuario\", this)'>
-    //     <i class='fas fa-plus-circle'></i>
-    //     <p>Crear Usuario</p>
-    //   </button>
-    //   <button class='botones' id='6' onclick='mostrarContenedor('Solicitudes',this)'>
-    //   <?php require_once 'php/num_solicutudes_nueva.php'; ?>
-    //   <i class='fas fa-clipboard-list'></i>
-    //   <p>Solicitudes</p>
-    // </button>
-      ";
-      }
-      ?>
       <?php
       if ($rol == 1) {
         echo "
       <button class='botones' id='44' onclick='mostrarContenedor(\"crearAmbiente\", this)'>
         <i class='fas fa-plus-circle'></i>
-        <p>Dependencias</p>
+        <p>Dependencias y Cargos</p>
 
       </button>
-      
-   
-     
     
       ";
       }
@@ -422,12 +374,12 @@ if (!isset($_SESSION['rol'])) {
             </div>
 
             <div id="DatosDes">
-             
+
             </div>
 
           </div>
 
-    
+
 
           <!-- Periodos a evaluar -->
           <div class="periodo_evaluar">
@@ -449,7 +401,7 @@ if (!isset($_SESSION['rol'])) {
           </div>
         </div>
 
-        
+
 
         <div class="third_line">
 
@@ -825,12 +777,9 @@ if (!isset($_SESSION['rol'])) {
                   <!-- <input type="text"> -->
                 </div>
               </div>
-
-
-
               <div class="first_question">
                 <div class="pregunta">
-                  <input type="hidden"  value="1" name="P1">
+                  <input type="hidden" value="1" name="P1">
                   <p>
                     <?php echo $descripcion1 ?>
                   </p>
@@ -888,7 +837,6 @@ if (!isset($_SESSION['rol'])) {
                 <div class="notas">
                   <p>80</p>
                   <p>83.3</p>
-
                 </div>
 
                 <div class="enblanco2">
@@ -923,7 +871,6 @@ if (!isset($_SESSION['rol'])) {
                 <div class="notas">
                   <p>80</p>
                   <p>83.3</p>
-
                 </div>
 
                 <div class="enblanco2">
@@ -933,10 +880,6 @@ if (!isset($_SESSION['rol'])) {
               <?php
               //  echo $min;
               //  echo $max;
-
-
-
-
               //  while ($row = $inner->fetch_assoc() ) {
               //      echo "<p>" . $row['Minimo'] . "</p>";
               //      echo "<p>" . $row['Maximo'] . "</p>";
@@ -968,7 +911,7 @@ if (!isset($_SESSION['rol'])) {
               FACTOR DE EFICIENCIA Y RENDIMIENTO
             </div>
             <div id="radio2" class="check2 radio">
-                <p>L</p>
+              <p>L</p>
             </div>
 
             <?php
@@ -987,23 +930,16 @@ if (!isset($_SESSION['rol'])) {
                 $descripciones2[] = $row["Descripcion"];
               }
             }
-
             // Accede a las descripciones individuales mediante índices
             $descripcion1 = $descripciones2[0];
             $descripcion2 = $descripciones2[1];
             $descripcion3 = $descripciones2[2];
             ?>
-
-
-
           </div>
 
           <div class="table" data-factor="<?php echo $factor2 ?>">
 
             <?php
-
-
-
             $idFactorSeleccionado = 2;
 
             $inner = mysqli_query($conexion, "SELECT r.IdRango, r.IdFactor, r.IdPregunta, r.Minimo, r.Maximo, r.Estado,
@@ -1028,15 +964,7 @@ if (!isset($_SESSION['rol'])) {
                 "Maximo" => $maximo
               );
             }
-
-
-
-
-
-
             ?>
-
-
 
             <div class="table_title">
               <p class="title_name factor">
@@ -1272,9 +1200,6 @@ if (!isset($_SESSION['rol'])) {
           <div class="table " data-factor="<?php echo $factor3 ?>">
 
             <?php
-
-
-
             $idFactorSeleccionado = 1;
 
             $inner = mysqli_query($conexion, "SELECT r.IdRango, r.IdFactor, r.IdPregunta, r.Minimo, r.Maximo, r.Estado,
@@ -1301,14 +1226,7 @@ if (!isset($_SESSION['rol'])) {
               );
             }
 
-
-
-
-
-
             ?>
-
-
 
             <div class="table_title">
               <p class="title_name factor">
@@ -1487,9 +1405,6 @@ if (!isset($_SESSION['rol'])) {
 
               //  }
               ?>
-
-
-
             </div>
 
             <div class="observacion">
@@ -1504,6 +1419,7 @@ if (!isset($_SESSION['rol'])) {
               </div>
             </div>
           </div>
+
           <!-- modulo cuatro -->
           <div class="modulo " data-id="<?php echo $factor4 ?>">
             <div class="number_mod">4</div>
@@ -1515,12 +1431,10 @@ if (!isset($_SESSION['rol'])) {
             </div>
             <?php
             $dato_factor = mysqli_query($conexion, "SELECT * FROM factor where IdFactor = $factor4");
-
             if (mysqli_num_rows($dato_factor) > 0) {
               $row = mysqli_fetch_assoc($dato_factor);
               $nombre_factor4 = $row['NombreFactor'];
             }
-
             $factor_pregunta = mysqli_query($conexion, "SELECT * FROM pregunta where IdFactor = $factor4");
             $descripciones2 = array(); // Inicializa el array
 
@@ -1529,7 +1443,6 @@ if (!isset($_SESSION['rol'])) {
                 $descripciones4[] = $row["Descripcion"];
               }
             }
-
             // Accede a las descripciones individuales mediante índices
             $descripcion1 = $descripciones4[0];
             $descripcion2 = $descripciones4[1];
@@ -1538,13 +1451,8 @@ if (!isset($_SESSION['rol'])) {
           </div>
 
           <div class="table " data-factor="<?php echo $factor4 ?>">
-
             <?php
-
-
-
             $idFactorSeleccionado = 1;
-
             $inner = mysqli_query($conexion, "SELECT r.IdRango, r.IdFactor, r.IdPregunta, r.Minimo, r.Maximo, r.Estado,
             f.IdFactor, f.NombreFactor, f.Estado,
             p.IdPregunta, p.IdFactor, p.Descripcion, p.Estado
@@ -1552,35 +1460,21 @@ if (!isset($_SESSION['rol'])) {
             INNER JOIN factor f ON r.IdFactor = f.IdFactor
             INNER JOIN pregunta p ON r.IdPregunta = p.IdPregunta
             where f.IdFactor = $idFactorSeleccionado and p.IdPregunta = 2");
-
-
             $resultados = array(); // Inicializamos un array para almacenar los resultados
-
             while ($row = mysqli_fetch_assoc($inner)) {
-
               $minimo = $row["Minimo"];
               $maximo = $row["Maximo"];
-
               // Almacenamos los datos en el array asociativo usando el IdPregunta como clave
               $resultados[] = array(
                 "Minimo" => $minimo,
                 "Maximo" => $maximo
               );
             }
-
-
-
-
-
-
             ?>
-
-
 
             <div class="table_title">
               <p class="title_name factor">
                 <?php
-
                 echo $nombre_factor4
                 ?>
               </p>
@@ -1670,7 +1564,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val10" id="input10" step="0.01" >
+                  <input type="number" name="Val10" id="input10" step="0.01">
                 </div>
               </div>
 
@@ -1704,7 +1598,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val11" id="input11" step="0.01" >
+                  <input type="number" name="Val11" id="input11" step="0.01">
                 </div>
               </div>
 
@@ -1738,7 +1632,7 @@ if (!isset($_SESSION['rol'])) {
                 </div>
 
                 <div class="enblanco2">
-                  <input type="number" name="Val12" id="input12" step="0.01" >
+                  <input type="number" name="Val12" id="input12" step="0.01">
                 </div>
               </div>
               <?php
@@ -1818,82 +1712,32 @@ if (!isset($_SESSION['rol'])) {
                 </textarea>
               </div>
 
-
             </div>
-
-
-
             <input type="submit" class="enviar" name="cargar" value="Enviar">
           </div>
-
-
-
-
-
-
         </form>
-
-
       </div>
-
-
-
-
-
-
     </section>
-    <section class="pages" id="descubre_asig">
-      hh
-    </section>
-    <!-- CUALQUIER ERROR DE AQUI HACIA ABAJO -->
-
-    <?php
-
-    if ($rol == 0) {
-
-    ?>
-
-      <section class="pages" id="crearNovedad">
-        sss
-
-
-      </section>
-      <section class="pages" id="verSolicitudes">
-        sssss
-      </section>
-    <?php
-
-    }
-
-    ?>
-
-
-
-
-    <!-- CUALQUIER ERROR SALE DE AQUI V: HACIA ARRIBA -->
-
-
-
 
     <section class="pages" id="crearAmbiente">
       <section id="depencargos">
-        <article class="containerdc">
+        <article id='containerdependencias' class="containerdc">
           <div class='sectionheader'>
             <span>
               <hr class='linea2'>
               <h1>dependencias</h1>
             </span>
 
-            <button class='button'>añadir dependencia</button>
+            <button onclick='abrirventanaañadirD()' class='button'>añadir dependencia</button>
           </div>
-          <div class="contentD">
+          <div  class="contentD">
             <?php
             include './php/consultardependencias.php';
             ?>
           </div>
         </article>
         <hr id="linea">
-        <article class="containerdc">
+        <article id='containercargos' class="containerdc">
 
           <div class='sectionheader'>
             <span>
@@ -1904,7 +1748,7 @@ if (!isset($_SESSION['rol'])) {
 
             <button class='button'>añadir cargo</button>
           </div>
-          <div class='contentD'>
+          <div  class='contentD'>
             <?php
             include './php/consultarCargos.php';
             ?>
@@ -1912,12 +1756,6 @@ if (!isset($_SESSION['rol'])) {
         </article>
       </section>
     </section>
-
-    <section class="pages" id="crearUsuario">
-      uu
-
-    </section>
-
 
     <section class="pages" id="Usuarios">
       <div class="opciones_user">
@@ -1995,9 +1833,7 @@ if (!isset($_SESSION['rol'])) {
       </form>
       <div id="Users">
         <?php
-
         include './php/listarUsuarios.php'
-
         ?>
       </div>
 
@@ -2060,29 +1896,23 @@ if (!isset($_SESSION['rol'])) {
 
     </form>
 
-
-    <section class="novedad_celador" id="novedad" onclick="cerrarFormularioN()">
-      uu
-    </section>
-
-
   </main>
-  <script src="js/eliminareva.js"></script>
+
   <script src="js/info_ambie_pisos.js"></script>
   <script src="js/admin.js"></script>
   <script src="js/ampliarImagen.js"></script>
-  <script src="js/consultaAmbientes.js"></script>
-  <!-- <script src="js/estadoUsuario.js"></script> -->
+  <!-- <script src="js/consultaAmbientes.js"></script>
+  
   <script src="js/crearUsuario.js"></script>
   <script src="js/crearAmbiente.js"></script>
   <script src="js/cargarExcelUsuarios.js"></script>
   <script src="js/cargarExcelAmbientes.js"></script>
-  <script src="js/cargarExcelAsignacion.js"></script>
+  <script src="js/cargarExcelAsignacion.js"></script> -->
   <!-- <script src="js/mostrarimg.js"></script> -->
-  <script src="archivos_calendario/index.global.js"></script>
+  <!-- <script src="archivos_calendario/index.global.js"></script>
   <script src="archivos_calendario/index.global.min.js"></script>
   <script src="archivos_calendario/es.global.js"></script>
-  <script src="js/detalles_ambie.js"></script>
+  <script src="js/detalles_ambie.js"></script> -->
   <!-- <script src="js/slider.js"></script> -->
   <script src="js/cerrar.js"></script>
   <!-- <script src="js/CargarSlider.js"></script> -->
@@ -2093,15 +1923,18 @@ if (!isset($_SESSION['rol'])) {
   <!-- <script src="js/informeAsignacion.js"></script> -->
   <script src="js/EstadoAmbi.js"></script>
   <!-- <script src="js/validarVinculacion.js"></script> -->
-  <script src="js/abrirDescrip.js"></script>
+  <!-- <script src="js/abrirDescrip.js"></script> -->
   <!-- <script src="js/call_ambientes.js"></script> -->
   <!-- <script src="js/descargarPlantillaUsuarios.js"></script> -->
 
   <!-- function the evaluacion  -->
   <script src="js/InfoUser.js"></script>
   <script src="js/ventana_evaluado.js"></script>
-  
+  <script src="js/añadirDependencias.js"></script>
   <script src="js/Users.js"></script>
+  <script src='js/eliminarDependencias.js'></script>
+  <script src='js/eliminarCargos.js'></script>
+  <script src='js/eliminareva.js'></script>
 
 
 </body>

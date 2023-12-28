@@ -10,16 +10,9 @@ var datosUser = document.getElementById('DatosDes');
 var Form_eva = document.getElementById("form_eva");
 
 
-
-
-
 // Comprueba si la información está en el localStorage
-
 // Si la información indica que debe mostrarse con display: flex, hazlo
-
-
 // funcione para abrir y cerrar las funciones
-
 function desplegar() {
   // Asegúrate de que dark no sea null antes de cambiar su estilo
   if (dark) {
@@ -31,14 +24,9 @@ function desplegar() {
   }
 }
 
-
-
-function ocultar(id){
-
- 
-  datosUser.style.display="flex"
-  oculta.style.display="none"
-
+function ocultar(id) {
+  datosUser.style.display = "flex"
+  oculta.style.display = "none"
   var data = new URLSearchParams();
   data.append("id_evaluado", id);
 
@@ -58,14 +46,14 @@ function ocultar(id){
       // Insertar la respuesta en el campo con id "nombre1"
       document.getElementById("DatosDes").innerHTML = data.datos;
 
-    ;
-})
+      ;
+    })
 
 }
 
-function Mostrar(){
-  oculta.style.display="flex"
-  datosUser.style.display="none"
+function Mostrar() {
+  oculta.style.display = "flex"
+  datosUser.style.display = "none"
 }
 
 function closes() {
@@ -129,29 +117,75 @@ function BackAndDelete() {
 }
 
 
+// ventana de eliminar dependencias 
 
-const ventanaeliminar = document.getElementById("ventanaeliminar");
+const ventanaeliminarD = document.getElementById("ventanaeliminarD");
 
-function abrirVentanaEliminar(IdEvaluacion) {
-    // Asignar el valor de IdEvaluacion al campo oculto en el formulario
-    document.getElementById('IdEvaluacionHidden').value = IdEvaluacion;
+function abrirVentanaEliminarD(idDependencia) {
+  // Asignar el valor de IdEvaluacion al campo oculto en el formulario
+  document.getElementById('iddependencia').value = idDependencia;
 
-    // Mostrar la ventana u realizar otras operaciones si es necesario
-    var ventanaeliminar = document.getElementById("ventanaeliminar");
-    if (ventanaeliminar) {
-        ventanaeliminar.style.display = "flex";
-    }
+  // Mostrar la ventana u realizar otras operaciones si es necesario
+  var ventanaeliminarD = document.getElementById("ventanaeliminarD");
+  if (ventanaeliminarD) {
+    ventanaeliminarD.style.display = "flex";
+  }
+};
+function NOD() {
+  ventanaeliminarD.style.display = "none";
 }
 
 
-function NO(){
+
+const ventanaanñadirD = document.getElementById("ventanaañadirD");
+
+function abrirventanaañadirD() {
+
+  if (ventanaanñadirD) {
+    ventanaanñadirD.style.display = "flex";
+  }
+}
+// ventana de eliminar cargos
+
+const ventanaeliminarC = document.getElementById("ventanaeliminarC");
+
+function abrirVentanaEliminarC(idcargo) {
+  // Asignar el valor de IdEvaluacion al campo oculto en el formulario
+  document.getElementById('idcargo').value = idcargo;
+
+  // Mostrar la ventana u realizar otras operaciones si es necesario
+  var ventanaeliminarCa = document.getElementById("ventanaeliminarC");
+  if (ventanaeliminarCa) {
+    ventanaeliminarCa.style.display = "flex";
+  }
+};
+function NOC() {
+  ventanaeliminarC.style.display = "none";
+}
+// ventana eliminar evaluacion regsitradas
+const ventanaeliminar = document.getElementById("ventanaeliminar");
+
+function abrirVentanaEliminar(IdEvaluacion) {
+  // Asignar el valor de IdEvaluacion al campo oculto en el formulario
+  document.getElementById('IdEvaluacionHidden').value = IdEvaluacion;
+
+  // Mostrar la ventana u realizar otras operaciones si es necesario
+  var ventanaeliminar = document.getElementById("ventanaeliminar");
+  if (ventanaeliminar) {
+    ventanaeliminar.style.display = "flex";
+  }
+}
+function NO() {
   ventanaeliminar.style.display = "none";
 }
 
 
+
+
+
 document.getElementById("Cancelar").addEventListener("click", BackAndDelete);
 
-function abrirVentana(){
+function abrirVentana() {
   VentanaAlerta.style.display = "flex";
 }
 
@@ -167,9 +201,9 @@ var estado = document.getElementById('modo');
 
 
 
-function editEva(dni){
+function editEva(dni) {
   var dniis = dni;
-  if(estado.value === 'agregar'){
+  if (estado.value === 'agregar') {
     estado.value = 'editar'
   }
 
@@ -224,9 +258,9 @@ $(document).ready(function () {
 function ValidarEnvio() {
   var idEva = "";
 
-  if(document.getElementById("MedicoFinal").value){
+  if (document.getElementById("MedicoFinal").value) {
     idEva = document.getElementById("MedicoFinal").value;
-  }else if (document.getElementById("empleadoEva").value){
+  } else if (document.getElementById("empleadoEva").value) {
     idEva = document.getElementById("empleadoEva").value
   }
   var dates1 = document.getElementById("date1").value;
@@ -281,8 +315,8 @@ var contenedorId1 = "radio1";
 var contenedor1 = document.getElementById(contenedorId1);
 
 // Agregar un manejador de eventos a cada input
-inputs1.forEach(function(input) {
-  input.addEventListener("blur", function() {
+inputs1.forEach(function (input) {
+  input.addEventListener("blur", function () {
     validarInputs(inputs1, contenedor1);
   });
 });
@@ -295,8 +329,8 @@ var contenedorId2 = "radio2";
 var contenedor2 = document.getElementById(contenedorId2);
 
 // Agregar un manejador de eventos a cada input
-inputs2.forEach(function(input) {
-  input.addEventListener("blur", function() {
+inputs2.forEach(function (input) {
+  input.addEventListener("blur", function () {
     validarInputs(inputs2, contenedor2);
   });
 });
@@ -309,8 +343,8 @@ var contenedorId3 = "radio3";
 var contenedor3 = document.getElementById(contenedorId3);
 
 // Agregar un manejador de eventos a cada input
-inputs3.forEach(function(input) {
-  input.addEventListener("blur", function() {
+inputs3.forEach(function (input) {
+  input.addEventListener("blur", function () {
     validarInputs(inputs3, contenedor3);
   });
 });
@@ -323,8 +357,8 @@ var contenedorId4 = "radio4";
 var contenedor4 = document.getElementById(contenedorId4);
 
 // Agregar un manejador de eventos a cada input
-inputs4.forEach(function(input) {
-  input.addEventListener("blur", function() {
+inputs4.forEach(function (input) {
+  input.addEventListener("blur", function () {
     validarInputs(inputs4, contenedor4);
   });
 });
@@ -338,8 +372,8 @@ var contenedorId0 = "radio0";
 var contenedor0 = document.getElementById(contenedorId0);
 
 // Agregar un manejador de eventos a cada input
-inputs0.forEach(function(input) {
-  input.addEventListener("blur", function() {
+inputs0.forEach(function (input) {
+  input.addEventListener("blur", function () {
     validarInputs(inputs0, contenedor0);
   });
 });
@@ -349,12 +383,12 @@ inputs0.forEach(function(input) {
 
 function validarInputs(inputs, contenedor) {
   // Obtener los valores de los inputs y recortar espacios en blanco
-  var valoresInputs = inputs.map(function(input) {
+  var valoresInputs = inputs.map(function (input) {
     return input.value.trim();
   });
 
   // Verificar si todos los campos están llenos
-  var todosLlenos = valoresInputs.every(function(valor) {
+  var todosLlenos = valoresInputs.every(function (valor) {
     return valor !== "";
   });
 
@@ -393,7 +427,7 @@ function EnviarFechas(dates1, dates2, id) {
     .then((data) => {
       // Manejar la respuesta del servidor
       console.log(data);
-      var fechaF =  document.getElementsByClassName('fechaF')[1];
+      var fechaF = document.getElementsByClassName('fechaF')[1];
       // Insertar la respuesta en el campo con id "nombre1"
       document.getElementById("nombre1").value = data.nombre1;
       document.getElementById("nombre2").value = data.nombre2;
@@ -551,13 +585,13 @@ document
       .then((data) => {
         // Manejar los datos obtenidos del servidor
         console.log(data);
-        if(data){
+        if (data) {
           document.getElementById("form_eva").reset();
           volver();
           restablecerEstadoOriginal();
-          notaTotal.textContent =  " ";
+          notaTotal.textContent = " ";
         }
-     
+
       })
       .catch((error) => {
         // Manejar errores en la solicitud
@@ -565,37 +599,37 @@ document
       });
   });
 
-      // Obtener el formulario y el elemento <p> por su ID
-      var formulario = document.getElementById('form_eva');
-      var notaTotal = document.getElementById('NotaTotal');
+// Obtener el formulario y el elemento <p> por su ID
+var formulario = document.getElementById('form_eva');
+var notaTotal = document.getElementById('NotaTotal');
 
-      // Asociar la función al evento input de todos los elementos numéricos dentro del formulario
-      formulario.addEventListener('input', actualizarNotas);
+// Asociar la función al evento input de todos los elementos numéricos dentro del formulario
+formulario.addEventListener('input', actualizarNotas);
 
-      function actualizarNotas(event) {
-          // Verificar que el evento provenga de un input de tipo número y que no sea el input con el ID "dni"
-       
-              // Obtener todos los inputs numéricos dentro del formulario
-              var inputsNumericos = formulario.querySelectorAll('input[type="number"]');
+function actualizarNotas(event) {
+  // Verificar que el evento provenga de un input de tipo número y que no sea el input con el ID "dni"
 
-              // Calcular la suma de los valores
-              var sumaTotal = 0;
-              inputsNumericos.forEach(function(input) {
-                  sumaTotal += parseFloat(input.value) || 0;
-              });
-              var ValorReal = sumaTotal.toFixed(2)
-              // Asignar el resultado al contenido del elemento <p>
-              notaTotal.textContent =  ValorReal;
-          
-      }
+  // Obtener todos los inputs numéricos dentro del formulario
+  var inputsNumericos = formulario.querySelectorAll('input[type="number"]');
+
+  // Calcular la suma de los valores
+  var sumaTotal = 0;
+  inputsNumericos.forEach(function (input) {
+    sumaTotal += parseFloat(input.value) || 0;
+  });
+  var ValorReal = sumaTotal.toFixed(2)
+  // Asignar el resultado al contenido del elemento <p>
+  notaTotal.textContent = ValorReal;
+
+}
 
 
-      function restablecerEstadoOriginal() {
-        // Puedes definir un array que contenga todos los contenedores y recorrerlos para restablecer su estado original
-        var contenedores = [contenedor1, contenedor2, contenedor3, contenedor4, contenedor0];
-      
-        contenedores.forEach(function(contenedor) {
-          contenedor.classList.remove("check");
-          contenedor.classList.add("check2");
-        });
-      }
+function restablecerEstadoOriginal() {
+  // Puedes definir un array que contenga todos los contenedores y recorrerlos para restablecer su estado original
+  var contenedores = [contenedor1, contenedor2, contenedor3, contenedor4, contenedor0];
+
+  contenedores.forEach(function (contenedor) {
+    contenedor.classList.remove("check");
+    contenedor.classList.add("check2");
+  });
+}
