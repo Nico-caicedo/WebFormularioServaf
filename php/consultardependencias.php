@@ -7,21 +7,19 @@ if (mysqli_num_rows($resul) > 0) {
         $dependencia = $fila["Dependencia"];
         echo "<article class='containerD'>";
         echo "<div class='titleD'>";
-        echo "<form method='post' class='formD' onsubmit='sendform(event,formD,./php/consultarCargosDependencias.php)'>";
-        echo "<input type='hidden' name='nuevadependencia' value='$dependencia'>";
-        echo "<button type='submit'>$dependencia</button>";
-        echo "</form>";
+        echo "<p>$dependencia</p>";
         echo "</div>";
         echo "<article class='btndepdenycar'>";
-        echo "<form method='post' class='updateD' onsubmit='sendform(event,updateD,./php/actualizarDependencias.php)'>";
-        echo "<input type='hidden' name='updateD' value='$UPDATE'>";
-        echo "<button type='submit'><img src='./img/editar.png' class='iconss' alt=''></button>";
-        echo "</form>";
-        echo "<form method='post' class='updateD' onsubmit='sendform(event,updateD,./php/actualizarDependencias.php)'>";
-        echo "<input type='hidden' name='updateD' value='$UPDATE'>";
-        echo "<button type='submit'><img src='./img/eliminar.png' class='iconss' alt=''></button>";
-        echo "</form>";
+        
+        echo "<div onclick='editdependencia({$fila['IdDependencia']})'><img src='./img/editar.png' class='iconss' alt=''></div>";
+
+
+        echo "<div onclick='abrirVentanaEliminarD({$fila['IdDependencia']})'><img src='./img/eliminar.png' class='iconss' alt=''></div>";
         echo "</article>";
         echo "</article>";
     }
+} else {
+    // Si no hay registros, mostrar el mensaje correspondiente
+    echo "No hay dependencias registradas.";
 }
+?>

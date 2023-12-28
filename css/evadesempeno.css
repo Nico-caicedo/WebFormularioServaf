@@ -545,14 +545,50 @@ para desepeño laboral*/
   font-size: 1.1em;
   border-radius: 5px;
 }
+/* ventana eliminar dependencias */
+#ventanaeliminarD{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: #1c1e217e;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;  
+  z-index: 5;
+}
+/* ventana eliminar cargos */
+#ventanaeliminarC{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: #1c1e217e;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;  
+  z-index: 5;
+}
 
+#ventanaañadirD{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: #1c1e217e;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;  
+  z-index: 5;
+}
 #ventanaeliminar{
   display: none;
   justify-content: center;
   align-items: center;
-
   background-color: #1c1e217e;
-  
   position: fixed;
   top: 0;
   bottom: 0;
@@ -582,7 +618,8 @@ para desepeño laboral*/
 
 
 #VentanaConfirm{
-  height: 180px;
+  /* height: 180px; */
+  padding: 1em;
   width: 40%;
   background-color: white;
   border-radius: 5px;
@@ -590,7 +627,7 @@ para desepeño laboral*/
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 25px;
+  gap: 15px;
 }
 
 

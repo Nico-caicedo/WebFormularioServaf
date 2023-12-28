@@ -10,7 +10,7 @@ function sendForm(event, formeliminareva, link) {
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
-            if (data.status) {
+            if (data.status=== true || data.status === 'success') {
                 // Actualizar el contenido de la ventana después de eliminar la evaluación
                 cerrarVentanaEliminar()
                 actualizarContenidoVentana();
@@ -48,8 +48,6 @@ function actualizarContenidoVentana() {
 
 
 function cerrarVentanaEliminar() {
-
-
     // Mostrar la ventana u realizar otras operaciones si es necesario
     var ventanaeliminar = document.getElementById("ventanaeliminar");
     if (ventanaeliminar) {
