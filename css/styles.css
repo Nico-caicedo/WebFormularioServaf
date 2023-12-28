@@ -121,6 +121,13 @@ input {
 	padding: 12px 15px;
 	margin: 8px 0;
 	width: 100%;
+	height: 50px;
+	font-size: 1.2rem;
+	
+}
+
+input[type='submit']{
+	font-size: 1.2rem;
 }
 .form-container{
 	width: 50%;
@@ -182,7 +189,7 @@ hr{
 @media only screen and (max-width: 600px) {
 	body {
 
-		background-image: url(https://1.bp.blogspot.com/-Bcg79gHKB0Q/XwXV2qKTYZI/AAAAAAAAFWg/MZoTNEj5qGYw7-msO8v2h_Yry4ye8TZVwCLcBGAsYHQ/s1600/0301%2BCAQUET%25C3%2581%2BNUEVO%2BCENTRO%2BDE%2BLA%2BAMAZON%25C3%258DA%2BFLORENCIA-3672.jpg);
+		background-image: url(../img/SERVAF_img.jpeg);
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;

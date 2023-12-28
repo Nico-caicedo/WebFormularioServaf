@@ -373,6 +373,8 @@ if (!isset($_SESSION['rol'])) {
   </aside>
 
   <main id="main">
+      
+
     <section class="pages" id="Inicio" style="display:flex;">
       <div class="inicio_modif">
         <img src="./img/ServafPerfil.jpg" alt="">
