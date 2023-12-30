@@ -2,7 +2,7 @@
 include './Conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $dependencia = $_POST['nombreD'];
+    $dependencia = mysqli_real_escape_string($conexion, $_POST['nombreD']);
     $estado = 1; // Asegúrate de tener el valor del estado
 
     // Verificar si el campo de dependencia está vacío

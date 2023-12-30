@@ -1,7 +1,8 @@
+
 // js para el formm y mostrar los mensajes del php eliminardependecias
-function sendFormeliminarD(event, eliminarD, link) {
+function sendFormañadirC(event, añadirC, link) {
     event.preventDefault();
-    const form = document.getElementById(eliminarD);
+    const form = document.getElementById(añadirC);
     const formData = new FormData(form);
 
     fetch(link, {
@@ -12,14 +13,12 @@ function sendFormeliminarD(event, eliminarD, link) {
         .then((data) => {
             console.log(data);
             if (data.status === true || data.status === 'success') {
-                cerrarVentanaEliminarD();
-                $('#selectcargo').load(location.href + ' #selectcargo>*', '');
-                $('#selector').load(location.href + ' #selector>*', '');
+                cerrarVentanaanadirC();
+                
                 // Actualizar el contenido de la ventana después de eliminar la evaluación
-                $('#containerdependencias').load(location.href + ' #containerdependencias>*', '');
+                $('#containercargos').load(location.href + ' #containercargos>*', '');
                 toastr.success(data.message);
             } else if (data.status === false || data.status === 'warning') {
-                cerrarVentanaEliminarD();
                 toastr.warning(data.message);
             }else if (data.status === false || data.status === 'error') {
                 toastr.error(data.message);
@@ -28,10 +27,10 @@ function sendFormeliminarD(event, eliminarD, link) {
         .catch((error) => console.error('Error:', error));
 }
 
-function cerrarVentanaEliminarD() {
+function cerrarVentanaanadirC() {
     // Mostrar la ventana u realizar otras operaciones si es necesario
-    var ventanaeliminarD = document.getElementById("ventanaeliminarD");
-    if (ventanaeliminarD) {
-        ventanaeliminarD.style.display = "none";
+    const ventanaañadirC  = document.getElementById("ventanaañadirC");
+    if (ventanaañadirC) {
+        ventanaañadirC.style.display = "none";
     }
 }

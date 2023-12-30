@@ -1484,6 +1484,8 @@ label {
 .active-nav {
   background-color: var(--resalt);
   transform: scale(1.01);
+  padding: 2em;
+  text-align: left;
 }
 
 .active-nav-p {

@@ -1,6 +1,6 @@
 <?php
 require_once 'Conexion.php';
-$resul = mysqli_query($conexion, "SELECT * FROM dependencias");
+$resul = mysqli_query($conexion, "SELECT * FROM dependencias ORDER BY IdDependencia DESC");
 if (mysqli_num_rows($resul) > 0) {
     while ($fila = mysqli_fetch_assoc($resul)) {
         $UPDATE = $fila['IdDependencia'];
@@ -10,10 +10,7 @@ if (mysqli_num_rows($resul) > 0) {
         echo "<p>$dependencia</p>";
         echo "</div>";
         echo "<article class='btndepdenycar'>";
-        
-        echo "<div onclick='editdependencia({$fila['IdDependencia']})'><img src='./img/editar.png' class='iconss' alt=''></div>";
-
-
+        echo "<div onclick='abrirventanaeditarD({$fila['IdDependencia']}, " . json_encode($fila['Dependencia']) . ")'><img src='./img/editar.png' class='iconss' alt=''></div>";
         echo "<div onclick='abrirVentanaEliminarD({$fila['IdDependencia']})'><img src='./img/eliminar.png' class='iconss' alt=''></div>";
         echo "</article>";
         echo "</article>";

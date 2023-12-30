@@ -1,6 +1,6 @@
 
 // js para el formm y mostrar los mensajes del php eliminardependecias
-function sendForm(event, eliminarC, link) {
+function sendFormeliminarC(event, eliminarC, link) {
     event.preventDefault();
     const form = document.getElementById(eliminarC);
     const formData = new FormData(form);

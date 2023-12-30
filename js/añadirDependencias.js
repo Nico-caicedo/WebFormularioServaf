@@ -1,6 +1,6 @@
 
 // js para el formm y mostrar los mensajes del php eliminardependecias
-function sendForm(event, añadirD, link) {
+function sendFormañadirD(event, añadirD, link) {
     event.preventDefault();
     const form = document.getElementById(añadirD);
     const formData = new FormData(form);
@@ -14,6 +14,8 @@ function sendForm(event, añadirD, link) {
             console.log(data);
             if (data.status === true || data.status === 'success') {
                 cerrarVentanaanadirD();
+                $('#selectcargo').load(location.href + ' #selectcargo>*', '');
+                $('#selector').load(location.href + ' #selector>*', '');
                 // Actualizar el contenido de la ventana después de eliminar la evaluación
                 $('#containerdependencias').load(location.href + ' #containerdependencias>*', '');
                 toastr.success(data.message);

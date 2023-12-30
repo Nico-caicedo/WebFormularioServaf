@@ -24,7 +24,7 @@ if (!isset($_SESSION['rol'])) {
   <link rel="stylesheet" href="./css/ventana.css" />
   <link rel="stylesheet" href="./css/evadesempeno.css" />
   <link rel="stylesheet" href="./css/dependencias.css">
-  <script src="https://kit.fontawesome.com/0015840e45.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/0015840e45.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
@@ -218,14 +218,18 @@ if (!isset($_SESSION['rol'])) {
       </div>
     </div>
 
-    <!-- section ventana formulario añadir -->
+    <!-- section ventana formulario añadir  -->
     <div id="ventanaañadirD">
       <div id="VentanaConfirm">
-        <h3>Nueva Dependencia</h3>
+        <div class="cerrarbutton">
+          <h3>Nueva Dependencia</h3>
+          <button id="closeventanaañadirC" onclick="closeventanaañadirD()" class="cerrar"><i class="fa-solid fa-xmark "></i></button>
+        </div>
+
         <p class="text_delete">
           Completa el campo</p>
         <div class="botos">
-          <form id='añadirD' method='post' onsubmit="sendForm(event,'añadirD','./php/añadirDependencia.php')">
+          <form id='añadirD' method='post' onsubmit="sendFormañadirD(event,'añadirD','./php/añadirDependencia.php')">
             <!-- Campo oculto para el IdEvaluacion -->
             <div class="form-control">
               <input type="text" name='nombreD' required="">
@@ -235,14 +239,139 @@ if (!isset($_SESSION['rol'])) {
               </label>
             </div>
             <!-- Botón para enviar el formulario -->
-            <button type='submit'  class="btn-17">
-              <span class="text-container">
-                <span class="text">Guardar</span>
-              </span>
+            <button class="btn">
+              <span class="btn-text-one">Guardar</span>
+              <span class="btn-text-two">Guardar</span>
             </button>
           </form>
 
         </div>
+      </div>
+    </div>
+    <!-- section editar dependencia -->
+    <div id="ventanaeditarD">
+      <div id="VentanaConfirm">
+        <div class="cerrarbutton">
+          <h3>Editar Dependencia</h3>
+          <button id="closeventanaañadirC" onclick="cerrarVentanaeditarD()" class="cerrar"><i class="fa-solid fa-xmark "></i></button>
+        </div>
+
+        <div class="botos">
+          <form id='editarD' method='post' onsubmit="sendFormeditarD(event,'editarD','./php/editarDependencia.php')">
+            <input type="hidden" name='idDependencia' id='idDependencia'>
+            <div class="form-control">
+              <input type="text" name='nombreeditadoD' required="">
+              <label>
+                <span style="transition-delay:0ms">E</span><span style="transition-delay:50ms">d</span><span style="transition-delay:100ms">i</span><span style="transition-delay:150ms">t</span><span style="transition-delay:200ms">a</span><span style="transition-delay:250ms">r</span>
+                <span style="transition-delay:300ms">D</span><span style="transition-delay:350ms">e</span><span style="transition-delay:400ms">p</span><span style="transition-delay:450ms">e</span><span style="transition-delay:500ms">n</span><span style="transition-delay:550ms">d</span><span style="transition-delay:600ms">e</span><span style="transition-delay:650ms">n</span><span style="transition-delay:700ms">c</span><span style="transition-delay:750ms">i</span><span style="transition-delay:800ms">a</span>
+              </label>
+            </div>
+            <!-- Botón para enviar el formulario -->
+            <button class="btn">
+              <span class="btn-text-one">Guardar</span>
+              <span class="btn-text-two">Guardar</span>
+            </button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+    <!-- section ventana formulario añadir cargo -->
+    <div id="ventanaañadirC">
+      <div id="VentanaConfirm">
+        <div class="cerrarbutton">
+          <h3>Nuevo Cargo</h3>
+          <button id="closeventanaañadirC" onclick="closeventanaañadirC()" class="cerrar"><i class="fa-solid fa-xmark "></i></button>
+        </div>
+        <section class='container'>
+
+          <!-- <p class="text_delete">
+            seleciona una dependencia</p> -->
+          <div class="botos">
+            <form id='añadirC' method='post' onsubmit="sendFormañadirC(event,'añadirC','./php/añadirCargos.php')">
+              <!-- Campo oculto para el IdEvaluacion -->
+              <article class="inputsCARGOS">
+                <!-- <div  class='titleCD' > -->
+                <!-- <label for="dependencia">dependencia</label> -->
+                <select name="iddependencia" id='selectcargo' class="inputselect">
+                  <?php
+                  include("php/Conexion.php");
+                  $sql = "SELECT IdDependencia, Dependencia FROM dependencias";
+                  $resultado = mysqli_query($conexion, $sql);
+                  while ($fila = mysqli_fetch_assoc($resultado)) {
+                    echo '<option value="' . $fila['IdDependencia'] . '">' . $fila['Dependencia'] . '</option>';
+                  }
+                  ?>
+
+                </select>
+                <!-- </div> -->
+                <div class="input">
+                  <input type="text" name="nombreC" class="inputc" required="" autocomplete="off">
+                  <label for="name">Nombre Cargo</label>
+                </div>
+              </article>
+              <article class='containertext'>
+                <!-- <label for="textareaField"> Descripcion:</label> -->
+                <textarea id="textareaField" name="descripcion" class="textarea-field" placeholder="Ingresa la descripcion del cargo" rows='5' cols='5'></textarea>
+              </article>
+              <!-- Botón para enviar el formulario -->
+              <button class="btn">
+                <span class="btn-text-one">Guardar</span>
+                <span class="btn-text-two">Guardar</span>
+              </button>
+            </form>
+
+          </div>
+        </section>
+      </div>
+    </div>
+
+
+    <!-- section editar cargo -->
+    <div id="ventanaeditarC">
+      <div id="VentanaConfirm">
+        <div class="cerrarbutton">
+          <h3>Editar Cargo</h3>
+          <button id="closeventanaañadirC" onclick="cerrarVentanaeditarC()" class="cerrar"><i class="fa-solid fa-xmark "></i></button>
+        </div>
+
+
+        <div class="botos">
+          <form id='editarC' method='post' onsubmit="sendFormeditarC(event,'editarC','./php/editarCargos.php')">
+            <input type="hidden" name='idCargo' id='idCargo'>
+            <article class="inputsCARGOS">
+
+              <!-- <div  class='titleCD' > -->
+              <!-- <label for="dependencia">dependencia</label> -->
+              <select name="iddependenciaC" id='selector' class="inputselect">
+                <?php
+                include("php/Conexion.php");
+                $sql = "SELECT IdDependencia, Dependencia FROM dependencias";
+                $resultado = mysqli_query($conexion, $sql);
+                while ($fila = mysqli_fetch_assoc($resultado)) {
+                  echo '<option value="' . $fila['IdDependencia'] . '">' . $fila['Dependencia'] . '</option>';
+                }
+                ?>
+
+              </select>
+              <!-- </div> -->
+              <div class="input">
+                <input type="text" name="nombreeditadoC" class="inputc" required="" autocomplete="off">
+                <label for="name">Nombre Cargo</label>
+              </div>
+            </article>
+            <article class='containertext'>
+              <!-- <label for="textareaField"> Descripcion:</label> -->
+              <textarea id="descrip" name="descripcion" class="textarea-field" placeholder="Ingresa la descripcion del cargo" rows='5' cols='5'></textarea>
+            </article>
+            <!-- Botón para enviar el formulario -->
+            <button class="btn">
+              <span class="btn-text-one">Guardar</span>
+              <span class="btn-text-two">Guardar</span>
+            </button>
+          </form>
+        </div>
+        </section>
       </div>
     </div>
 
@@ -253,7 +382,7 @@ if (!isset($_SESSION['rol'])) {
         <p class="text_delete">
           deseas eliminar esta Dependencia?</p>
         <div class="botos">
-          <form id='eliminarD' method='post' onsubmit="sendForm(event,'eliminarD','./php/eliminarDependencias.php')">
+          <form id='eliminarD' method='post' onsubmit="sendFormeliminarD(event,'eliminarD','./php/eliminarDependencias.php')">
             <!-- Campo oculto para el IdEvaluacion -->
             <input type='hidden' name='eliminarD' id='iddependencia' value=''>
             <!-- Botón para enviar el formulario -->
@@ -271,7 +400,7 @@ if (!isset($_SESSION['rol'])) {
         <p class="text_delete">
           deseas eliminar este cargo?</p>
         <div class="botos">
-          <form id='eliminarC' method='post' onsubmit="sendForm(event,'eliminarC','./php/eliminarCargos.php')">
+          <form id='eliminarC' method='post' onsubmit="sendFormeliminarC(event,'eliminarC','./php/eliminarCargos.php')">
             <!-- Campo oculto para el IdEvaluacion -->
             <input type='hidden' name='eliminarC' id='idcargo' value=''>
             <!-- Botón para enviar el formulario -->
@@ -1730,7 +1859,7 @@ if (!isset($_SESSION['rol'])) {
 
             <button onclick='abrirventanaañadirD()' class='button'>añadir dependencia</button>
           </div>
-          <div  class="contentD">
+          <div class="contentD">
             <?php
             include './php/consultardependencias.php';
             ?>
@@ -1746,9 +1875,9 @@ if (!isset($_SESSION['rol'])) {
               <h1>cargos</h1>
             </span>
 
-            <button class='button'>añadir cargo</button>
+            <button onclick='abrirventanaañadirC()' class='button'>añadir cargo</button>
           </div>
-          <div  class='contentD'>
+          <div class='contentD'>
             <?php
             include './php/consultarCargos.php';
             ?>
@@ -1762,75 +1891,140 @@ if (!isset($_SESSION['rol'])) {
         <input type="text" id="searchInput" placeholder="Nombre">
 
         <div>
-          <img id="add" src="./img/add.png" alt="">
-
+          <img id="add" src="./img/add.png" alt="" onclick='abrirventanaañadirU()'>
         </div>
       </div>
-      <form id="addUser">
-        <h1>Datos de Usuario</h1>
-        <div id="campos">
-
-          <div>
-            <p>Primer nombre</p>
-            <input type="text" name="Name1">
-          </div>
-
-          <div>
-            <p>Segundo nombre</p>
-            <input type="text" name="Name2">
-          </div>
-
-          <div>
-            <p>Primer Apellido</p>
-            <input type="text" name="Apellido1">
-          </div>
-          <div>
-            <p>Segundo Apellido</p>
-            <input type="text" name="Apellido2">
-          </div>
-
-          <div>
-            <p>TIpo de Documento</p>
-            <select name="tipoDocuento" id="">
-              <option value="">Documento identidad</option>
-              <option value="">Tarjeta de identidad</option>
-            </select>
-
-            <input type="number" name="numeroDni">
-          </div>
-          <div>
-            <p>Correo</p>
-            <input type="text" name="telefono">
-          </div>
-          <div>
-            <div>
-              <img src="./imgusuario/sin_foto.png" id="previewImage" alt="">
-            </div>
-            <input type="file" name="img" id="fileInput" accept="image/*">
-          </div>
-
-          <div>
-            <p>Cargo</p>
-            <select name="" id="">
-              <option value="">prueba 1</option>
-            </select>
-          </div>
-
-          <div>
-            <p>Antiguedad</p>
-            <input type="text" name="" id="">
-          </div>
-
-          <div>
-            <p>Tiempo Servicio</p>
-            <input type="text" name="" id="">
-          </div>
 
 
+      <div id="ventanaañadirU">
+        <div id="VentanaConfirm">
+          <div class="cerrarbutton">
+            <h3>Nuevo Usuario</h3>
+            <button id="closeventanaañadirC" onclick="closeventanaañadirU()" class="cerrar"><i class="fa-solid fa-xmark "></i></button>
+          </div>
+          <div class="botos">
+            <form id="addUser">
+              <div id="campos">
+                <article class='camposformuser'>
+                  <div class='camposinputs'>
+                    <input required="" type="text" name="Name1" class="input">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Primer Nombre</label>
+
+                  </div>
+
+                  <div class='camposinputs'>
+                    <input required="" type="text" name="Name2" class="input">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Segundo Nombre</label>
+
+                  </div>
+
+                  <div class='camposinputs'>
+                    <input required="" type="text" name="apellido1" class="input">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Primer Apellido</label>
+
+                  </div>
+                  <div class='camposinputs'>
+                    <input required="" type="text" name="apellido2" class="input">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Segundo Apellido</label>
+                  </div>
+                </article>
+                <article class='camposformuser'>
+
+                  <div class='camposinputs'>
+                    <input required="" type="text" name="numeroDni" class="input">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Numero Documento</label>
+                  </div>
+                  <div class='camposinputs'>
+                    <input required="" type="text" name="correo" class="input">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Correo</label>
+                  </div>
+
+                  <div class='camposinputs'>
+                    <input required="" type="text" name="antiguedad" class="input">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Antiguedad</label>
+
+                  </div>
+
+                  <div class='camposinputs'>
+                    <input required="" type="text" name="tiemposervicio" class="input">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Tiempo Servicio</label>
+                  </div>
+                </article>
+                <article class='camposformuser'>
+                  <div class='camposinputs'>
+                    <input required="" type="text" name="telefono" class="input">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Telefono</label>
+                  </div>
+                  <div class='camposinputs'>
+                    <input required="" type="text" name="contraseña" class="input">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Contraseña</label>
+                  </div>
+                  <div class='camposinputs'>
+                    <select name="tipoDocuento" id="" class='inputs'>
+                      <option value="">Documento identidad</option>
+                      <option value="">Tarjeta de identidad</option>
+                    </select>
+                  </div>
+                  <div class='camposinputs'>
+                    <select name="cargo" id='selectcargo' class='inputs'>
+                      <?php
+                      include("php/Conexion.php");
+                      $sql = "SELECT IdCargo, Cargo FROM Cargos";
+                      $resultado = mysqli_query($conexion, $sql);
+                      while ($fila = mysqli_fetch_assoc($resultado)) {
+                        echo '<option value="' . $fila['IdCargo'] . '">' . $fila['Cargo'] . '</option>';
+                      }
+                      ?>
+
+                    </select>
+                  </div>
+
+                </article>
+                <article class='camposformuser'>
+                  <div class='camposinputs'>
+                    <div >
+                      <img src="./imgusuario/sin_foto.png" id="previewImage" alt="">
+                    </div>
+                    <input type="file" name="fotoperfil" id="fileInput" class="selectorimg" accept="image/*">
+                  </div>
+                </article>
+              </div>
+              <button class="btn">
+                <span class="btn-text-one">Guardar</span>
+                <span class="btn-text-two">Guardar</span>
+              </button>
+            </form>
+
+          </div>
         </div>
+      </div>
 
-        <input type="submit" name="" value="Enviar" id="">
-      </form>
+
+
+
+
+
+
       <div id="Users">
         <?php
         include './php/listarUsuarios.php'
@@ -1931,6 +2125,9 @@ if (!isset($_SESSION['rol'])) {
   <script src="js/InfoUser.js"></script>
   <script src="js/ventana_evaluado.js"></script>
   <script src="js/añadirDependencias.js"></script>
+  <script src="js/añadirCargos.js"></script>
+  <script src='js/editarDependencias.js'></script>
+  <script src='js/editarCargos.js'></script>
   <script src="js/Users.js"></script>
   <script src='js/eliminarDependencias.js'></script>
   <script src='js/eliminarCargos.js'></script>

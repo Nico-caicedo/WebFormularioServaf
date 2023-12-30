@@ -584,6 +584,61 @@ para desepeño laboral*/
   right: 0;  
   z-index: 5;
 }
+
+#ventanaeditarD{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: #1c1e217e;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;  
+  z-index: 5;
+}
+
+#ventanaeditarC{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: #1c1e217e;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;  
+  z-index: 5;
+}
+
+#ventanaañadirC{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: #1c1e217e;
+  backdrop-filter: blur(1.1px) brightness(0.7);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;  
+  z-index: 5;
+}
+
+#ventanaañadirU{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: #1c1e217e;
+  backdrop-filter: blur(1.1px) brightness(0.7);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;  
+  z-index: 5;
+}
+
 #ventanaeliminar{
   display: none;
   justify-content: center;
@@ -620,8 +675,9 @@ para desepeño laboral*/
 #VentanaConfirm{
   /* height: 180px; */
   padding: 1em;
-  width: 40%;
+  /* width: 40%; */
   background-color: white;
+  
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -1014,30 +1070,153 @@ para desepeño laboral*/
 }
 
 #addUser{
-display: none;
+display: flex;
 flex-direction: column;
-  position: fixed;
-  background-color: white ;
-  width: 60%;
-  height: 70%;
-  top: 20%;
-  z-index: 4;
+justify-content: center;
+gap: 10px;
+align-items: center;
 }
 
 
 #campos{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-grid-template-rows: repeat(3, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 10px;
-  width: 100%;
-  height: 80%;
 }
+
+.camposformuser{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.camposinputs{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+.inputs{
+  display: flex;
+  width: 205px;
+  font-family:'Courier New', Courier, monospace ;
+  font-size: 15px;
+  
+  
+}
+ 
+ .input {
+  font-size: 15px;
+  padding: .5em;
+  display: flex;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #515151;
+  background: transparent;
+ }
+ 
+ .input:focus {
+  outline: none;
+ }
+ 
+ label {
+  color: #999;
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+ }
+ 
+ .input:focus ~ label, .input:valid ~ label {
+  top: -20px;
+  font-size: 14px;
+  color: #5264AE;
+ }
+ 
+ .bar {
+  position: relative;
+  display: block;
+  width: 200px;
+ }
+ 
+ .bar:before, .bar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #5264AE;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+ }
+ 
+ .bar:before {
+  left: 50%;
+ }
+ 
+ .bar:after {
+  right: 50%;
+ }
+ 
+ .input:focus ~ .bar:before, .input:focus ~ .bar:after {
+  width: 50%;
+ }
+ 
+ .highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+ }
+ 
+ .input:focus ~ .highlight {
+  animation: inputHighlighter 0.3s ease;
+ }
+ 
+ @keyframes inputHighlighter {
+  from {
+   background: #5264AE;
+  }
+ 
+  to {
+   width: 0;
+   background: transparent;
+  }
+ }
+
 
 
 #previewImage{
-  width: 120px;
-  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+}
+
+.selectorimg {
+  height: 3em;
+  padding: 0.5em; /* Ajusta el relleno según sea necesario */
+  border-radius: 0.375rem; /* Ajusta el radio del borde según sea necesario */
+  border: 1px solid rgba(209, 213, 219); /* Color del borde */
+  background-color: rgba(255, 255, 255, 0.5); /* Color de fondo con transparencia */
+  backdrop-filter: blur(8px); /* Aplica un desenfoque */
+  -webkit-backdrop-filter: blur(8px); /* Para compatibilidad con algunos navegadores */
+  /* Otros estilos según sea necesario */
 }
 
 #searchInput{
