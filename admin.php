@@ -24,7 +24,7 @@ if (!isset($_SESSION['rol'])) {
   <link rel="stylesheet" href="./css/ventana.css" />
   <link rel="stylesheet" href="./css/evadesempeno.css" />
   <link rel="stylesheet" href="./css/dependencias.css">
-    <script src="https://kit.fontawesome.com/0015840e45.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/0015840e45.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
@@ -48,10 +48,6 @@ if (!isset($_SESSION['rol'])) {
     </style>";
   }
   ?>
-
-
-
-
   <title>Panel administrador</title>
 </head>
 
@@ -66,7 +62,7 @@ if (!isset($_SESSION['rol'])) {
     <div class="custom-loader"></div>
   </div> -->
 
-  <div id="menuResponsive">
+  <!-- <div id="menuResponsive">
     <h2><img src="img/sena.png" alt="" class="sena"> Asignación ambiente</h2>
     <div id="iconoMenu">
       <div id="desplegarMenu" class="">
@@ -78,7 +74,7 @@ if (!isset($_SESSION['rol'])) {
       </div>
 
     </div>
-  </div>
+  </div> -->
 
 
   <!-- Ventana editar perfil -->
@@ -106,57 +102,76 @@ if (!isset($_SESSION['rol'])) {
   }
   ?>
 
-  <div id="modal" class="modal">
-    <div class="content-form">
+  <div id="ventanaeditarP">
+    <div id="VentanaConfirm">
+      <div class="cerrarbutton">
+        <h3>Editar Perfil</h3>
+        <button id="closeventanaañadirC" onclick="ocultarUserCard()" class="cerrar"><i class="fa-solid fa-xmark "></i></button>
+      </div>
 
-      <form class="formularo-edit" action="php/actualizar_ints_ap.php" method="POST" enctype="multipart/form-data">
-        <span class="closeProfile" onclick="ocultarUserCard()">&times;</span>
-        <h1 class="card-title">Editar Perfil</h1>
-        <div class="campos-data">
-          <div class="label-input">
-            <input type="hidden" name="id_usuario" value="<?php echo $id_usuario; ?>">
-            <label for="nombre">Nombre:</label>
-            <input type="text" name="nombre" id="nombre" class="dato" value="<?php echo $nombre_usuario; ?>">
-          </div>
-          <div class="label-input">
-            <label for="apellido">Apellido:</label>
-            <input type="text" name="apellido" id="apellido" class="dato" value="<?php echo $apellido; ?>">
-          </div>
+      <div class="botos">
 
-        </div>
-        <div class="campos-data">
-          <div class="label-input">
-            <label for="documento">Documento:</label>
-            <input type="text" name="documento" id="documento" class="dato" value="<?php echo $documento; ?>">
-          </div>
-          <div class="label-input">
-            <label for="password">Contraseña:</label>
-            <input type="password" name="password" id="password" class="dato" value="<?php echo $password_usuario; ?>">
-          </div>
+        <form class="formularo-edit" id="editardatosperfil" onsubmit="editarperfil(event,'editardatosperfil','php/actualizar_ints_ap.php')" method="post" enctype="multipart/form-data">
+          <div class="campos-data">
+            <div class="label-input">
+              <input type="hidden" name="id_usuario" value="<?php echo $id_usuario; ?>">
+              <label for="nombre">Nombre:</label>
+              <input type="text" name="nombre" id="nombre" class="dato" value="<?php echo $nombre_usuario; ?>">
+            </div>
+            <div class="label-input">
+              <label for="apellido">Apellido:</label>
+              <input type="text" name="apellido" id="apellido" class="dato" value="<?php echo $apellido; ?>">
+            </div>
 
-        </div>
-        <div class="campos-data">
-          <div class="label-input">
-            <label for="correo">Correo:</label>
+          </div>
+          <div class="campos-data">
+            <div class="label-input">
+              <label for="documento">Documento:</label>
+              <input type="text" name="documento" id="documento" class="dato" value="<?php echo $documento; ?>">
+            </div>
+            <div class="label-input">
+              <label for="password">Contraseña:</label>
+              <input type="password" name="password" id="password" class="dato" value="<?php echo $password_usuario; ?>">
+            </div>
+          </div>
+          <div class="campos-data">
+            <div class="label-input">
+              <label for="correo">Correo:</label>
+              <input type="text" name="correo" id="correo" class="dato" value="<?php echo $correo; ?>">
+            </div>
+            <div class="label-input"><label for="telefono">Teléfono:</label>
+              <input type="text" name="telefono" id="telefono" class="dato" value="<?php echo $telefono; ?>">
+            </div>
+          </div>
+          <div class="imgaa">
+            <label for="imagen">Imagen Actual:</label>
+            <img src="imgusuario/<?php echo $imagen; ?>" alt="Imagen Actual" class="imga" onclick="mostrarImagenAmpliada(this)" onclick="cerrarImagen(this)">
+          </div>
+          <div class="imgaa">
+            <label for="new-imagen" class="btn-img">Subir nueva imagen</label>
+            <input type="file" name="imagen" id="new-imagen" class="filenew">
+          </div>
+          <!-- <button type="submit" class="btn-cargar-novedad">Actualizar</button> -->
 
-            <input type="text" name="correo" id="correo" class="dato" value="<?php echo $correo; ?>">
-          </div>
-          <div class="label-input"><label for="telefono">Teléfono:</label>
-            <input type="text" name="telefono" id="telefono" class="dato" value="<?php echo $telefono; ?>">
-          </div>
-        </div>
-        <div class="imgaa">
-          <label for="imagen">Imagen Actual:</label>
-          <img src="imgusuario/<?php echo $imagen; ?>" alt="Imagen Actual" class="imga" ondblclick="mostrarImagenAmpliada(this)" onclick="cerrarImagen(this)">
-        </div>
-        <div class="imgaa">
-          <label for="new-imagen" class="btn-img">Subir nueva imagen</label>
-          <input type="file" name="imagen" id="new-imagen" class="filenew">
-        </div>
-        <button type="submit" class="btn-cargar-novedad">Actualizar</button>
-      </form>
+          <!-- Botón para enviar el formulario -->
+          <button class="btn" type='submit'>
+            <span class="btn-text-one">Guardar</span>
+            <span class="btn-text-two">Guardar</span>
+          </button>
+        </form>
+      </div>
     </div>
   </div>
+
+
+
+
+
+
+
+
+
+
 
 
   <aside id="aside">
@@ -202,6 +217,9 @@ if (!isset($_SESSION['rol'])) {
     <!-- ventana modal eliminar evaluaciones -->
     <div id="ventanaeliminar">
       <div id="VentanaConfirm">
+        <div class="cerrarbutton">
+          <button id="closeventanaeliminarE" onclick="closeventanaeliminarE()" class="cerrar"><i class="fa-solid fa-xmark "></i></button>
+        </div>
         <h2>¿Está seguro?</h2>
         <p class="text_delete">
           Si decides eliminar la evaluación, la información que hayas registrado se perderá.</p>
@@ -466,23 +484,29 @@ if (!isset($_SESSION['rol'])) {
 
     <section class="pages" id="Ambientes">
       <div class="evaluacion_laboral">
-
-        <div class="first_line">
+        <article class='cabeceraevaluacione'>
+          <div class="first_line">
           <h1>Evaluación Desempeño Laboral </h1>
-        </div>
-        <div class="second_line">
-          <!-- evaluacion -->
-          <div class="boton_Eva" onclick="desplegar();Mostrar()">
-            <p>Evaluar</p>
+          <hr class='linea2'>
+            
           </div>
-        </div>
+          <div class="second_line">
+
+            <button class='btnevaluar' onclick="desplegar();Mostrar()">
+              Nueva Evaluacion
+            </button>
+          </div>
+        </article>
         <div onclick="closes()" id="dark">
 
         </div>
 
         <div id="ventana_evalu">
-          <div id="close" onclick="closes()">
+          <!-- <div id="close" onclick="closes()">
             <img src="./img/close.svg" alt="">
+          </div> -->
+          <div class="cerrarbutton">
+            <button id="closeventanaañadirC" onclick="closes()" class="cerrar"><i class="fa-solid fa-xmark "></i></button>
           </div>
 
 
@@ -589,24 +613,24 @@ if (!isset($_SESSION['rol'])) {
 
 
           <div id='ContainerCardInfo' onclick="CerrarV()">
-
-          </div>
-
-
-          <div id='CardInfo'>
-            <div class="UserInfo">
-
-
-            </div>
-            <div class="Evaluaciones_user">
-
-              <h3>Evaluaciones</h3>
-              <div class="Evas_container">
-
-
+            <div id='CardInfo'>
+              <div class="cerrarbutton">
+                <h3>Evaluaciones</h3>
+                <button id="closeventanaañadirC" onclick="cerrarventanaEvaluaciones()" class="cerrar"><i class="fa-solid fa-xmark "></i></button>
+              </div>
+              <div class="botos">
+                <div class="UserInfo">
+                </div>
+                <div class="Evaluaciones_user">
+                  <div class="Evas_container">
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+
+
+
 
 
         </div>
@@ -1850,23 +1874,25 @@ if (!isset($_SESSION['rol'])) {
 
     <section class="pages" id="crearAmbiente">
       <section id="depencargos">
-        <article id='containerdependencias' class="containerdc">
+        <article class="containerdc">
           <div class='sectionheader'>
             <span>
               <hr class='linea2'>
               <h1>dependencias</h1>
             </span>
-
-            <button onclick='abrirventanaañadirD()' class='button'>añadir dependencia</button>
+            <div class='acciones'>
+              <div id="contadorDependencias" class="contadores"></div>
+              <button onclick='abrirventanaañadirD()' class='button'>añadir dependencia</button>
+            </div>
           </div>
-          <div class="contentD">
+          <div class="contentD" id='containerdependencias'>
             <?php
             include './php/consultardependencias.php';
             ?>
           </div>
         </article>
         <hr id="linea">
-        <article id='containercargos' class="containerdc">
+        <article class="containerdc">
 
           <div class='sectionheader'>
             <span>
@@ -1874,10 +1900,12 @@ if (!isset($_SESSION['rol'])) {
               <hr class='linea2'>
               <h1>cargos</h1>
             </span>
-
-            <button onclick='abrirventanaañadirC()' class='button'>añadir cargo</button>
+            <div class='acciones'>
+              <div id="contadorCargos" class="contadores"></div>
+              <button onclick='abrirventanaañadirC()' class='button'>añadir cargo</button>
+            </div>
           </div>
-          <div class='contentD'>
+          <div class='contentD' id='containercargos'>
             <?php
             include './php/consultarCargos.php';
             ?>
@@ -1888,9 +1916,22 @@ if (!isset($_SESSION['rol'])) {
 
     <section class="pages" id="Usuarios">
       <div class="opciones_user">
-        <input type="text" id="searchInput" placeholder="Nombre">
+        <!-- <input type="text" id="searchInput" placeholder="Nombre"> -->
+        <div class="input-container">
+          <input type="text" name="text" id="searchInput" placeholder="Nombre de la persona...">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="" viewBox="0 0 24 24" class="icon">
+            <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+            <g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g>
+            <g id="SVGRepo_iconCarrier">
+              <rect fill="white" height="24" width="24"></rect>
+              <path fill="" d="M2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12ZM9 11.5C9 10.1193 10.1193 9 11.5 9C12.8807 9 14 10.1193 14 11.5C14 12.8807 12.8807 14 11.5 14C10.1193 14 9 12.8807 9 11.5ZM11.5 7C9.01472 7 7 9.01472 7 11.5C7 13.9853 9.01472 16 11.5 16C12.3805 16 13.202 15.7471 13.8957 15.31L15.2929 16.7071C15.6834 17.0976 16.3166 17.0976 16.7071 16.7071C17.0976 16.3166 17.0976 15.6834 16.7071 15.2929L15.31 13.8957C15.7471 13.202 16 12.3805 16 11.5C16 9.01472 13.9853 7 11.5 7Z" clip-rule="evenodd" fill-rule="evenodd"></path>
+            </g>
+          </svg>
+        </div>
 
-        <div>
+
+        <div class='acciones'>
+          <div id="contadorUsuarios"></div>
           <img id="add" src="./img/add.png" alt="" onclick='abrirventanaañadirU()'>
         </div>
       </div>
@@ -2002,7 +2043,7 @@ if (!isset($_SESSION['rol'])) {
                 </article>
                 <article class='camposformuser'>
                   <div class='camposinputs'>
-                    <div >
+                    <div>
                       <img src="./imgusuario/sin_foto.png" id="previewImage" alt="">
                     </div>
                     <input type="file" name="fotoperfil" id="fileInput" class="selectorimg" accept="image/*">
@@ -2092,9 +2133,11 @@ if (!isset($_SESSION['rol'])) {
 
   </main>
 
+
   <script src="js/info_ambie_pisos.js"></script>
   <script src="js/admin.js"></script>
   <script src="js/ampliarImagen.js"></script>
+
   <!-- <script src="js/consultaAmbientes.js"></script>
   
   <script src="js/crearUsuario.js"></script>
@@ -2132,7 +2175,8 @@ if (!isset($_SESSION['rol'])) {
   <script src='js/eliminarDependencias.js'></script>
   <script src='js/eliminarCargos.js'></script>
   <script src='js/eliminareva.js'></script>
-
+  <script src="js/contadores.js"></script>
+  <script src='js/editarperfil.js'></script>
 
 </body>
 

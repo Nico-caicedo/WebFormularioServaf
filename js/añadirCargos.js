@@ -18,6 +18,8 @@ function sendFormañadirC(event, añadirC, link) {
                 // Actualizar el contenido de la ventana después de eliminar la evaluación
                 $('#containercargos').load(location.href + ' #containercargos>*', '');
                 toastr.success(data.message);
+            }else if (data.status === false || data.status === 'info') {
+                toastr.info(data.message);
             } else if (data.status === false || data.status === 'warning') {
                 toastr.warning(data.message);
             }else if (data.status === false || data.status === 'error') {

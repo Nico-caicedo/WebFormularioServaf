@@ -17,7 +17,9 @@ function sendFormeliminarC(event, eliminarC, link) {
                 // Actualizar el contenido de la ventana después de eliminar la evaluación
                 $('#containercargos').load(location.href + ' #containercargos>*', '');
                 toastr.success(data.message);
-            } else if (data.status === false || data.status === 'warning') {
+            } else if (data.status === false || data.status === 'info') {
+                toastr.info(data.message);
+            }else if (data.status === false || data.status === 'warning') {
                 ventanaeliminarCa();
                 toastr.warning(data.message);
             }else if (data.status === false || data.status === 'error') {

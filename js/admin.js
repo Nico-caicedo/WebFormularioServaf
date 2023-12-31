@@ -84,17 +84,17 @@ function cerrarFormulario() {
 }
 
 function mostrarUserCard() {
-  var modal = document.getElementById("modal");
-  modal.style.display = "block";
+  var modal = document.getElementById("ventanaeditarP");
+  modal.style.display = "flex";
 }
 
 function ocultarUserCard() {
-  var modal = document.getElementById("modal");
-  modal.style.display = "none";
+  var cerrar = document.getElementById("ventanaeditarP");
+  cerrar.style.display = "none";
 }
 
 window.onclick = function (event) {
-  var modal = document.getElementById("modal");
+  var modal = document.getElementById("ventanaeditarP");
   if (event.target == modal) {
     modal.style.display = "none";
   }

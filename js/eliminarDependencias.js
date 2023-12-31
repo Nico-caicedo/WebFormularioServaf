@@ -18,6 +18,8 @@ function sendFormeliminarD(event, eliminarD, link) {
                 // Actualizar el contenido de la ventana después de eliminar la evaluación
                 $('#containerdependencias').load(location.href + ' #containerdependencias>*', '');
                 toastr.success(data.message);
+            }else if (data.status === false || data.status === 'info') {
+                toastr.info(data.message);
             } else if (data.status === false || data.status === 'warning') {
                 cerrarVentanaEliminarD();
                 toastr.warning(data.message);

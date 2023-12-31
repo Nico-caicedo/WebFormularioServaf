@@ -135,7 +135,11 @@ function NOD() {
   ventanaeliminarD.style.display = "none";
 }
 
+const ventanaevaluado = document.getElementById('CardInfo');
 
+function cerrarventanaEvaluaciones(){
+  ventanaevaluado.style.display = "none";
+}
 // ABRIR VENTANA AÑADIR DEPENDENCIA
 const ventanaanñadirD = document.getElementById("ventanaañadirD");
 

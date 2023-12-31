@@ -12,10 +12,12 @@ function sendForm(event, formeliminareva, link) {
             console.log(data);
             if (data.status=== true || data.status === 'success') {
                 // Actualizar el contenido de la ventana después de eliminar la evaluación
-                cerrarVentanaEliminar()
+                closeventanaeliminarE()
                 actualizarContenidoVentana();
        
                 toastr.success(data.message);
+            }else if (data.status === false || data.status === 'info') {
+                toastr.info(data.message);
             } else if (data.status === false || data.status === 'error') {
                 toastr.error(data.message);
             }
@@ -47,7 +49,7 @@ function actualizarContenidoVentana() {
 }
 
 
-function cerrarVentanaEliminar() {
+function closeventanaeliminarE() {
     // Mostrar la ventana u realizar otras operaciones si es necesario
     var ventanaeliminar = document.getElementById("ventanaeliminar");
     if (ventanaeliminar) {

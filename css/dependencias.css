@@ -8,9 +8,19 @@
     height: 100%;
     width: 1px;
     /* background-color: black; */
-    border: 1px solid black;
+    border: 1px solid #00154c;
 }
 
+.contadores{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+  color: #00154c;
+    padding: 1em;
+    border-radius: 20px;
+    font-size: 15px;
+  }
 .containerdc {
     display: flex;
     justify-content: start;
@@ -20,38 +30,41 @@
 
 .linea2 {
     display: flex;
-    background-color: #5585b5;
+    background-color: #fff;
     height: 1px;
-    border: 1px solid #5585b5;
+    width:100%;
+    border: 1px solid #fff;
 }
 
 /* section dependencias */
 .sectionheader {
     display: flex;
     align-items: center;
+    color:#fff;
     justify-content: space-between;
     padding: 1em 1em 1em 1em;
     text-transform: capitalize;
     font-size: 20px;
     border-bottom: 1px solid gray;
+   background-color:#5585b5;
 }
 
 .button {
     display: flex;
-    background-color: #5585b5;
-    color: #fff;
+    background-color: #fff;
+    color: #5585b5;
     padding: 1em;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
     text-transform: capitalize;
     cursor: pointer;
-    border: 1px solid #5585b5;
+    border: 1px solid #fff;
 }
 
 .button:hover {
-    color: #5585b5;
-    background-color: #fff;
+    color: #fff;
+    background-color: #5585b5;
 }
 
 .contentD {

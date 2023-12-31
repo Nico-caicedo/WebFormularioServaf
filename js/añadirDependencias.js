@@ -19,6 +19,8 @@ function sendFormañadirD(event, añadirD, link) {
                 // Actualizar el contenido de la ventana después de eliminar la evaluación
                 $('#containerdependencias').load(location.href + ' #containerdependencias>*', '');
                 toastr.success(data.message);
+            }else if (data.status === false || data.status === 'info') {
+                toastr.info(data.message);
             } else if (data.status === false || data.status === 'warning') {
                 toastr.warning(data.message);
             }else if (data.status === false || data.status === 'error') {

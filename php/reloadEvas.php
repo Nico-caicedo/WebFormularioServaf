@@ -49,7 +49,7 @@ if ($resultado->num_rows > 0) {
 
 } else {
     // Si no hay evaluaciones, establecer un mensaje de error
-    $containerContent = "No hay evaluaciones disponibles";
+    $containerContent = "<p class='textnohay'>No hay evaluaciones disponibles</p>";
 }
 
 
