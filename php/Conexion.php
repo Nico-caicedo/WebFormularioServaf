@@ -1,7 +1,7 @@
 <?php
 
 
-$conexion = mysqli_connect("localhost", "root", "", "servafevaluacion");
+$conexion = mysqli_connect("localhost", "root", "", "evaluacionservaf");
 
 // Conexion a base de datos
 // $conexion = mysqli_connect("localhost", "c1601882_AA", "keGOtude02", "c1601882_AA");

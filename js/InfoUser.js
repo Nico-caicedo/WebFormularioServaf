@@ -90,8 +90,25 @@ window.location.href = url;
 // funciones para abrir la ventana de evaluacion en la sección de
 
 
-var catalyst = document.getElementById('add')
-var addUser = document.getElementById('addUser')
+
+
+
+
+
+// ABRIR VENTANA AÑADIR ususarios
+const ventanaanñadirU = document.getElementById("ventanaañadirU");
+
+function abrirventanaañadirU() {
+
+  if (ventanaanñadirU) {
+    ventanaanñadirU.style.display = "flex";
+  }
+}
+
+function closeventanaañadirU(){
+  ventanaanñadirU.style.display = "none";
+}
+
 
 Containershow = document.getElementById("Containershow");
 Active = document.getElementsByClassName("show");
@@ -147,12 +164,12 @@ function AbrirVentanaS(element) {
 
 
 
-catalyst.addEventListener('click', () => {
-  Containershow.style.display = "flex";
-  addUser.style.display = 'flex';
+// catalyst.addEventListener('click', () => {
+//   Containershow.style.display = "flex";
+//   addUser.style.display = 'flex';
 
 
-})
+// })
 
 
 
@@ -178,4 +195,7 @@ catalyst.addEventListener('click', () => {
          });
       });
    });
+
+
+
 

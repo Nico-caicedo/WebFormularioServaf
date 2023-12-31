@@ -135,8 +135,12 @@ function NOD() {
   ventanaeliminarD.style.display = "none";
 }
 
+const ventanaevaluado = document.getElementById('CardInfo');
 
-
+function cerrarventanaEvaluaciones(){
+  ventanaevaluado.style.display = "none";
+}
+// ABRIR VENTANA AÑADIR DEPENDENCIA
 const ventanaanñadirD = document.getElementById("ventanaañadirD");
 
 function abrirventanaañadirD() {
@@ -144,6 +148,82 @@ function abrirventanaañadirD() {
   if (ventanaanñadirD) {
     ventanaanñadirD.style.display = "flex";
   }
+}
+
+function closeventanaañadirD(){
+  ventanaanñadirD.style.display = "none";
+}
+// ABRIR VENTANA AÑADIR CARGO
+const ventanaañadirC = document.getElementById("ventanaañadirC");
+
+function abrirventanaañadirC() {
+  if (ventanaañadirC) {
+    ventanaañadirC.style.display = "flex";
+  }
+}
+
+function closeventanaañadirC(){
+  ventanaañadirC.style.display = "none";
+}
+
+
+// ventana editar dependencias 
+function abrirventanaeditarD(IdDependencia, Dependencia){
+  var ventanaEditar = document.getElementById("ventanaeditarD");
+  var campoNombreEditadoD = document.querySelector('#editarD [name="nombreeditadoD"]');
+  var campoIdDependencia = document.getElementById("idDependencia");
+  console.log(campoIdDependencia);
+  console.log(campoNombreEditadoD)
+  // Mostrar la ventana de edición
+  if (ventanaEditar) {
+    ventanaEditar.style.display = "flex";
+  }
+
+  // Establecer el nombre de la dependencia en el campo correspondiente del formulario
+  if (campoNombreEditadoD) {
+    campoNombreEditadoD.value = Dependencia;
+  }
+  if (campoIdDependencia) {
+    campoIdDependencia.value = IdDependencia;
+  }
+}
+
+const ventanaEditarD = document.getElementById("ventanaeditarD");
+function cerrarVentanaeditarD(){
+  ventanaEditarD.style.display = "none";
+}
+
+
+// ventana editar cargos 
+function abrirventanaeditarC(idcargo, cargo,descripcion,iddependencia){
+  var ventanaeditarC = document.getElementById("ventanaeditarC");
+  var camponombreeditadoC = document.querySelector('#editarC [name="nombreeditadoC"]');
+  var campoidcargo = document.getElementById("idCargo");
+  var campodesrip = document.getElementById("descrip");
+  var camposelect = document.querySelector('#editarC [name="iddependenciaC"]');
+  
+  // Mostrar la ventana de edición
+  if (ventanaeditarC) {
+    ventanaeditarC.style.display = "flex";
+  }
+  // Establecer el nombre de la dependencia en el campo correspondiente del formulario
+  if (camponombreeditadoC) {
+    camponombreeditadoC.value = cargo;
+  }
+  if (campoidcargo) {
+    campoidcargo.value = idcargo;
+  }
+  if(campodesrip){
+    campodesrip.value = descripcion
+  }
+  if(camposelect){
+    camposelect.value = iddependencia
+  }
+}
+
+const ventanaeditarC = document.getElementById("ventanaeditarC");
+function cerrarVentanaeditarC(){
+  ventanaeditarC.style.display = "none";
 }
 // ventana de eliminar cargos
 
@@ -162,6 +242,9 @@ function abrirVentanaEliminarC(idcargo) {
 function NOC() {
   ventanaeliminarC.style.display = "none";
 }
+
+
+
 // ventana eliminar evaluacion regsitradas
 const ventanaeliminar = document.getElementById("ventanaeliminar");
 

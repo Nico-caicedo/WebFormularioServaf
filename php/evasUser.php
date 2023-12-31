@@ -53,7 +53,7 @@ if ($resultado->num_rows > 0) {
 
 } else {
     // Si no hay evaluaciones, establecer un mensaje de error
-    $containerContent = "<p>No hay evaluaciones disponibles</p>";
+    $containerContent = "<p class='textnohay'>No hay evaluaciones disponibles</p>";
 }
 
 $datos = mysqli_query($conexion, "SELECT * FROM users where IdUser = $IdUser");
@@ -81,7 +81,10 @@ if ($datos->num_rows > 0) {
             <p>{$row['Nombre1']} {$row['Nombre2']} {$row['Apellido1']} {$row['Apellido2']}</p>
             <p>{$row['TypeDocument']} {$row['Document']}</p>
             <p>$NombreCargo</p>
-            <p onclick='desplegar(); ocultar({$IdUser})' id='solito' class='boton_Eva'>Evaluar</p>
+            
+            <button id='solito' class='btnevaluar' onclick='desplegar(); ocultar({$IdUser})'>
+            Evaluar
+          </button>
             </div>
     ";
 
