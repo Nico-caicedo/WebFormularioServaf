@@ -1,7 +1,7 @@
 <?php
 include 'Conexion.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' ) {
 
     $IdEva = $_POST['deleteEva'];
 $sql = "SELECT DISTINCT IdEvaluacion FROM calificacion WHERE IdEvaluado = $IdEva";
