@@ -103,6 +103,7 @@ function abrirventanaañadirU() {
   if (ventanaanñadirU) {
     ventanaanñadirU.style.display = "flex";
   }
+  cargarCargos() 
 }
 
 function closeventanaañadirU(){
@@ -174,28 +175,48 @@ function AbrirVentanaS(element) {
 
 
 
-   $(document).ready(function () {
-      // Manejar el evento de entrada en el campo de búsqueda
-      $('#searchInput').on('input', function () {
-         // Obtener el valor del campo de búsqueda
-         var searchTerm = $(this).val();
+   // $(document).ready(function () {
+   //    // Manejar el evento de entrada en el campo de búsqueda
+   //    $('#searchInput').on('input', function () {
+   //       // Obtener el valor del campo de búsqueda
+   //       var searchTerm = $(this).val();
 
-         // Realizar la solicitud AJAX al servidor
-         $.ajax({
-            url: './php/buscarUsuarios.php',
-            method: 'POST',
-            data: { searchTerm: searchTerm },
-            success: function (data) {
-               // Limpiar el contenedor antes de agregar nuevos resultados
-               $('#Users').empty();
+   //       // Realizar la solicitud AJAX al servidor
+   //       $.ajax({
+   //          url: './php/buscarUsuarios.php',
+   //          method: 'POST',
+   //          data: { searchTerm: searchTerm },
+   //          success: function (data) {
+   //             // Limpiar el contenedor antes de agregar nuevos resultados
+   //             $('#Users').empty();
 
-               // Mostrar los resultados en el contenedor
-               $('#Users').html(data);
-            }
-         });
-      });
-   });
-
-
+   //             // Mostrar los resultados en el contenedor
+   //             $('#Users').html(data);
+   //          }
+   //       });
+   //    });
+   // });
 
 
+// 
+
+// funcion para cargar los dinamicamente los cargos disponibles
+function cargarCargos() {
+    fetch('./php/cargos.php')
+        .then(response => response.json())
+        .then(data => {
+            const selectCargos = document.getElementById('selectcargos');
+
+            // Limpiar opciones actuales
+            selectCargos.innerHTML = '';
+
+            // Agregar las nuevas opciones
+            data.forEach(option => {
+                const optionElement = document.createElement('option');
+                optionElement.value = option.value;
+                optionElement.text = option.text;
+                selectCargos.appendChild(optionElement);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+}

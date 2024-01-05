@@ -1,6 +1,6 @@
 <?php
 require_once 'Conexion.php';
-$resul = mysqli_query($conexion, "SELECT * FROM cargos ORDER BY IdCargo DESC");
+$resul = mysqli_query($conexion, "SELECT * FROM cargos ORDER BY Cargo ASC");
 if (mysqli_num_rows($resul) > 0) {
     while ($fila = mysqli_fetch_assoc($resul)) {
         $cargo = $fila["Cargo"];
@@ -19,4 +19,3 @@ if (mysqli_num_rows($resul) > 0) {
     echo "No hay cargos registrados.";
 }
 ?>
-

@@ -1,65 +1,148 @@
-// Obtén todos los elementos con la clase "estados"
-var elementos = document.querySelectorAll(".estados");
+$(document).ready(function () {
+    function cargarYRenderizarUsuarios(searchTerm) {
+        // Obtener la URL correcta para la solicitud AJAX
+        var url = './php/buscarUsuarios.php';
+        var method = 'GET';
+        var requestData = {};
 
-function CambiarEstado(event) {
-    // Obtén la lista de clases del elemento actual
-    var clases = this.classList;
-    var contenedor = event.currentTarget;
-    var input = contenedor.querySelector('input');
-    var valorInput = input.value;
-    
-    // Define los valores de estado
-    var estadoActivo = 1;
-    var estadoInactivo = 2;
+        // Si hay un término de búsqueda, cambiar la URL y el método
+        if (searchTerm) {
+            url = './php/buscarUsuarios.php';
+            method = 'POST';
+            requestData = { searchTerm: searchTerm };
+        }
 
-    // Muestra el valor en la consola
-    console.log('Funciona para cambio. Valor del input:', valorInput);
-
-    // Define la función para hacer la solicitud fetch
-    function hacerSolicitudFetch(estado) {
-        var ID = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
+        // Realizar la solicitud AJAX
+        $.ajax({
+            url: url,
+            method: method,
+            data: requestData,
+            dataType: 'json',
+            success: function (data) {
+                renderizarUsuarios(data);
             },
-            body: 'idUpdate=' + encodeURIComponent(valorInput) + '&estado=' + encodeURIComponent(estado),
-        };
+            error: function (error) {
+                console.error('Error en la solicitud ajax:', error);
+            }
+        });
+    }
 
-        fetch('./php/modificarEstado.php', ID)
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    if (estado === estadoActivo) {
-                        clases.remove('inactivo');
-                        clases.add('activo');
-                        contenedor.querySelector('p').textContent = 'Activo';
-                    } else {
-                        clases.remove('activo');
-                        clases.add('inactivo');
-                        contenedor.querySelector('p').textContent = 'Inactivo';
-                    }
-                } else {
-                    console.error('Error:', data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error en la solicitud fetch:', error);
+    // Función para renderizar usuarios
+    function renderizarUsuarios(data) {
+        $('#Users').empty();
+
+        if (data.length > 0 && data[0].mensaje) {
+            // Mostrar mensaje de no hay resultados
+            $('#Users').html('<div class="SinInfo"><img src="./img/search.png"><p>' + data[0].mensaje + '</p></div>');
+        } else {
+            // Mostrar los resultados en el contenedor
+            $.each(data, function (index, usuario) {
+                // Construir el elemento HTML para cada usuario
+                var html = construirHTMLUsuario(usuario);
+
+                // Agregar el elemento HTML al contenedor
+                $('#Users').append(html);
             });
+
+            // Iterar sobre los elementos con la clase "estados" y agregar el evento CambiarEstado
+            $('.estados').each(function () {
+                $(this).on("click", CambiarEstado);
+            });
+        }
     }
 
-    // Verifica si la clase "activo" está presente
-    if (clases.contains('activo')) {
-        hacerSolicitudFetch(estadoInactivo);
-    } else {
-        hacerSolicitudFetch(estadoActivo);
+    // Función para construir el HTML de un usuario
+    function construirHTMLUsuario(usuario) {
+        return '<div class="itemProfileview">' +
+            '<div class="profileAbout">' +
+            '<img src="' + usuario.imagen + '" alt="" />' +
+            '<span>' +
+            '<b>' + usuario.nombre + '</b>' +
+            '<p>' + usuario.cargo + '</p>' +
+            '</span>' +
+            '</div>' +
+            '<div class="profileDocument">' +
+            '<b>Correo</b>' +
+            '<p>' + usuario.correo + '</p>' +
+            '</div>' +
+            '<div class="profileDocument">' +
+            '<b>Teléfono</b>' +
+            '<p>' + usuario.telefono + '</p>' +
+            '</div>' +
+            '<div class="show" onclick="AbrirVentanaS(this)" data-eva="' + usuario.idEvaluados + '" data-infoUser="' + usuario.idUsuario + '">' +
+            '<img class="iconss" src="./img/see.png">' +
+            '</div>' +
+            '<div class="estados ' + usuario.estado.toLowerCase() + '">' +
+            '<input type="hidden" class="Estado" value="' + usuario.idUsuario + '">' +
+            '<p class="NameState">' + usuario.estado + '</p>' +
+            '</div>' +
+            '<div class="edit">' +
+            '<input type="hidden" id="inactivo-' + usuario.idUsuario + '" name="estadoCliente[' + usuario.estado + ']" value="2" ' + (usuario.estado == 'Inactivo' ? 'checked' : '') + '>' +
+            '<p>Editar</p>' +
+            '</div>' +
+            '</div>';
     }
-}
 
-// Itera sobre la colección de elementos y agrega el evento a cada uno
-elementos.forEach(elemento => {
-    elemento.addEventListener("click", CambiarEstado);
+    // Función para cambiar el estado de un usuario
+    function CambiarEstado() {
+        var contenedor = $(this);
+        var input = contenedor.find('.Estado');
+        var valorInput = input.val();
+
+        var estadoActivo = 1;
+        var estadoInactivo = 2;
+
+        console.log('Funciona para cambio. Valor del input:', valorInput);
+
+        function hacerSolicitudFetch(estado) {
+            var data = 'idUpdate=' + encodeURIComponent(valorInput) + '&estado=' + encodeURIComponent(estado);
+
+            $.ajax({
+                url: './php/modificarEstado.php',
+                method: 'POST',
+                data: data,
+                dataType: 'json',
+                success: function (data) {
+                    if (data.success) {
+                        if (estado === estadoActivo) {
+                            contenedor.removeClass('inactivo').addClass('activo');
+                            contenedor.find('p.NameState').text('Activo');
+                        } else {
+                            contenedor.removeClass('activo').addClass('inactivo');
+                            contenedor.find('p.NameState').text('Inactivo');
+                        }
+                    } else {
+                        console.error('Error:', data.message);
+                    }
+                },
+                error: function (error) {
+                    console.error('Error en la solicitud ajax:', error);
+                }
+            });
+        }
+
+        if (contenedor.hasClass('activo')) {
+            hacerSolicitudFetch(estadoInactivo);
+        } else {
+            hacerSolicitudFetch(estadoActivo);
+        }
+    }
+
+     // Variable para almacenar el contenido original
+     var contenidoOriginal = $('#Users').html();
+
+
+    cargarYRenderizarUsuarios();
+
+    // Manejar el evento de entrada en el campo de búsqueda
+    $('#searchInput').on('input', function () {
+        // Obtener el valor del campo de búsqueda
+        var searchTerm = $(this).val();
+
+        // Cargar y renderizar usuarios con el término de búsqueda
+        cargarYRenderizarUsuarios(searchTerm);
+    });
 });
-
 
 
 var fileInput = document.getElementById('fileInput');

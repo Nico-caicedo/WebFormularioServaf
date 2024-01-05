@@ -1,6 +1,6 @@
 <?php
 require_once 'Conexion.php';
-$resul = mysqli_query($conexion, "SELECT * FROM dependencias ORDER BY IdDependencia DESC");
+$resul = mysqli_query($conexion, "SELECT * FROM dependencias ORDER BY IdDependencia ASC");
 if (mysqli_num_rows($resul) > 0) {
     while ($fila = mysqli_fetch_assoc($resul)) {
         $UPDATE = $fila['IdDependencia'];

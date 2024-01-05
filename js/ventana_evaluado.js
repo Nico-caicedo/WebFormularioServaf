@@ -141,7 +141,7 @@ function cerrarventanaEvaluaciones(){
   ventanaevaluado.style.display = "none";
 }
 // ABRIR VENTANA AÑADIR DEPENDENCIA
-const ventanaanñadirD = document.getElementById("ventanaañadirD");
+const ventanaanñadirD = document.getElementById("ventanaaddD");
 
 function abrirventanaañadirD() {
 

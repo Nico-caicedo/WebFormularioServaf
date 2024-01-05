@@ -62,10 +62,10 @@ if ($consulta->num_rows > 0) {
             <div class="show" onclick="AbrirVentanaS(this)"  data-eva="'. $IdEvaluados .'"  data-infoUser="' . $Iduser .'">
               <img class="iconss" src="./img/see.png">
              </div>
-                <div class="estados ' . $estados . '">
-                    <input type="hidden" id="" class="Estado" name="" value="' . $persona['IdUser'] . '" >
+                <div   class="estados ' . $estados . '">
+                    <input type="hidden" id="" class="Estado" name="" value="' . $estado . '" >
                   
-                    <p class="NameState">' . $state . '</p>
+                    <p class="NameState" >' . $state . '</p>
                 </div>
                 <div class="edit">
                     <input type="hidden" id="inactivo-' . $persona['IdUser'] . '" name="estadoCliente[' . $persona['Estado'] . ']" value="2" ' . ($persona['Estado'] == '0' ? 'checked' : '') . '>

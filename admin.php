@@ -237,7 +237,7 @@ if (!isset($_SESSION['rol'])) {
     </div>
 
     <!-- section ventana formulario añadir  -->
-    <div id="ventanaañadirD">
+    <div id="ventanaaddD">
       <div id="VentanaConfirm">
         <div class="cerrarbutton">
           <h3>Nueva Dependencia</h3>
@@ -247,7 +247,7 @@ if (!isset($_SESSION['rol'])) {
         <p class="text_delete">
           Completa el campo</p>
         <div class="botos">
-          <form id='añadirD' method='post' onsubmit="sendFormañadirD(event,'añadirD','./php/añadirDependencia.php')">
+          <form id='addD' method='post' onsubmit="sendFormaddD(event,'addD','./php/addDependencia.php')">
             <!-- Campo oculto para el IdEvaluacion -->
             <div class="form-control">
               <input type="text" name='nombreD' required="">
@@ -306,7 +306,7 @@ if (!isset($_SESSION['rol'])) {
           <!-- <p class="text_delete">
             seleciona una dependencia</p> -->
           <div class="botos">
-            <form id='añadirC' method='post' onsubmit="sendFormañadirC(event,'añadirC','./php/añadirCargos.php')">
+            <form id='addC' method='post' onsubmit="sendFormaddC(event,'addC','./php/addCargos.php')">
               <!-- Campo oculto para el IdEvaluacion -->
               <article class="inputsCARGOS">
                 <!-- <div  class='titleCD' > -->
@@ -314,7 +314,7 @@ if (!isset($_SESSION['rol'])) {
                 <select name="iddependencia" id='selectcargo' class="inputselect">
                   <?php
                   include("php/Conexion.php");
-                  $sql = "SELECT IdDependencia, Dependencia FROM dependencias";
+                  $sql = "SELECT * FROM dependencias";
                   $resultado = mysqli_query($conexion, $sql);
                   while ($fila = mysqli_fetch_assoc($resultado)) {
                     echo '<option value="' . $fila['IdDependencia'] . '">' . $fila['Dependencia'] . '</option>';
@@ -2029,14 +2029,15 @@ if (!isset($_SESSION['rol'])) {
                     </select>
                   </div>
                   <div class='camposinputs'>
-                    <select name="cargo" id='selectcargo' class='inputs'>
+                    <select name="cargo" id='selectcargos' class='inputs'>
+                      <!-- se hace el cargue dinamico de los valores del select -->
                       <?php
-                      include("php/Conexion.php");
-                      $sql = "SELECT IdCargo, Cargo FROM Cargos";
-                      $resultado = mysqli_query($conexion, $sql);
-                      while ($fila = mysqli_fetch_assoc($resultado)) {
-                        echo '<option value="' . $fila['IdCargo'] . '">' . $fila['Cargo'] . '</option>';
-                      }
+                      // include("php/Conexion.php");
+                      // $sql = "SELECT IdCargo, Cargo FROM Cargos";
+                      // $resultado = mysqli_query($conexion, $sql);
+                      // while ($fila = mysqli_fetch_assoc($resultado)) {
+                      //   echo '<option value="' . $fila['IdCargo'] . '">' . $fila['Cargo'] . '</option>';
+                      // }
                       ?>
 
                     </select>
@@ -2069,8 +2070,9 @@ if (!isset($_SESSION['rol'])) {
 
 
       <div id="Users">
+        <!-- se hace el cargue dinamico de los usuarios -->
         <?php
-        include './php/listarUsuarios.php'
+        //  include './php/listarUsuarios.php'
         ?>
       </div>
 
@@ -2167,13 +2169,14 @@ if (!isset($_SESSION['rol'])) {
   <!-- <script src="js/descargarPlantillaUsuarios.js"></script> -->
 
   <!-- function the evaluacion  -->
+  <script src="js/Users.js"></script>
   <script src="js/InfoUser.js"></script>
   <script src="js/ventana_evaluado.js"></script>
-  <script src="js/añadirDependencias.js"></script>
-  <script src="js/añadirCargos.js"></script>
+  <script src="js/addDependencias.js"></script>
+  <script src="js/addCargos.js"></script>
   <script src='js/editarDependencias.js'></script>
   <script src='js/editarCargos.js'></script>
-  <script src="js/Users.js"></script>
+
   <script src='js/eliminarDependencias.js'></script>
   <script src='js/eliminarCargos.js'></script>
   <script src='js/eliminareva.js'></script>

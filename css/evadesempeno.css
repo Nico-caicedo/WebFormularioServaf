@@ -144,10 +144,11 @@ para desepeño laboral*/
   position: fixed;
   top: 25%;
   left: 20%;
+  width: 60%;
   background-color: white;
   border-radius: 5px;
   display: none;
-  z-index: 4;
+  z-index: 5;
   gap: 5px;
 }
 
@@ -156,21 +157,32 @@ para desepeño laboral*/
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 40%;
+  height: 400px;
 }
 
 .datos_user {
   display: flex;
   flex-direction: column;
-  align-items: center;
+ align-items: center;
   gap: 10px;
   font-weight: bold;
   font-size: 1em;
   color: #3b3b3c;
+  width: 60%;
+}
+
+.datos_user p{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
 }
 
 .circle{
   width: 160px;
   height: 160px;
+  margin-bottom: 5px;
   border-radius: 10%;
   display: flex;
   align-items: center;
@@ -626,7 +638,7 @@ para desepeño laboral*/
   z-index: 5;
 }
 
-#ventanaañadirD{
+#ventanaaddD{
   display: none;
   justify-content: center;
   align-items: center;
